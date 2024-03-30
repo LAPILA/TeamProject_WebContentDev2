@@ -1,61 +1,59 @@
-<%@ page language="java" import="java.sql.*, javax.sql.DataSource" contentType= "text/html;charset=utf8" pageEncoding="utf8"%>
+<%@ page import="java.sql.*, javax.naming.InitialContext, javax.sql.DataSource" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="SQLconstants.jsp"%>
-<% 
-	// 이전 페이지에서 전달 받은 메시지 확인
+
+<%
+	// 입력받은 게임 정보
 	request.setCharacterEncoding("UTF-8");
-	String id = request.getParameter( "id" );
- 	String title = request.getParameter( "title" );
-	String author = request.getParameter( "author" );
-	String publisher = request.getParameter( "publisher" );
-	String date = request.getParameter( "date" );
-	String image = request.getParameter( "image" );
+	String gameName = request.getParameter("game_name");
+	String developer = request.getParameter("developer");
+	String price = request.getParameter("price");
+	String genre = request.getParameter("genre");
+	String releaseDate = request.getParameter("release_date");
+	String imageUrl = request.getParameter("image_url");
 	String message = null;
 
-	try
-	{
-		// MySQL 드라이버 연결 
-		Class.forName( jdbc_driver ); 
-		Connection con = DriverManager.getConnection( mySQL_database, mySQL_id, mySQL_password ); 
-		Statement stmt = con.createStatement();
+	Connection con = null;
+	PreparedStatement pstmt = null;
 
-		// MySQL 책 추가 실행 	
-		String query = "insert into book( id, title, author, publisher, date, image ) values ( '" + id + "', '" + title + "', '" + author + "', '" + publisher + "', '" + date + "', '" + image + "');"; 
-		query = new String( query.getBytes("utf-8") );
-		if ( stmt.executeUpdate( query ) > 0 )
-		{
-			message = "책(" + title + ")을 등록하였습니다"; 
-		}
-		else 
-		{
-			message = "책(" + title + ")을 등록할 수 없습니다 "; 
-		}
+	try {
+		// JNDI를 통한 DataSource 접근
+		InitialContext initContext = new InitialContext();
+		DataSource ds = (DataSource)initContext.lookup("java:comp/env/jdbc/YourDataSource");
+		con = ds.getConnection();
 
-		// MySQL 드라이버 연결 해제
-		stmt.close();
-		con.close();
-	} 
-	// 예외 처리
-	catch(SQLException e)
-	{
-		message = e.getMessage();
+		// 게임 정보를 데이터베이스에 안전하게 추가
+		String sql = "INSERT INTO games (name, developer, price, genre, release_date, image_url) VALUES (?, ?, ?, ?, ?, ?)";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, gameName);
+		pstmt.setString(2, developer);
+		pstmt.setFloat(3, Float.parseFloat(price));
+		pstmt.setString(4, genre);
+		pstmt.setString(5, releaseDate);
+		pstmt.setString(6, imageUrl);
+
+		int rowsAffected = pstmt.executeUpdate();
+		if (rowsAffected > 0) {
+			message = "게임(" + gameName + ")이(가) 성공적으로 등록되었습니다.";
+		} else {
+			message = "게임(" + gameName + ")을(를) 등록할 수 없습니다.";
+		}
+	} catch (SQLException e) {
+		message = "데이터베이스 오류: " + e.getMessage();
+		e.printStackTrace();
+	} catch (NamingException e) {
+		message = "JNDI 리소스 찾기 오류: " + e.getMessage();
+		e.printStackTrace();
+	} catch (NumberFormatException e) {
+		message = "가격 형식 오류: " + e.getMessage();
+		e.printStackTrace();
+	} finally {
+		if (pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+		if (con != null) try { con.close(); } catch (SQLException e) { e.printStackTrace(); }
 	}
-	catch( Exception e ) 
-	{
-		message = e.getMessage();
-	}   
 %>
 
-<%@ include file="./log.jsp"%>
-<%
-	// 로그 데이터 추출
-	writeLog( message, request, session );
-%>
- 
-<!-- 다음 페이지로 메시지 전달 -->
-<form name = "frm" method = "post" action = "./search.jsp" >
-	<input type = 'hidden' name = 'message' value = ' * <%=message%>' >
-</form>
+<!-- 결과 메시지를 사용자에게 알림 -->
 <script language="javascript">
-	document.frm.submit();
+	alert('<%=message%>');
+	window.location.href = 'gameList.jsp'; // 등록 후 게임 목록 페이지로 리다이렉션
 </script>
-

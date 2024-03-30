@@ -1,20 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<HTML>
-	<BODY>
- 
-		<!-- 화면구성 -->
-		<BR> 
-		<form name = "formm" method = "post" action = "./deleteSQL.jsp">				
-			&nbsp; &nbsp; &nbsp; 
-			삭제할 게임 ID : <INPUT TYPE="text" NAME="id" SIZE="60"> 
-		</form>  
-		 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
-		 <INPUT TYPE="button" value="삭제" onClick="javascript:document.formm.submit();"> &nbsp; 
-		<BR><BR>  
- 
-	
-		<!-- 삭제 후보 책 목록 출력 -->
-		<%@ include file="./selectSQL.jsp"%>
-	</BODY>
-</HTML>
- 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>게임 삭제</title>
+</head>
+<body>
+    <br>
+    <form name="formm" method="post" action="./deleteSQL.jsp">
+        삭제할 게임 ID: <input type="text" name="id" size="60">
+        <input type="button" value="삭제" onClick="javascript:document.formm.submit();">
+    </form>
+    <br><br>
+
+    <!-- 삭제 후보 게임 목록 출력 -->
+    <%@ include file="./selectSQL.jsp" %>
+</body>
+</html>
