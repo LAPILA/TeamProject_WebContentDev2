@@ -6,7 +6,7 @@
 </head>
 <body>
     <h2>게임 등록</h2>
-    <form action="insertGameSQL.jsp" method="post">
+    <form action="insertSQL.jsp" method="post">
         게임명: <input type="text" name="game_name" required><br>
         가격: <input type="text" name="price" required><br>
         개발사 ID: <input type="number" name="developer_id" required><br>
