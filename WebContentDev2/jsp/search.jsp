@@ -4,10 +4,16 @@
 <html>
 <head>
     <title>게임 관리 시스템</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+        th { background-color: #f2f2f2; }
+    </style>
     <script language="javascript">
         // 전달받은 메시지 출력
         function showMessage(message) {
-            if ((message != null) && (message != "") && (message.substring(0, 3) == " * ")) {
+            if (message != null && message != "" && message.substring(0, 3) == " * ") {
                 alert(message);
             }
         }
@@ -20,18 +26,17 @@
     </script>
 </head>
 <body onLoad="showMessage('<%=request.getParameter("message")%>');">
-    <!-- 화면 구성 -->
-    <br>
-    <form name="formm" method="post">
-        &nbsp; &nbsp; &nbsp; 게임 제목: <input type="text" name="message" size="60">
+    <h2>게임 검색</h2>
+    <form name="formm" method="post" action="./searchResult.jsp">
+        게임 제목: <input type="text" name="searchQuery" size="60">
+        <input type="submit" value="게임 제목 검색">
     </form>
-    &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <input type="button" value="게임 제목 검색" onClick="javascript:move('./search.jsp');">
-    <input type="button" value="새 게임 추가" onClick="javascript:move('./insert.jsp');">
-    <input type="button" value="게임 삭제" onClick="javascript:move('./delete.jsp');">
-    <br> <br> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <br>
+    <button onClick="window.location='./insert.jsp';">새 게임 추가</button>
+    <button onClick="window.location='./delete.jsp';">게임 삭제</button>
 
-    <!-- 게임 목록 출력 -->
+    <!-- 검색 결과를 표시할 부분 (selectSQL.jsp는 검색 결과를 출력하는 로직을 포함해야 함) -->
+    <%-- 게임 목록 출력 --%>
     <%@ include file="./selectSQL.jsp"%>
 </body>
 </html>

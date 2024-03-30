@@ -2,18 +2,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>새 게임 등록</title>
+    <title>게임 등록</title>
 </head>
 <body>
-    <b> - 새 게임 등록 - </b>
-    <form name="formm" method="post" action="insertSQL.jsp">
-        <br> 게임 이름: <input type="text" name="game_name" size="60">
-        <br> 개발자: <input type="text" name="developer" size="60">
-        <br> 가격: <input type="text" name="price" size="60">
-        <br> 장르: <input type="text" name="genre" size="60">
-        <br> 출시일: <input type="text" name="release_date" size="60">
-        <br> 이미지 URL: <input type="text" name="image_url" size="60">
-        <br><input type="submit" value="등록">
+    <h2>게임 등록</h2>
+    <form action="insertGameSQL.jsp" method="post">
+        게임명: <input type="text" name="game_name" required><br>
+        가격: <input type="text" name="price" required><br>
+        개발사 ID: <input type="number" name="developer_id" required><br>
+        장르: <input type="text" name="genre" required><br>
+        출시일: <input type="date" name="release_date" required><br>
+        이미지 URL: <input type="text" name="image_url"><br>
+        <input type="submit" value="추가">
     </form>
 </body>
 </html>
