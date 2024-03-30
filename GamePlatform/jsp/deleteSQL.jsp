@@ -15,7 +15,14 @@
         // 데이터베이스 연결
         con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
-        // SQL 쿼리 실행
+        // 관련 데이터 삭제를 위한 준비 쿼리
+        String deleteRelatedQuery = "DELETE FROM 게임장르 WHERE 게임ID = ?";
+        try (PreparedStatement relatedPstmt = con.prepareStatement(deleteRelatedQuery)) {
+            relatedPstmt.setInt(1, Integer.parseInt(id));
+            relatedPstmt.executeUpdate();
+        }
+        
+        // 게임 삭제 쿼리 실행
         String query = "DELETE FROM 게임 WHERE 게임ID = ?";
         pstmt = con.prepareStatement(query);
         pstmt.setInt(1, Integer.parseInt(id));

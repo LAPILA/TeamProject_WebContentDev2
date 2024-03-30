@@ -1,46 +1,52 @@
-<%@ page import="java.sql.*, javax.naming.*, javax.sql.DataSource" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="SQLconstants.jsp"%>
+<%@ page import="java.sql.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="./SQLconstants.jsp"%>
 <html>
 <head>
     <title>게임 목록</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+        th { background-color: #f2f2f2; }
+    </style>
 </head>
 <body>
     <h2>게임 목록</h2>
-    <table border="1">
+    <table>
         <tr>
-            <th>게임 이름</th>
-            <th>개발사</th>
+            <th>게임ID</th>
+            <th>게임명</th>
             <th>가격</th>
-            <th>장르</th>
             <th>출시일</th>
-            <th>이미지</th>
+            <th>이미지 URL</th>
         </tr>
         <%
+            Connection con = null;
+            Statement stmt = null;
+            ResultSet rs = null;
             try {
-                InitialContext initContext = new InitialContext();
-                DataSource ds = (DataSource)initContext.lookup("java:comp/env/jdbc/YourDataSource");
-                try (Connection con = ds.getConnection()) {
-                    String sql = "SELECT 게임.게임명, 개발사.개발사명, 게임.가격, 장르.장르명, 게임.출시일, 게임.이미지URL FROM 게임 " +
-                                 "JOIN 개발사 ON 게임.개발사ID = 개발사.개발사ID " +
-                                 "JOIN 게임장르 ON 게임.게임ID = 게임장르.게임ID " +
-                                 "JOIN 장르 ON 게임장르.장르명 = 장르.장르명";
-                    PreparedStatement pstmt = con.prepareStatement(sql);
-                    ResultSet rs = pstmt.executeQuery();
-                    while (rs.next()) {
-                        %>
-                        <tr>
-                            <td><%= rs.getString("게임명") %></td>
-                            <td><%= rs.getString("개발사명") %></td>
-                            <td><%= rs.getFloat("가격") %></td>
-                            <td><%= rs.getString("장르명") %></td>
-                            <td><%= rs.getString("출시일") %></td>
-                            <td><img src="<%= rs.getString("이미지URL") %>" height="100" /></td>
-                        </tr>
-                        <%
-                    }
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
+                stmt = con.createStatement();
+                String query = "SELECT 게임ID, 게임명, 가격, 출시일, 이미지URL FROM 게임";
+                rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    out.println("<tr>"
+                                + "<td>" + rs.getInt("게임ID") + "</td>"
+                                + "<td>" + rs.getString("게임명") + "</td>"
+                                + "<td>" + rs.getFloat("가격") + "</td>"
+                                + "<td>" + rs.getDate("출시일") + "</td>"
+                                + "<td><a href='" + rs.getString("이미지URL") + "'>이미지 보기</a></td>"
+                                + "</tr>");
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                out.println("드라이버 로딩 실패: " + e.getMessage());
+            } catch (SQLException e) {
+                out.println("SQL 에러: " + e.getMessage());
+            } finally {
+                if (rs != null) try { rs.close(); } catch (SQLException e) {}
+                if (stmt != null) try { stmt.close(); } catch (SQLException e) {}
+                if (con != null) try { con.close(); } catch (SQLException e) {}
             }
         %>
     </table>

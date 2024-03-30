@@ -22,8 +22,5 @@
         <input type="submit" value="삭제">
     </form>
     <br><br>
-
-    <!-- 삭제 후보 게임 목록 출력 -->
-    <%@ include file="./selectSQL.jsp" %>
 </body>
 </html>
