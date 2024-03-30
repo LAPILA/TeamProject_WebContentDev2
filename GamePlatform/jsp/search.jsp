@@ -27,7 +27,7 @@
 </head>
 <body onLoad="showMessage('<%=request.getParameter("message")%>');">
     <img src="img/로고 초안.png">
-
+    
     <form name="formm" method="post" action="./searchResult.jsp">
         <input type="text" name="searchQuery" size="60">
         <input type="submit" value="게임 제목 검색">
