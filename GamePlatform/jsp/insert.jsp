@@ -10,10 +10,7 @@
         게임명: <input type="text" name="game_name" required><br>
         가격: <input type="text" name="price" required><br>
         개발사 ID: <input type="number" name="developer_id" required><br>
-<<<<<<< HEAD
-=======
         장르: <input type="text" name="genre" ><br>
->>>>>>> e53b385 (SQL_Base_ver0.6.6_test)
         출시일: <input type="date" name="release_date" required><br>
         이미지 URL: <input type="text" name="image_url"><br>
         <input type="submit" value="추가">
