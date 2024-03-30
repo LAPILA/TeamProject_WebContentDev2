@@ -8,10 +8,7 @@
     String genre = request.getParameter("genre");
     String releaseDate = request.getParameter("release_date");
     String imageUrl = request.getParameter("image_url");
-    String message = "";
-    if (request.getParameter("message") != null) {
-    message = request.getParameter("message").replace("'", "\\'");
-    }
+    String message = null;
 
 
     try {
