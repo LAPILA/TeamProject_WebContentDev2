@@ -3,7 +3,7 @@
 <%
     request.setCharacterEncoding("UTF-8");
     String id = request.getParameter("id");
-    String message = null;
+    String message = "";
 
 
     Connection con = null;
@@ -52,15 +52,12 @@
         if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) {}
         if (con != null) try { con.close(); } catch (SQLException ex) {}
     }
+if (!message.isEmpty()) {
 %>
-<form name="frm" method="post" action="./search.jsp">
-	<input type="hidden" name="message" value="<%=message%>">
-</form>
 <script language="javascript">
-    function submitFormAndRedirect() {
-        document.frm.submit(); // 폼 제출
-        window.location.href = 'gameList.jsp';
-    }
-    submitFormAndRedirect(); // 함수 호출
+    alert('<%=message%>'); // 메시지 출력
+    window.location.href = 'gameList.jsp'; // 리다이렉션
 </script>
-
+<%
+    }
+%>
