@@ -10,11 +10,10 @@
     String imageUrl = request.getParameter("image_url");
     String message = "";
 
-
     try {
         Class.forName(jdbc_driver);
         try (Connection con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
-             PreparedStatement pstmt = con.prepareStatement("INSERT INTO 게임 (게임명, 가격, 개발사ID, 장르, 출시일, 이미지URL) VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement pstmt = con.prepareStatement("INSERT INTO 게임 (게임명, 가격, 개발사ID, 장르, 출시일, 이미지URL) VALUES (?, ?, ?, ?, ?, ?)")) {
             
             pstmt.setString(1, gameName);
             pstmt.setFloat(2, Float.parseFloat(price));
@@ -25,7 +24,7 @@
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                message = "게임(" + gameName + ")이(가) 성공적으로 추가되었습니다.";
+                message = "게임('" + gameName + "')이(가) 성공적으로 추가되었습니다.";
             } else {
                 message = "게임 추가에 실패했습니다.";
             }
@@ -36,15 +35,18 @@
         message = "데이터베이스 오류: " + e.getMessage();
     } catch (NumberFormatException e) {
         message = "숫자 형식 오류: " + e.getMessage();
+    } finally {
+        if (!message.isEmpty()) {
+            // 메시지 출력과 게임 목록 페이지로의 리다이렉션을 위한 HTML 폼
+            %>
+            <form name="messageForm" method="post" action="gameList.jsp">
+                <input type="hidden" name="message" value="<%=message%>">
+            </form>
+            <script language="javascript">
+                alert(document.messageForm.message.value); // 메시지 출력
+                document.messageForm.submit(); // 게임 목록 페이지로 이동
+            </script>
+            <%
+        }
     }
-    // 메시지가 비어 있지 않다면, JavaScript 알림을 표시하고 게임 목록 페이지로 리다이렉션
-    if (!message.isEmpty()) {
 %>
-<script language="javascript">
-    alert('<%=message%>');
-    window.location.href = 'gameList.jsp'; // 등록 후 게임 목록 페이지로 리다이렉션
-</script>
-<%
-    }
-%>
-
