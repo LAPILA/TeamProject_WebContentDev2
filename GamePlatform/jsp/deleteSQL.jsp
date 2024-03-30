@@ -4,6 +4,10 @@
     request.setCharacterEncoding("UTF-8");
     String id = request.getParameter("id");
     String message = "";
+    if (request.getParameter("message") != null) {
+    message = request.getParameter("message").replace("'", "\\'");
+    }
+
 
     Connection con = null;
     PreparedStatement pstmt = null;
