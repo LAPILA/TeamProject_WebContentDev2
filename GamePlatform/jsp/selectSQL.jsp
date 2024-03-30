@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.sql.*, javax.naming.*, javax.sql.DataSource" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./SQLconstants.jsp"%>
 <html>
 <head>
@@ -6,14 +6,14 @@
     <style>
         body { font-family: Arial, sans-serif; }
         .game-info { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
-        img { margin-top: 10px; }
+        img { margin-top: 10px; height: 150px; width: auto; }
     </style>
 </head>
 <body>
     <h2>검색 결과</h2>
     <%
         request.setCharacterEncoding("UTF-8");
-        String searchQuery = request.getParameter("searchQuery"); // 'message'를 'searchQuery'로 변경
+        String searchQuery = request.getParameter("searchQuery");
         searchQuery = (searchQuery == null || searchQuery.isEmpty()) ? "%" : searchQuery.trim();
 
         Connection con = null;
@@ -21,9 +21,9 @@
         ResultSet rs = null;
 
         try {
-            Context initContext = new InitialContext();
-            DataSource ds = (DataSource)initContext.lookup("java:comp/env/jdbc/YourDataSource");
-            con = ds.getConnection();
+            // MySQL 드라이버 연결
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
             String query = "SELECT 게임ID, 게임명, 가격, 출시일, 이미지URL FROM 게임 WHERE 게임명 LIKE ?";
             pstmt = con.prepareStatement(query);
@@ -34,16 +34,18 @@
                 out.println("<div class='game-info'>"
                         + "<strong>게임 제목:</strong> " + rs.getString("게임명")
                         + "<br><strong>가격:</strong> " + rs.getFloat("가격")
-                        + "<br><strong>출시일:</strong> " + rs.getDate("출시일")
-                        + "<br><img src='" + rs.getString("이미지URL") + "' height='150' width='auto'>"
+                        + "<br><strong>출시일:</strong> " + rs.getDate("출시일").toString()
+                        + "<br><img src='" + rs.getString("이미지URL") + "'>"
                         + "</div>");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
+        } catch (SQLException e) {
+            out.println("데이터베이스 연결/쿼리 오류: " + e.getMessage());
         } finally {
-            if (rs != null) try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
-            if (pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
-            if (con != null) try { con.close(); } catch (SQLException e) { e.printStackTrace(); }
+            if (rs != null) try { rs.close(); } catch (SQLException ex) { /* Handle errors for JDBC */ }
+            if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { /* Handle errors for JDBC */ }
+            if (con != null) try { con.close(); } catch (SQLException ex) { /* Handle errors for JDBC */ }
         }
     %>
 </body>

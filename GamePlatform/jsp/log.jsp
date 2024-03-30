@@ -3,7 +3,7 @@
 public void writeLog(String message, HttpServletRequest request, HttpSession session) {
     try {
         // 로그 파일 경로 지정
-        final String logFileName = "/usr/local/tomcat/webapps/ROOT/WebContentDev2/jsp/log.txt";
+        final String logFileName = "/usr/local/tomcat/webapps/ROOT/WebContentDev2/GamePlatform/jsp/log.txt";
         
         // BufferedWriter를 사용하여 파일에 데이터를 추가 모드로 쓰기
         BufferedWriter writer = new BufferedWriter(new FileWriter(logFileName, true));
