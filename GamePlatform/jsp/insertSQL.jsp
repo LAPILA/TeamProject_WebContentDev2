@@ -8,7 +8,7 @@
     String genre = request.getParameter("genre");
     String releaseDate = request.getParameter("release_date");
     String imageUrl = request.getParameter("image_url");
-    String message = "";
+    String message = message.replace("'", "\\'");
 
     try {
         Class.forName(jdbc_driver);
