@@ -26,12 +26,12 @@
         &nbsp; &nbsp; &nbsp; 게임 제목: <input type="text" name="message" size="60">
     </form>
     &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <input type="button" value="게임 제목 검색" onClick="javascript:move('./searchGame.jsp');">
-    <input type="button" value="새 게임 추가" onClick="javascript:move('./insertGame.jsp');">
-    <input type="button" value="게임 삭제" onClick="javascript:move('./deleteGame.jsp');">
+    <input type="button" value="게임 제목 검색" onClick="javascript:move('./search.jsp');">
+    <input type="button" value="새 게임 추가" onClick="javascript:move('./insert.jsp');">
+    <input type="button" value="게임 삭제" onClick="javascript:move('./delete.jsp');">
     <br> <br> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
     <!-- 게임 목록 출력 -->
-    <%@ include file="./selectGameSQL.jsp"%>
+    <%@ include file="./selectSQL.jsp"%>
 </body>
 </html>
