@@ -1,5 +1,6 @@
 <%@ page import="java.sql.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./SQLconstants.jsp"%>
+<!DOCTYPE html>
 <html>
 <head>
     <title>게임 목록</title>
