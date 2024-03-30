@@ -5,6 +5,7 @@
     String gameName = request.getParameter("game_name");
     String price = request.getParameter("price");
     String developerId = request.getParameter("developer_id");
+    String genre = request.getParameter("genre");
     String releaseDate = request.getParameter("release_date");
     String imageUrl = request.getParameter("image_url");
     String message = "";
@@ -17,8 +18,9 @@
             pstmt.setString(1, gameName);
             pstmt.setFloat(2, Float.parseFloat(price));
             pstmt.setInt(3, Integer.parseInt(developerId));
-            pstmt.setDate(4, java.sql.Date.valueOf(releaseDate));
-            pstmt.setString(5, imageUrl);
+            pstmt.setString(4, genre);
+            pstmt.setDate(5, java.sql.Date.valueOf(releaseDate));
+            pstmt.setString(6, imageUrl);
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
