@@ -13,7 +13,7 @@
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         // 데이터베이스 연결
-        con = DriverManager.getConnection("jdbc:mysql://yourDatabaseURL:3306/yourDatabaseName", "yourDatabaseUsername", "yourDatabasePassword");
+        con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
         // SQL 쿼리 실행
         String query = "DELETE FROM 게임 WHERE 게임ID = ?";
