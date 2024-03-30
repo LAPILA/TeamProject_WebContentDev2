@@ -6,7 +6,7 @@
 		<BR> 
 		<form name = "formm" method = "post" action = "./deleteSQL.jsp">				
 			&nbsp; &nbsp; &nbsp; 
-			삭제할 책 ID : <INPUT TYPE="text" NAME="id" SIZE="60"> 
+			삭제할 게임 ID : <INPUT TYPE="text" NAME="id" SIZE="60"> 
 		</form>  
 		 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
 		 <INPUT TYPE="button" value="삭제" onClick="javascript:document.formm.submit();"> &nbsp; 
