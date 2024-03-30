@@ -42,7 +42,7 @@
         int rowsAffected = pstmt.executeUpdate();
 
         if (rowsAffected > 0) {
-            message = "게임 ID " + id + " 삭제 성공.";
+            message = "게임 ID" + id + "삭제 성공.";
         } else {
             message = "해당 게임 ID를 찾을 수 없습니다.";
         }
@@ -53,7 +53,14 @@
         if (con != null) try { con.close(); } catch (SQLException ex) {}
     }
 %>
+<form name="frm" method="post" action="./search.jsp">
+	<input type="hidden" name="message" value="<%=message%>">
+</form>
 <script language="javascript">
-    alert('<%=message%>');
-    window.location.href = 'gameList.jsp'; // 성공 또는 오류 메시지 후 게임 목록 페이지로 리다이렉션
+    function submitFormAndRedirect() {
+        document.frm.submit(); // 폼 제출
+        window.location.href = 'gameList.jsp';
+    }
+    submitFormAndRedirect(); // 함수 호출
 </script>
+

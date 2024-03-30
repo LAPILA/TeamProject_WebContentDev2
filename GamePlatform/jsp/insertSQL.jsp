@@ -37,7 +37,7 @@
     } catch (NumberFormatException e) {
         message = "숫자 형식 오류: " + e.getMessage();
     }
-
+    // 메시지가 비어 있지 않다면, JavaScript 알림을 표시하고 게임 목록 페이지로 리다이렉션
     if (!message.isEmpty()) {
 %>
 <script language="javascript">
@@ -47,3 +47,4 @@
 <%
     }
 %>
+
