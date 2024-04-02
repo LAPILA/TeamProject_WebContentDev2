@@ -17,22 +17,26 @@
         <tr>
             <th>게임ID</th>
             <th>게임명</th>
+            <th>개발사</th>
+            <th>시스템사양</th>
+            <th>연령등급</th>
             <th>가격</th>
             <th>출시일</th>
             <th>이미지 URL</th>
         </tr>
         <%
             Connection con = null;
-            Statement stmt = null;
+            PreparedStatementStatement stmt = null;
             ResultSet rs = null;
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
-                stmt = con.createStatement();
                 String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 " +
                            "FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID " +
                            "WHERE g.게임명 LIKE ?";
-                rs = stmt.executeQuery(query);
+                pstmt = con.prepareStatement(query);
+                pstmt.setString(1, "%");
+                rs = pstmt.executeQuery();
                 while (rs.next()) {
                 out.println("<div class='game-info'>"
                         + "<strong>게임 ID:</strong> " + rs.getInt("게임ID")
