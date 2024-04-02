@@ -26,7 +26,7 @@
         </tr>
         <%
             Connection con = null;
-            PreparedStatementStatement stmt = null;
+            PreparedStatementStatement pstmt = null;
             ResultSet rs = null;
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
