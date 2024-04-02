@@ -9,44 +9,53 @@
     String releaseDate = request.getParameter("release_date");
     String imageUrl = request.getParameter("image_url");
     String message = "";
+    int gameId = 0;
 
     try {
         Class.forName(jdbc_driver);
-        try (Connection con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
-             PreparedStatement pstmt = con.prepareStatement("INSERT INTO 게임 (게임명, 가격, 개발사ID, 장르, 출시일, 이미지URL) VALUES (?, ?, ?, ?, ?, ?)")) {
-            
-            pstmt.setString(1, gameName);
-            pstmt.setFloat(2, Float.parseFloat(price));
-            pstmt.setInt(3, Integer.parseInt(developerId));
-            pstmt.setString(4, genre);
-            pstmt.setDate(5, java.sql.Date.valueOf(releaseDate));
-            pstmt.setString(6, imageUrl);
+        try (Connection con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password)) {
+            con.setAutoCommit(false);
+            try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO 게임 (게임명, 가격, 개발사ID, 출시일, 이미지URL) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+                pstmt.setString(1, gameName);
+                pstmt.setFloat(2, Float.parseFloat(price));
+                pstmt.setInt(3, Integer.parseInt(developerId));
+                pstmt.setDate(4, java.sql.Date.valueOf(releaseDate));
+                pstmt.setString(5, imageUrl);
 
-            int rowsAffected = pstmt.executeUpdate();
-            if (rowsAffected > 0) {
-                message = "게임('" + gameName + "')이(가) 성공적으로 추가되었습니다.";
-            } else {
-                message = "게임 추가에 실패했습니다.";
+                int rowsAffected = pstmt.executeUpdate();
+                if (rowsAffected > 0) {
+                    try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+                        if (generatedKeys.next()) {
+                            gameId = generatedKeys.getInt(1);
+                        }
+                    }
+                    message = "게임('" + gameName + "')이(가) 성공적으로 추가되었습니다.";
+                } else {
+                    message = "게임 추가에 실패했습니다.";
+                }
             }
+
+            // 장르 정보 추가
+            if (!genre.isEmpty() && gameId != 0) {
+                try (PreparedStatement pstmtGenre = con.prepareStatement("INSERT INTO 게임장르 (게임ID, 장르명) VALUES (?, ?)")) {
+                    pstmtGenre.setInt(1, gameId);
+                    pstmtGenre.setString(2, genre);
+                    pstmtGenre.executeUpdate();
+                }
+            }
+            
+            con.commit();
         }
-    } catch (ClassNotFoundException e) {
-        message = "JDBC 드라이버 로딩 실패: " + e.getMessage();
-    } catch (SQLException e) {
-        message = "데이터베이스 오류: " + e.getMessage();
-    } catch (NumberFormatException e) {
-        message = "숫자 형식 오류: " + e.getMessage();
-    } finally {
-        if (!message.isEmpty()) {
-            // 메시지 출력과 게임 목록 페이지로의 리다이렉션을 위한 HTML 폼
-            %>
-            <form name="messageForm" method="post" action="gameList.jsp">
-                <input type="hidden" name="message" value="<%=message%>">
-            </form>
-            <script language="javascript">
-                alert(document.messageForm.message.value); // 메시지 출력
-                document.messageForm.submit(); // 게임 목록 페이지로 이동
-            </script>
-            <%
-        }
+    } catch (Exception e) {
+        message = "오류 발생: " + e.getMessage();
+    } 
+
+    if (!message.isEmpty()) {
+%>
+<script language="javascript">
+    alert('<%=message%>');
+    window.location.href = 'gameList.jsp'; // 게임 목록 페이지로 리다이렉션
+</script>
+<%
     }
 %>
