@@ -1,4 +1,5 @@
 <?php header('Content-Type: text/html; charset=UTF-8'); ?>
+<!DOCTYPE html>
 <HTML>
 	<HEAD>      
 	<title>게임 관리 시스템</title>
