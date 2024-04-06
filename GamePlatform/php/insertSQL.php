@@ -4,12 +4,12 @@
 
 <?php 
 	// 폼 데이터에서 게임 정보를 받아옵니다.
-	$gameName = $_POST['gameName'];
+	$gameName = $_POST['game_name'];
 	$price = $_POST['price'];
-	$developerID = $_POST['developerID'];
+	$developerID = $_POST['developer_id'];
 	$genre = $_POST['genre'];
-	$releaseDate = $_POST['releaseDate'];
-	$imageUrl = $_POST['imageUrl'];
+	$releaseDate = $_POST['release_date'];
+	$imageUrl = $_POST['image_url'];
 
 	// MySQL 데이터베이스에 연결
 	include("./SQLconstants.php"); 
