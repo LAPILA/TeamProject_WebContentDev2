@@ -33,6 +33,6 @@
 		<BR> <BR>  
 
 		<!-- 책 목록 출력 -->
-		<?php include("./searchResult.php"); ?>
+		<?php include("./selectSQL.php"); ?>
 </BODY>
 </HTML>

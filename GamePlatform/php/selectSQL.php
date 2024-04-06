@@ -1,8 +1,12 @@
 <?php header('Content-Type: text/html; charset=UTF-8'); ?>
 <?php 
     // 이전 페이지에서 전달 받은 검색 쿼리 확인
-    $searchQuery = $_POST['searchQuery']; 
-    $searchQuery = "%$searchQuery%"; 
+    if (isset($_POST['searchQuery'])) {
+		$searchQuery = trim($_POST['searchQuery']);
+	} else {
+		$searchQuery = "";
+	}
+	$searchQuery = "%" . $searchQuery . "%";
 
     // MySQL 드라이버 연결
     include("./SQLconstants.php");
