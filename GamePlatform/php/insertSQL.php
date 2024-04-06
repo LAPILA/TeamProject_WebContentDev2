@@ -1,5 +1,5 @@
 <?php header('Content-Type: text/html; charset=UTF-8'); ?>
-
+<!DOCTYPE html>
 <?php include("./SQLconstants.php"); ?>
 
 <?php
@@ -34,19 +34,15 @@ if ($result) {
 // 데이터베이스 연결을 닫기
 mysqli_stmt_close($stmt);
 mysqli_close($conn);
+// 로그 데이터 추출 및 기록
+include("./log.php");
+writeLog($message);
+
+// 메시지 전달을 위한 HTML 폼
 ?>
-
-
-<?php 
-	// 로그 데이터 추출
-	include("./log.php");
-	writeLog($message);
-?>
-
-<!-- 다음 페이지로 메시지 전달 -->
-<form name="frm" method="post" action="./search.php">
-	<input type='hidden' name='message' value='<?php echo $message; ?>'>
+<form name="frm" method="post" action="./gameList.php">
+    <input type="hidden" name="message" value="<?php echo htmlspecialchars($message); ?>">
 </form>
 <script language="javascript">
-	document.frm.submit();
+    document.frm.submit();
 </script>
