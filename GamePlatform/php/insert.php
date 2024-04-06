@@ -18,19 +18,6 @@
     </form>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<BODY>
 		<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 		<b> - 새 책 등록 - </b>

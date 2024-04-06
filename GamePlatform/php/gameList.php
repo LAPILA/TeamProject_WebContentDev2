@@ -24,32 +24,31 @@
             <th>이미지 URL</th>
         </tr>
         <?php
+        // MySQL 드라이버 연결
+        $conn = mysqli_connect($mySQL_host, $mySQL_id, $mySQL_password, $mySQL_database);
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
 
-			$Connection con = null;
-			$Statement stmt = null;
-			$ResultSet rs = null;
+        // SQL 쿼리 실행
+        $query = "SELECT 게임ID, 게임명, 가격, 출시일, 이미지URL FROM 게임";
+        $result = mysqli_query($conn, $query);
 
-			// mySQL 드라이버 연결
-			include("./SQLconstants.php"); 
-			$conn = mysqli_connect($mySQL_host,$mySQL_id,$mySQL_password,$mySQL_database) or die ("Can't access DB");
+        // 결과를 HTML 테이블에 출력
+        while($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>" . $row["게임ID"] . "</td>";
+            echo "<td>" . $row["게임명"] . "</td>";
+            echo "<td>" . $row["가격"] . "</td>";
+            echo "<td>" . $row["출시일"] . "</td>";
+            echo "<td><a href='" . $row["이미지URL"] . "'>이미지 보기</a></td>";
+            echo "</tr>";
+        }
 
-			// SQL 실행 요청 및 실행 결과
-			$query = "SELECT 게임ID, 게임명, 가격, 출시일, 이미지URL FROM 게임";
-			$rs = $stmt.executeQuery($query);
-
-			// 문자열.문자열 오류 확인해야함
-			while ($rs.next()) {
-				echo "<tr>"."<td>" + $rs.getInt("게임ID") + "</td>"."<td>".$rs.getString("게임명")."</td>"."<td>".$rs.getFloat("가격")."</td>"."<td>".$rs.getDate("출시일")."</td>"."<td><a href='".$rs.getString("이미지URL")."'>이미지 보기</a></td>"."</tr>";
-			}
-
-			// 이게뭐임?
-		//finally {
-			//if (rs != null) try { rs.close(); } catch (SQLException e) {}
-			//if (stmt != null) try { stmt.close(); } catch (SQLException e) {}
-			//if (con != null) try { con.close(); } catch (SQLException e) {}
-		//}
-
-		?>
+        // 자원 해제
+        mysqli_free_result($result);
+        mysqli_close($conn);
+        ?>
 	</table>
 </body>
 </html>

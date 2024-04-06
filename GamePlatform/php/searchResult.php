@@ -13,24 +13,41 @@
 <body>
     <h2>검색 결과</h2>
     <?php
-
 	// 이전 페이지에서 전달 받은 메시지 확인
-	$searchQuery =  $_POST['searchQuery'];
-	$searchQuery = ( ( $searchQuery == null ) || ( $searchQuery == "" ) ) ? "%" : $searchQuery.trim();
+	if (isset($_POST['searchQuery'])) {
+	    $searchQuery = trim($_POST['searchQuery']);
+	} else {
+	    $searchQuery = "";
+	}
+	$searchQuery = $searchQuery ? "%" . $searchQuery . "%" : "%";
 
-	include("./SQLconstants.php"); 
-	$con = mysqli_connect($mySQL_host,$mySQL_id,$mySQL_password,$mySQL_database) or die ("Can't access DB");
-	$query = "SELECT 게임ID, 게임명, 가격, 출시일, 이미지URL FROM 게임 WHERE 게임명 LIKE ?";
-    $pstmt = $con.prepareStatement($query);
-    $pstmt.setString(1, "%".$searchQuery."%");
-    $rs = $pstmt.executeQuery();
+	include("./SQLconstants.php");
+	$conn = mysqli_connect($mySQL_host, $mySQL_id, $mySQL_password, $mySQL_database);
 
-	while ($rs.next()) {
-		echo "<div class='game-info'>"."<strong>게임 제목:</strong> ".$rs.getString("게임명")."<br><strong>가격:</strong> ".$rs.getFloat("가격")."<br><strong>출시일:</strong> ".$rs.getDate("출시일").toString()."<br><img src='".$rs.getString("이미지URL")."' height='150' width='auto'>"."</div>";
+	if (!$conn) {
+	    die("Connection failed: " . mysqli_connect_error());
 	}
 
-// finally 어쩌구 알제
+	$query = "SELECT 게임ID, 게임명, 가격, 출시일, 이미지URL FROM 게임 WHERE 게임명 LIKE ?";
+	$stmt = mysqli_prepare($conn, $query);
 
+	mysqli_stmt_bind_param($stmt, "s", $searchQuery);
+
+	mysqli_stmt_execute($stmt);
+
+	$result = mysqli_stmt_get_result($stmt);
+
+	while ($row = mysqli_fetch_assoc($result)) {
+	    echo "<div class='game-info'>";
+	    echo "<strong>게임 제목:</strong> " . htmlspecialchars($row['게임명']) . "<br>";
+	    echo "<strong>가격:</strong> " . htmlspecialchars($row['가격']) . "<br>";
+	    echo "<strong>출시일:</strong> " . htmlspecialchars($row['출시일']) . "<br>";
+	    echo "<img src='" . htmlspecialchars($row['이미지URL']) . "' height='150' width='auto'>";
+	    echo "</div>";
+	}
+
+	mysqli_stmt_close($stmt);
+	mysqli_close($conn);
 	?>
 </body>
 </html>

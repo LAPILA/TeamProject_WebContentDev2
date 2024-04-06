@@ -3,7 +3,7 @@
 <?php include("./SQLconstants.php"); ?>
 
 <?php 
-	// 이전 페이지에서 전달 받은 메시지 확인
+	// 폼 데이터에서 게임 정보를 받아옵니다.
 	$gameName = $_POST['gameName'];
 	$price = $_POST['price'];
 	$developerID = $_POST['developerID'];
@@ -11,27 +11,44 @@
 	$releaseDate = $_POST['releaseDate'];
 	$imageUrl = $_POST['imageUrl'];
 
-	// MySQL 드라이버 연결 
+	// MySQL 데이터베이스에 연결
 	include("./SQLconstants.php"); 
-	$con = mysqli_connect($mySQL_host,$mySQL_id,$mySQL_password,$mySQL_database) or die ("Can't access DB");
+	$conn = mysqli_connect($mySQL_host, $mySQL_id, $mySQL_password, $mySQL_database);
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
 
-	$pstmt = $con.prepareStatement("INSERT INTO 게임 (게임명, 가격, 개발사ID, 장르, 출시일, 이미지URL) VALUES (?, ?, ?, ?, ?, ?)")
-            
-		$pstmt.setString(1, $gameName);
-		$pstmt.setFloat(2, Float.parseFloat($price));
-		$pstmt.setInt(3, Integer.parseInt($developerId));
-		$pstmt.setString(4, $genre);
-		// java.sql.Date 처리?
-		$pstmt.setDate(5, java.sql.Date.valueOf($releaseDate));
-		$pstmt.setString(6, $imageUrl);
+	// INSERT 쿼리를 준비
+	$query = "INSERT INTO 게임 (게임명, 가격, 개발사ID, 장르, 출시일, 이미지URL) VALUES (?, ?, ?, ?, ?, ?)";
+	$stmt = mysqli_prepare($conn, $query);
 
-		$rowsAffected = $pstmt.executeUpdate();
-		if ($rowsAffected > 0) {
-			$message = "게임('".$gameName."')이(가) 성공적으로 추가되었습니다.";
-		} else {
-			$message = "게임 추가에 실패했습니다.";
-		}
+	
+	mysqli_stmt_bind_param($stmt, "sdisss", $gameName, $price, $developerID, $genre, $releaseDate, $imageUrl);
 
-// finally 어쩌구 추가해야하면 여기다 추가
+	// 쿼리를 실행
+	$result = mysqli_stmt_execute($stmt);
 
+	if ($result) {
+		$message = "게임('" . $gameName . "')이(가) 성공적으로 추가되었습니다.";
+	} else {
+		$message = "게임 추가에 실패했습니다. Error: " . mysqli_error($conn);
+	}
 
+	// 데이터베이스 연결을 닫기
+	mysqli_stmt_close($stmt);
+	mysqli_close($conn);
+?>
+
+<?php 
+	// 로그 데이터 추출
+	include("./log.php");
+	writeLog($message);
+?>
+
+<!-- 다음 페이지로 메시지 전달 -->
+<form name="frm" method="post" action="./search.php">
+	<input type='hidden' name='message' value='<?php echo $message; ?>'>
+</form>
+<script language="javascript">
+	document.frm.submit();
+</script>
