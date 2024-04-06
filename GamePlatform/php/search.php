@@ -26,13 +26,13 @@
 			게임 제목 : <INPUT TYPE="text" NAME="message" SIZE="60"> 
 		</form>  
 		 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   
-		<INPUT TYPE = "button" value = "게임 제목 검색" onClick="javascript:move( './searchResult.php' );">
+		<INPUT TYPE = "button" value = "게임 제목 검색" onClick="javascript:move( './search.php' );">
 		<INPUT TYPE = "button" value = "새 게임 추가" onClick="javascript:move( './insert.php' );">	
 		<INPUT TYPE = "button" value = "게임 삭제" onClick="javascript:move( './delete.php' );">	
 		<BR> <BR> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 		<BR> <BR>  
 
 		<!-- 책 목록 출력 -->
-		<?php include("./selectSQL.php"); ?>
+		<?php include("./searchResult.php"); ?>
 </BODY>
 </HTML>
