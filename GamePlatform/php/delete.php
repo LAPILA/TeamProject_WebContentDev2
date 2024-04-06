@@ -20,7 +20,7 @@
 
 <body>
     <br>
-    <form name="formm" method="post" action="./deleteSQL.jsp" onsubmit="return validateForm()">
+    <form name="formm" method="post" action="./deleteSQL.php" onsubmit="return validateForm()">
         삭제할 게임 ID: <input type="text" name="id" size="60">
         <input type="submit" value="삭제">
     </form>

@@ -23,7 +23,7 @@
 		<BR> 
 		<form name = "formm" method = "post">				
 			&nbsp; &nbsp; &nbsp; 
-			책 제목 : <INPUT TYPE="text" NAME="message" SIZE="60"> 
+			게임 제목 : <INPUT TYPE="text" NAME="message" SIZE="60"> 
 		</form>  
 		 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   
 		<INPUT TYPE = "button" value = "게임 제목 검색" onClick="javascript:move( './search.php' );">

@@ -3,7 +3,7 @@
 	function writeLog( $message )
 	{
 		// 로그 파일 이름 : ex) /var/www/html/book/php/log.txt, /home/book/php/log.txt
-        	$logFileName = "/usr/local/tomcat/webapps/ROOT/WebContentDev2/GamePlatform/jsp/log.txt";
+        	$logFileName = "/usr/local/tomcat/webapps/ROOT/WebContentDev2/GamePlatform/php/log.txt";
         	$logFile = fopen( $logFileName, "a" );
 
 
