@@ -1,4 +1,10 @@
 <?php
+
+//에러가 날 경우 에러 메세지를 띄웁니다.
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL); 
+
 header('Content-Type: text/html; charset=UTF-8');
 
 // 데이터베이스 연결 정보를 가져옵니다.
@@ -8,7 +14,6 @@ include("./SQLconstants.php");
 $gameName = $_POST['game_name'];
 $price = $_POST['price'];
 $developerID = $_POST['developer_id'];
-$systemRequirement = $_POST['system_requirement']; 
 $genre = $_POST['genre'];
 $releaseDate = $_POST['release_date'];
 $imageUrl = $_POST['image_url'];
@@ -21,9 +26,9 @@ if (!$conn) {
 }
 
 // 게임 정보를 추가하는 쿼리를 준비하고 실행합니다.
-$query = "INSERT INTO 게임 (게임명, 가격, 개발사ID, 시스템사양, 장르, 출시일, 이미지URL) VALUES (?, ?, ?, ?, ?, ?, ?)";
+$query = "INSERT INTO 게임 (게임명, 가격, 개발사ID, 장르, 출시일, 이미지URL) VALUES (?, ?, ?, ?, ?, ?)";
 $stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, "sdissss", $gameName, $price, $developerID, $systemRequirement, $genre, $releaseDate, $imageUrl);
+mysqli_stmt_bind_param($stmt, "sdisss", $gameName, $price, $developerID, $genre, $releaseDate, $imageUrl);
 
 if (mysqli_stmt_execute($stmt)) {
     $message = "게임('" . $gameName . "')이(가) 성공적으로 추가되었습니다.";

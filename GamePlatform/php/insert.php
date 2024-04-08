@@ -13,7 +13,7 @@
         장르: <input type="text" name="genre" required><br>
         출시일: <input type="date" name="release_date" required><br>
         이미지 URL: <input type="text" name="image_url"><br>
-        <input type="submit" value="추가">
     </form>
+    <input type = "button" value="추가" onClick = "javascript:document.formm.submit();"> &nbsp;
 </body>
 </html>
