@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼 배치</title>
+    <script>
+
+        //쿼리 결과 대신
+        var name = "게임";
+        var price = "가격";
+        var genre = "장르";
+        var image = "images/엘든링.png";
+        
+        var date = "0000-00-00";
+        var dev = "개발사"
+
+        function searchbuttonset() { //검색 결과 창 버튼 배치
+            for(var i = 1; i < 9;i++){ //아마 조건식은 next()가 되지 않을까 싶은디
+                // 버튼 요소 생성
+                var button = document.createElement("button");
+                button.style.width = "630px";
+                button.style.height = "200px";
+                if(i % 2 == 1){ //홀수일 경우
+                    button.style.left = "0px";
+                    button.style.top = 3500 +(i - 1)/2 * 215 + "px"; // 버튼 간격 조절
+                }
+                else{ //짝수일 경우
+                    button.style.left = "645px";
+                    button.style.top = 3500 +(i - 2)/2 * 215 + "px"; // 버튼 간격 조절
+                }
+                button.style.position = "absolute";
+                button.style.border = "none";
+                button.style.backgroundSize = "cover";
+                button.style.backgroundColor = "transparent";
+                button.style.cursor = "pointer";
+                button.onclick = function() {alert("눌림");};
+
+                // 버튼 내용 추가
+                button.innerHTML = `
+                    <div style="width: 630px; height: 200px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
+                    <div id = game style="left: 203px; top: 20px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">${name}<br/></div>
+                    <div style="left: 204px; top: 100px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;">${price}</div>
+                    <div style="left: 203px; top: 57px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">${genre}</div>
+                    <img style="width: 160px; height: 160px; left: 26px; top: 20px; position: absolute" src=${image} />
+                `;
+                // 버튼을 body에 추가
+                document.body.appendChild(button);
+            }
+        }
+
+        function Stars(rating) { //별 띄우기
+            var roundedRating = Math.round(rating); // 등급을 반올림하여 정수로 변환
+            var stars = "";
+            for (var i = 0; i < 5; i++) {
+                if (i < roundedRating) {
+                    stars += "★"; // 등급보다 작은 인덱스의 별은 채워진 별
+                } else {
+                    stars += "☆"; // 등급보다 크거나 같은 인덱스의 별은 빈 별
+                }
+            }
+            stars += " ";
+            return stars;
+        }
+
+        function mainbuttonset() { //메인 창 버튼 배치
+            for(var i = 1; i < 11;i++){ //아마 조건식은 next()가 되지 않을까 싶은디
+                var rating = 3.5;
+                // 버튼 요소 생성
+                var button = document.createElement("button");
+                button.style.width = "963px";
+                button.style.height = "300px";
+
+                button.style.left = "0px";
+                button.style.top = (i - 1) * 316 + "px"; // 버튼 간격 조절
+
+                button.style.position = "absolute";
+                button.style.border = "none";
+                button.style.backgroundSize = "cover";
+                button.style.backgroundColor = "transparent";
+                button.style.cursor = "pointer";
+                button.onclick = function() {alert("눌림");};
+
+                rating = Stars(rating) + rating;
+
+                // 버튼 내용 추가
+                button.innerHTML = `
+                <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
+                <div style="left: 736px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 ${date}</div>
+                <div style="left: 315px; top: 256px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">${rating}</div>
+                <div style="left: 315px; top: 172px; position: absolute; color: black; text-align: left; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">${genre}</div>
+                <div style="left: 315px; top: 122px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">${price}</div>
+                <div style="left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">${dev}</div>
+                <div style="width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">${name}<br/></div>
+                <img style="width: 300px; height: 300px; left: 0px; top: 0px; position: absolute" src="images/엘든링.png" />
+                `;
+                // 버튼을 body에 추가
+                document.body.appendChild(button);
+                
+      
+            }
+        }
+
+    </script>
+</head>
+<body onLoad = "mainbuttonset(); searchbuttonset()" style = "background: gray;">
+
+    
+</body>
+</html>
