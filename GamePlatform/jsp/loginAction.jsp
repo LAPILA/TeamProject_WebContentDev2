@@ -30,7 +30,8 @@
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                out.println("Login Successful");
+                alert("Login Successful");
+                
             } else {
                 out.println("Invalid credentials. Please try again.");
             }
