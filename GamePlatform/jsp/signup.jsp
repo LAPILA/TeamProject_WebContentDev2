@@ -51,7 +51,7 @@
             <div style="width: 900px; height: 107px; left: 195px; top: 263px; position: absolute; opacity: 0.50; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
                 <div style="width: 200px; color: black; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 24px; word-wrap: break-word">E-mail Address</div>
                 <div style="width: 900px; height: 75px; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px; border: 1px #E0E0E0 solid">
-                    <input type="text" name="emailQuery" size="20" class="input-text">
+                    <input type="text" name="emailQuery" size="20" class="input-text" required>
                 </div>
             </div>
         
@@ -59,7 +59,7 @@
             <div style="width: 900px; height: 107px; left: 195px; top: 394px; position: absolute; opacity: 0.50; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
                 <div style="align-self: stretch; color: black; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 24px; word-wrap: break-word">User Name</div>
                 <div style="width: 900px; height: 75px; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px; border: 1px #E0E0E0 solid">
-                    <input type="text" name="nameQuery" size="20" class="input-text">
+                    <input type="text" name="nameQuery" size="20" class="input-text" required>
                 </div>
             </div>
         
@@ -67,7 +67,7 @@
             <div style="width: 900px; height: 107px; left: 195px; top: 526px; position: absolute; opacity: 0.50; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
                 <div style="align-self: stretch; color: black; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 24px; word-wrap: break-word">Password</div>
                 <div style="width: 900px; height: 75px; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px; border: 1px #E0E0E0 solid">
-                    <input type="password" name="passwordQuery" size="20" class="input-text">
+                    <input type="password" name="passwordQuery" size="20" class="input-text" required>
                 </div>
             </div>
         
@@ -75,18 +75,29 @@
             <div style="width: 900px; height: 107px; left: 195px; top: 658px; position: absolute; opacity: 0.50; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
                 <div style="align-self: stretch; color: black; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 24px; word-wrap: break-word">Confirm Password</div>
                 <div style="width: 900px; height: 75px; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px; border: 1px #E0E0E0 solid">
-                    <input type="password" name="c_passwordQuery" size="20" class="input-text">
+                    <input type="password" name="c_passwordQuery" size="20" class="input-text" required>
                 </div>
             </div>
         
         <!--비밀번호 확인 버튼-->
-            <button style="width: 90px; height: 75px; left: 1134px; top: 426px; position: absolute; background: black; box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; justify-content: center; align-items: center; gap: 8px; display: inline-flex; border: none; cursor: pointer;">
+            <button type="submit" onclick="pwtest()" value="암호확인" style="width: 90px; height: 75px; left: 1134px; top: 426px; position: absolute; background: black; box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; justify-content: center; align-items: center; gap: 8px; display: inline-flex; border: none; cursor: pointer;">
                 <div style="color: white; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 37.50px; word-wrap: break-word">Check</div>
             </button>
         </form>
+
+        <script type="text/javascript">
+            function pwtest() {
+                var p1 = document.getElementByName('password1').value;
+                var p2 = document.getElementByName('password2').value;
+                if( p1 != p2 ) {
+                    alert("비밀번호가 일치 하지 않습니다");
+                    return false;
+                } else{
+                    alert("비밀번호가 일치합니다");
+                    return true;
+                }
+            }
+        </script>
+
     </body>
-
-
-
-
-    </body>
+</html>
