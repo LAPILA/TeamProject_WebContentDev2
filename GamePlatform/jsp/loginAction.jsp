@@ -30,7 +30,7 @@
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                alert("Login Successful");
+                out.println("Login Successful");
                 
             } else {
                 out.println("Invalid credentials. Please try again.");
@@ -61,5 +61,6 @@
             }
         }
     %>
+    <input type="button" value="이동" onclick="a('search.jsp')">
 </body>
 </html>
