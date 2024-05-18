@@ -18,22 +18,22 @@
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-
+        
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
-            String sql = "SELECT * FROM 회원 WHERE 회원=? AND 비밀번호=?";
+            String sql = "SELECT * FROM 회원 WHERE 회원ID=? AND 비밀번호=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userID);
             pstmt.setString(2, password);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                out.println("Login Successful");
-                response.sendRedirect("./search.jsp");
+                alert("Login Successful");
+                location.href="search.jsp";
             } else {
-                out.println("Invalid credentials. Please try again.");
+                alert("Invalid credentials. Please try again.");
             }
         } catch (Exception e) {
             e.printStackTrace();
