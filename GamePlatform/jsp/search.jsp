@@ -59,10 +59,6 @@
 
 </head>
 
-    <!-- 검색 결과를 표시할 부분 (selectSQL.jsp는 검색 결과를 출력하는 로직을 포함해야 함) -->
-    <%-- 게임 목록 출력 --%>
-    <%@ include file="./selectSQL.jsp"%>
-
     <!--어째서 하나하나 직접 폰트를 지정해줘야 하는거야아아ㅏㄲ 왜 한번에 안돼ㅜㅜ-->
     <body onLoad = "buttonset()" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
     <!--헤더-->
