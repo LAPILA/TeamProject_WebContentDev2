@@ -83,6 +83,9 @@
         <!-- 검색 결과 창 -->
         <div style="width: 1275px; height: 630px; left: 82px; top: 310px; position: relative; opacity: 0.85; background: #DFD1E2; border-radius: 8px; overflow-y: auto; overflow-x: hidden;">
             <%
+                String searchQuery = request.getParameter("searchQuery");
+                searchQuery = (searchQuery == null || searchQuery.isEmpty()) ? "%" : searchQuery.trim();
+
                 Connection con = null;
                 PreparedStatement pstmt = null;
                 ResultSet rs = null;
