@@ -61,6 +61,6 @@
             }
         }
     %>
-    <input type="button" value="이동" onclick="a('search.jsp')">
+    <input type="button" value="이동" onclick="location.href='search.jsp'">
 </body>
 </html>
