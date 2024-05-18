@@ -125,9 +125,8 @@
                         request.setAttribute("가격", rs.getFloat("가격"));
                         request.setAttribute("출시일", rs.getDate("출시일").toString());
                         request.setAttribute("이미지URL", rs.getString("이미지URL"));
-                        RequestDispatcher rd = request.getRequestDispatcher("log.jsp");
-                        d.include(request, response);
-
+                        RequestDispatcher rd = request.getRequestDispatcher("./log.jsp");
+                        rd.include(request, response);
                     }
                 } catch (ClassNotFoundException e) {
                     out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
