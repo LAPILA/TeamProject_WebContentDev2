@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>게임 관리 시스템</title>
+    <title>메인</title>
     <style>
         @font-face {
             font-family: 'Roboto';
@@ -56,20 +56,7 @@
       
     </script>
 
-    <script language="javascript">
-        // 전달받은 메시지 출력
-        function showMessage(message) {
-            if (message != null && message != "" && message.substring(0, 3) == " * ") {
-                alert(message);
-            }
-        }
 
-        // 지정한 url로 이동하는 함수
-        function move(url) {
-            document.formm.action = url;
-            document.formm.submit();
-        }
-    </script>
 </head>
 
     <!-- 검색 결과를 표시할 부분 (selectSQL.jsp는 검색 결과를 출력하는 로직을 포함해야 함) -->
