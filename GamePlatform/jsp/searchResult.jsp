@@ -53,9 +53,9 @@
                 request.setAttribute("시스템사양", rs.getString("시스템사양"));
                 request.setAttribute("연령등급", rs.getString("연령등급"));
                 request.setAttribute("가격", rs.getFloat("가격"));
-                request.setAttribute("출시일", rs.getDate("출시일"));
+                request.setAttribute("출시일", rs.getDate("출시일").toString()); // 날짜를 문자열로 변환
                 request.setAttribute("이미지URL", rs.getString("이미지URL"));
-                RequestDispatcher rd = request.getRequestDispatcher("/log.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("log.jsp");
                 rd.include(request, response);
             }
         } catch (ClassNotFoundException e) {
