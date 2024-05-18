@@ -1,7 +1,9 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./SQLconstants.jsp"%>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>검색 결과</title>
     <style>
         body { font-family: Arial, sans-serif; }
@@ -14,7 +16,7 @@
     <%
         request.setCharacterEncoding("UTF-8");
         String searchQuery = request.getParameter("searchQuery");
-        searchQuery = (searchQuery == null || searchQuery.isEmpty()) ? "%" : searchQuery.trim();
+        searchQuery = (searchQuery == null || searchQuery.isEmpty()) ? "%" : "%" + searchQuery.trim() + "%";
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -29,19 +31,19 @@
                            "FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID " +
                            "WHERE g.게임명 LIKE ?";
             pstmt = con.prepareStatement(query);
-            pstmt.setString(1, "%" + searchQuery + "%");
+            pstmt.setString(1, searchQuery);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 out.println("<div class='game-info'>"
-                        + "<strong>게임 ID:</strong> " + rs.getInt("게임ID")
-                        + "<br><strong>게임 제목:</strong> " + rs.getString("게임명")
-                        + "<br><strong>개발사:</strong> " + rs.getString("개발사명")
-                        + "<br><strong>시스템 사양:</strong> " + rs.getString("시스템사양")
-                        + "<br><strong>연령등급:</strong> " + rs.getString("연령등급")
-                        + "<br><strong>가격:</strong> " + rs.getFloat("가격")
-                        + "<br><strong>출시일:</strong> " + rs.getDate("출시일")
-                        + "<br><img src='" + rs.getString("이미지URL") + "' height='150' width='auto'>"
+                        + "<strong>게임 ID:</strong> " + rs.getInt("게임ID") + "<br>"
+                        + "<strong>게임 제목:</strong> " + rs.getString("게임명") + "<br>"
+                        + "<strong>개발사:</strong> " + rs.getString("개발사명") + "<br>"
+                        + "<strong>시스템 사양:</strong> " + rs.getString("시스템사양") + "<br>"
+                        + "<strong>연령등급:</strong> " + rs.getString("연령등급") + "<br>"
+                        + "<strong>가격:</strong> " + rs.getFloat("가격") + "<br>"
+                        + "<strong>출시일:</strong> " + rs.getDate("출시일") + "<br>"
+                        + "<img src='" + rs.getString("이미지URL") + "' alt='" + rs.getString("게임명") + " 이미지'>"
                         + "</div>");
             }
         } catch (ClassNotFoundException e) {
@@ -49,9 +51,9 @@
         } catch (SQLException e) {
             out.println("데이터베이스 연결/쿼리 오류: " + e.getMessage());
         } finally {
-            if (rs != null) try { rs.close(); } catch (SQLException ex) { /* Handle errors for JDBC */ }
-            if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { /* Handle errors for JDBC */ }
-            if (con != null) try { con.close(); } catch (SQLException ex) { /* Handle errors for JDBC */ }
+            if (rs != null) try { rs.close(); } catch (SQLException ex) { ex.printStackTrace(); }
+            if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { ex.printStackTrace(); }
+            if (con != null) try { con.close(); } catch (SQLException ex) { ex.printStackTrace(); }
         }
     %>
 </body>
