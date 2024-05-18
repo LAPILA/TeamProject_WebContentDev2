@@ -1,5 +1,7 @@
 <%@ page import="java.io.*" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+    // 로그 기록을 위한 파라미터 가져오기
     String 게임ID = request.getAttribute("게임ID").toString();
     String 게임명 = request.getAttribute("게임명").toString();
     String 개발사명 = request.getAttribute("개발사명").toString();
@@ -11,9 +13,7 @@
 
     FileWriter fileWriter = null;
     BufferedWriter bufferedWriter = null;
-
     try {
-        // 로그 파일에 추가 모드로 기록
         fileWriter = new FileWriter(application.getRealPath("/") + "log.txt", true);
         bufferedWriter = new BufferedWriter(fileWriter);
 
