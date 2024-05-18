@@ -30,11 +30,9 @@
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                alert("Login Successful");
-                location.href="search.jsp";
+                out.println("Login Successful");
             } else {
-                alert("Invalid credentials. Please try again.");
-                location.href="login.jsp";
+                out.println("Invalid credentials. Please try again.");
             }
         } catch (Exception e) {
             e.printStackTrace();
