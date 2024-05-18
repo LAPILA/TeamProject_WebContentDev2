@@ -37,7 +37,7 @@
     <body style="width: 1440px; height: auto; position: relative;" class="my_div my_bg">
         <div style="width: 1440px; height: 826px; left: 0px; top: 198px; position: absolute; opacity: 0.85; background: #B3B3B3"></div>
         <!--로그인-->
-        <button style="width: 255px; height: 113px; padding: 10px; left: 592px; top: 720px; position: absolute; background: #AD9EB9; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer; border: none;">
+        <button onclick="location.href='search.jsp'" style="width: 255px; height: 113px; padding: 10px; left: 592px; top: 720px; position: absolute; background: #AD9EB9; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer; border: none;">
             <div style="text-align: center; color: black; font-size: 48px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 67.20px; word-wrap: break-word">Login</div>
         </button>
         <!--헤더-->
