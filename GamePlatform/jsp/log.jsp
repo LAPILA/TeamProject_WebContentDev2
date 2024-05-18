@@ -40,6 +40,16 @@
             String 출시일 = (request.getAttribute("출시일") != null) ? request.getAttribute("출시일").toString() : "N/A";
             String 이미지URL = (request.getAttribute("이미지URL") != null) ? request.getAttribute("이미지URL").toString() : "N/A";
 
+            // Debugging print statements
+            out.println("게임ID: " + 게임ID + "<br>");
+            out.println("게임명: " + 게임명 + "<br>");
+            out.println("개발사명: " + 개발사명 + "<br>");
+            out.println("시스템사양: " + 시스템사양 + "<br>");
+            out.println("연령등급: " + 연령등급 + "<br>");
+            out.println("가격: " + 가격 + "<br>");
+            out.println("출시일: " + 출시일 + "<br>");
+            out.println("이미지URL: " + 이미지URL + "<br>");
+
             // 로그 파일에 기록
             FileWriter fileWriter = null;
             BufferedWriter bufferedWriter = null;

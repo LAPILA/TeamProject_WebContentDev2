@@ -46,6 +46,16 @@
                 out.println("    <img style='width: 160px; height: 160px; left: 26px; top: 20px; position: absolute' src='" + rs.getString("이미지URL") + "' />");
                 out.println("</div>");
 
+                out.println("게임ID: " + rs.getInt("게임ID") + "<br>");
+                out.println("게임명: " + rs.getString("게임명") + "<br>");
+                out.println("개발사명: " + rs.getString("개발사명") + "<br>");
+                out.println("시스템사양: " + rs.getString("시스템사양") + "<br>");
+                out.println("연령등급: " + rs.getString("연령등급") + "<br>");
+                out.println("가격: " + rs.getFloat("가격") + "<br>");
+                out.println("출시일: " + rs.getDate("출시일").toString() + "<br>");
+                out.println("이미지URL: " + rs.getString("이미지URL") + "<br>");
+                out.println("Logging to log.jsp<br>");
+                
                 // log.jsp에 로그 기록 요청
                 request.setAttribute("게임ID", rs.getInt("게임ID"));
                 request.setAttribute("게임명", rs.getString("게임명"));
