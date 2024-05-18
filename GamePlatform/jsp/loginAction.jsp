@@ -18,7 +18,7 @@
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
@@ -34,6 +34,7 @@
                 location.href="search.jsp";
             } else {
                 alert("Invalid credentials. Please try again.");
+                location.href="login.jsp";
             }
         } catch (Exception e) {
             e.printStackTrace();
