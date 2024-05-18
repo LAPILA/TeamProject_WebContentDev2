@@ -38,38 +38,29 @@
         <!--헤더-->
         <img style="width: 1440px; height: 200px; left: 0px; top: -2px; position: absolute;" src="images\헤더.png" />
         <!--로그인-->
-        <form method="post" action="login.jsp">
+        <form method="post" action="loginAction.jsp">
         
         <!--유저이름-->
-        <div style="width: 900px; height: 107px; left: 270px; top: 394px; position: absolute; opacity: 0.50; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
-            <div style="align-self: stretch; color: black; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 24px; word-wrap: break-word">User Name</div>
-            <div style="width: 900px; height: 75px; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px; border: 1px #E0E0E0 solid">
-                <input type="text" name="nameQuery" size="20" class="input-text">
+            <div style="width: 900px; height: 107px; left: 270px; top: 394px; position: absolute; opacity: 0.50; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                <div style="align-self: stretch; color: black; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 24px; word-wrap: break-word">User Name</div>
+                <div style="width: 900px; height: 75px; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px; border: 1px #E0E0E0 solid">
+                    <input type="text" name="nameQuery" size="20" class="input-text" required>
+                </div>
             </div>
-        </div>
         <!--비밀번호-->
-        <div style="width: 900px; height: 107px; left: 270px; top: 526px; position: absolute; opacity: 0.50; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
-            <div style="align-self: stretch; color: black; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 24px; word-wrap: break-word">Password</div>
-            <div style="width: 900px; height: 75px; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px; border: 1px #E0E0E0 solid">
-                <input type="password" name="passwordQuery" size="20" class="input-text">
+            <div style="width: 900px; height: 107px; left: 270px; top: 526px; position: absolute; opacity: 0.50; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+                <div style="align-self: stretch; color: black; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 24px; word-wrap: break-word">Password</div>
+                <div style="width: 900px; height: 75px; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px; border: 1px #E0E0E0 solid">
+                    <input type="password" name="passwordQuery" size="20" class="input-text" required>
+                </div>
             </div>
-        </div>
+            <button type="submit" value="Login" style="width: 255px; height: 113px; padding: 10px; left: 592px; top: 720px; position: absolute; background: #AD9EB9; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer; border: none;">
+                <div style="text-align: center; color: black; font-size: 48px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 67.20px; word-wrap: break-word">Login</div>
+            </button>
         </form>
-        <button onclick="location.href='loginAction.jsp' "style="width: 255px; height: 113px; padding: 10px; left: 592px; top: 720px; position: absolute; background: #AD9EB9; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer; border: none;">
-            <div style="text-align: center; color: black; font-size: 48px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 67.20px; word-wrap: break-word">Login</div>
-        </button>
         <!--로고-->
         <button style="width: 400px; height: 186px; left: 10px; top: 7px; position: absolute;background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
-
         
-    <form method="post" action="login.jsp">
-        <label for="userID">Username:</label>
-        <input type="text" id="userID" name="userID" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <input type="submit" value="Login">
-    </form>
+
 
     </body>
