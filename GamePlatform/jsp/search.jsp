@@ -115,18 +115,6 @@
                         out.println("    <div style='left: 203px; top: 57px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word'>" + rs.getFloat("가격") + "</div>");
                         out.println("    <img style='width: 160px; height: 160px; left: 26px; top: 20px; position: absolute' src='" + rs.getString("이미지URL") + "' />");
                         out.println("</div>");
-
-                        // log.jsp에 로그 기록 요청
-                        request.setAttribute("게임ID", rs.getInt("게임ID"));
-                        request.setAttribute("게임명", rs.getString("게임명"));
-                        request.setAttribute("개발사명", rs.getString("개발사명"));
-                        request.setAttribute("시스템사양", rs.getString("시스템사양"));
-                        request.setAttribute("연령등급", rs.getString("연령등급"));
-                        request.setAttribute("가격", rs.getFloat("가격"));
-                        request.setAttribute("출시일", rs.getDate("출시일").toString());
-                        request.setAttribute("이미지URL", rs.getString("이미지URL"));
-                        RequestDispatcher rd = request.getRequestDispatcher("./log.jsp");
-                        rd.include(request, response);
                     }
                 } catch (ClassNotFoundException e) {
                     out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
