@@ -15,8 +15,9 @@
     BufferedWriter bufferedWriter = null;
 
     try {
-        // 로그 파일에 추가 모드로 기록
-        fileWriter = new FileWriter(application.getRealPath("/") + "log.txt", true);
+        // 로그 파일 경로 설정 및 추가 모드로 기록
+        String logFilePath = application.getRealPath("/") + "log.txt";
+        fileWriter = new FileWriter(logFilePath, true);
         bufferedWriter = new BufferedWriter(fileWriter);
 
         String logEntry = 게임ID + "\t"
