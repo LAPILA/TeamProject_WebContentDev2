@@ -31,6 +31,7 @@
 
             if (rs.next()) {
                 out.println("Login Successful");
+                response.sendRedirect("./search.jsp");
             } else {
                 out.println("Invalid credentials. Please try again.");
             }
