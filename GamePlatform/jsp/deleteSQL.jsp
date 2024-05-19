@@ -59,11 +59,12 @@
         if (con != null) try { con.close(); } catch (SQLException ex) {}
     }
 
-    long endTime = System.currentTimeMillis();  // Record end time
-    long duration = endTime - startTime;  // Calculate duration
-    // Log the result and process time
-    writeLog(message + " - Processing time: " + duration + "ms", request, session);
+    long endTime = System.currentTimeMillis();
+    long duration = endTime - startTime;
+    HttpSession session = request.getSession(); // Ensure session is available
 
+    writeLog(message + " - Processing time: " + duration + "ms", request, session);
+    
     if (!message.isEmpty()) {
 %>
 <form name="frm" method="post" action="./gameList.jsp">

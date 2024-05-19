@@ -1,24 +1,25 @@
 <%@ page import="java.io.*, java.util.Date" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<%!
-// 로그 메시지 기록 메서드
-public void writeLog(String message, HttpServletRequest request) {
-    String logFileName = "/var/lib/tomcat9/webapps/ROOT/WebContentDev2/GamePlatform/jsp/log.txt";
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFileName, true))) {
-        String logEntry = String.format("%s, %s, %s, %s, %s, %s, %s\n",
-                new Date(),
-                request.getSession().getId(),
-                request.getRequestURI(),
-                request.getHeader("referer") != null ? request.getHeader("referer") : "No referer",
-                request.getHeader("User-Agent"),
-                message);
-        writer.write(logEntry);
-    } catch (IOException e) {
-        System.err.println("Error writing to log file: " + e.getMessage());
+<%@ page import="java.io.*, java.time.*, javax.servlet.http.*, javax.servlet.*" %>
+
+<%! 
+    public void writeLog(String message, HttpServletRequest request, HttpSession session) {
+        String logFileName = "/var/lib/tomcat9/webapps/ROOT/WebContentDev2/GamePlatform/jsp/log.txt"; // Ensure this path is correct
+        try (FileWriter fw = new FileWriter(logFileName, true);
+             BufferedWriter bw = new BufferedWriter(fw);
+             PrintWriter out = new PrintWriter(bw)) {
+            String logEntry = String.format("%s: %s - %s%n",
+                    LocalDateTime.now(), 
+                    request.getRequestURI(),
+                    message);
+            out.println(logEntry);
+        } catch (IOException e) {
+            System.err.println("Error writing to log file: " + e.getMessage());
+        }
     }
-}
 %>
+
 
 <!DOCTYPE html>
 <html>
