@@ -66,12 +66,6 @@
 			  document.formm.action = url;
 			  document.formm.submit();
 		  }
-
-      function moveWithMessage(url, message) {
-        document.formm.action = url;
-        document.getElementById('message').value = message; // hidden input 필드에 메시지 설정
-        document.formm.submit();
-      }
       
     </script>
 
@@ -135,78 +129,68 @@
     <div style="width: 999px; height: 50px; left: 220px; top: 291px; position: absolute">
       <div style="width: 999px; height: 50px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
       <!--recommend-->
-      <button id = recommendOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-        <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
-      </button>
-      <button id = recommendOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-        <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
-      </button>
-      <!--Top-->
-      <button id = topOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-        <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
-      </button>
-      <button id = topOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute;  background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-        <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
-      </button>
-      <!--New-->
-      <button id = newOn onclick = "buttonOnOff(this)" value = "new" style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-        <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
-      </button>
-      <button id = newOff onclick = "buttonOnOff(this)" value = "new" style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-        <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
-      </button>
-      <script type="text/javascript">
-        function buttonOnOff(clickedButton){
-          var clickedButtonId = clickedButton.id;
-          if(clickedButtonId == "topOn" || clickedButtonId == "topOff"){ //top
+      <form id="myForm" action="search.jsp" method="GET">
+        <button id = recommendOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+          <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
+        </button>
+        <button id = recommendOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+          <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
+        </button>
+        <!--Top-->
+        <button id = topOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+          <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
+        </button>
+        <button id = topOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute;  background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+          <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
+        </button>
+        <!--New-->
+        <button id = newOn onclick = "buttonOnOff(this)" value = "new" style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+          <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
+        </button>
+        <button id = newOff onclick = "buttonOnOff(this)" value = "new" style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+          <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
+        </button>
+        <script type="text/javascript">
+          function buttonOnOff(clickedButton){
+            var clickedButtonId = clickedButton.id;
+            if(clickedButtonId == "topOn" || clickedButtonId == "topOff"){ //top
             document.getElementById("topOn").style.display = "block";
-            document.getElementById("topOff").style.display = "none";
-            document.getElementById("recommendOn").style.display = "none";
-            document.getElementById("recommendOff").style.display = "block";
-            document.getElementById("newOn").style.display = "none";
-            document.getElementById("newOff").style.display = "block";
+              document.getElementById("topOff").style.display = "none";
+              document.getElementById("recommendOn").style.display = "none";
+              document.getElementById("recommendOff").style.display = "block";
+              document.getElementById("newOn").style.display = "none";
+              document.getElementById("newOff").style.display = "block";
 
-            var message = "new"; // 메시지 작성
-            var url = "main.jsp"; // 이동할 페이지 URL
-            moveWithMessage(url, message); // 페이지 이동 및 메시지 전달
+            }
 
-            mquery = 'top';
-          }
+            if(clickedButtonId == "newOn" || clickedButtonId == "newOff"){ //new
+              document.getElementById("newOn").style.display = "block";
+              document.getElementById("newOff").style.display = "none";
+              document.getElementById("recommendOn").style.display = "none";
+              document.getElementById("recommendOff").style.display = "block";
+              document.getElementById("topOn").style.display = "none";
+              document.getElementById("topOff").style.display = "block"
+            }
 
-          if(clickedButtonId == "newOn" || clickedButtonId == "newOff"){ //new
-            document.getElementById("newOn").style.display = "block";
-            document.getElementById("newOff").style.display = "none";
-            document.getElementById("recommendOn").style.display = "none";
-            document.getElementById("recommendOff").style.display = "block";
-            document.getElementById("topOn").style.display = "none";
-            document.getElementById("topOff").style.display = "block";
+            if(clickedButtonId == "recommendOn" || clickedButtonId == "recommendOff"){ //recommend
+              document.getElementById("recommendOn").style.display = "block";
+              document.getElementById("recommendOff").style.display = "none";
+              document.getElementById("newOn").style.display = "none";
+              document.getElementById("newOff").style.display = "block";
+              document.getElementById("topOn").style.display = "none";
+              document.getElementById("topOff").style.display = "block";
 
-            var message = "new"; // 메시지 작성
-            var url = "main.jsp"; // 이동할 페이지 URL
-            moveWithMessage(url, message); // 페이지 이동 및 메시지 전달
-          }
-
-          if(clickedButtonId == "recommendOn" || clickedButtonId == "recommendOff"){ //recommend
-            document.getElementById("recommendOn").style.display = "block";
-            document.getElementById("recommendOff").style.display = "none";
-            document.getElementById("newOn").style.display = "none";
-            document.getElementById("newOff").style.display = "block";
-            document.getElementById("topOn").style.display = "none";
-            document.getElementById("topOff").style.display = "block";
-
-            var message = "new"; // 메시지 작성
-            var url = "main.jsp"; // 이동할 페이지 URL
-            moveWithMessage(url, message); // 페이지 이동 및 메시지 전달
-          }
+            }
       
-        }
-      </script>
+          }
+        </script>
+      </form>
     </div>
 
     <!--카테고리-->
@@ -254,8 +238,8 @@
     </div>
 
     <%
-      String mQuery = request.getParameter("message");
-      out.println(message);
+      String mQuery = request.getParameter("mquery");
+      //out.println(message);
       mQuery = (mQuery == null || mQuery.isEmpty()) ? "%" : mQuery.trim();
 
       Connection con = null;
