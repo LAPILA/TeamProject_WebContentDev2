@@ -243,39 +243,39 @@
     <div style="width: 999px; height: 50px; left: 220px; top: 291px; position: absolute">
       <div style="width: 999px; height: 50px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
       <!--recommend-->
-      <form id="recommendform" method="get" action="main.jsp?recommend">
+      <form id="recommendonform" method="get" action="main.jsp?recommend">
         <button id = recommendOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
             <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
             <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
         </button>
       </form>
-      <form id="recommendform" method="get" action="main.jsp?recommend">
+      <form id="recommendoffform" method="get" action="main.jsp?recommend">
         <button id = recommendOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
         </button>
       </form>
       <!--Top-->
-      <form id="topform" method="get" action="main.jsp?top">
+      <form id="toponform" method="get" action="main.jsp?top">
         <button id = topOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
         </button>
       </form>
-      <form id="topform" method="get" action="search.jsp?top">
+      <form id="topoffform" method="get" action="main.jsp?top">
         <button id = topOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute;  background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
         </button>
       </form>
       <!--New-->
-      <form id="newform" method="get" action="search.jsp?new">
+      <form id="newonform" method="get" action="main.jsp?new">
         <button id = newOn onclick = "buttonOnOff(this)"style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
         </button>
       </form>
-      <form id="newform" method="get" action="search.jsp?new">
+      <form id="newoffform" method="get" action="main.jsp?new">
         <button id = newOff onclick = "buttonOnOff(this)"style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
@@ -285,32 +285,32 @@
         function buttonOnOff(clickedButton){
           var clickedButtonId = clickedButton.id;
           if(clickedButtonId == "topOn" || clickedButtonId == "topOff"){ //top
-            document.getElementById("topOn").style.display = "block";
-            document.getElementById("topOff").style.display = "none";
-            document.getElementById("recommendOn").style.display = "none";
-            document.getElementById("recommendOff").style.display = "block";
-            document.getElementById("newOn").style.display = "none";
-            document.getElementById("newOff").style.display = "block";
+            document.getElementById("topOnform").style.display = "block";
+            document.getElementById("topOffform").style.display = "none";
+            document.getElementById("recommendOnform").style.display = "none";
+            document.getElementById("recommendOffform").style.display = "block";
+            document.getElementById("newOnform").style.display = "none";
+            document.getElementById("newOffform").style.display = "block";
 
           }
 
           if(clickedButtonId == "newOn" || clickedButtonId == "newOff"){ //new
-            document.getElementById("newOn").style.display = "block";
-            document.getElementById("newOff").style.display = "none";
-            document.getElementById("recommendOn").style.display = "none";
-            document.getElementById("recommendOff").style.display = "block";
-            document.getElementById("topOn").style.display = "none";
-            document.getElementById("topOff").style.display = "block";
+            document.getElementById("newOnform").style.display = "block";
+            document.getElementById("newOffform").style.display = "none";
+            document.getElementById("recommendOnform").style.display = "none";
+            document.getElementById("recommendOffform").style.display = "block";
+            document.getElementById("topOnform").style.display = "none";
+            document.getElementById("topOffform").style.display = "block";
 
           }
 
           if(clickedButtonId == "recommendOn" || clickedButtonId == "recommendOff"){ //recommend
-            document.getElementById("recommendOn").style.display = "block";
-            document.getElementById("recommendOff").style.display = "none";
-            document.getElementById("newOn").style.display = "none";
-            document.getElementById("newOff").style.display = "block";
-            document.getElementById("topOn").style.display = "none";
-            document.getElementById("topOff").style.display = "block";
+            document.getElementById("recommendOnform").style.display = "block";
+            document.getElementById("recommendOffform").style.display = "none";
+            document.getElementById("newOnform").style.display = "none";
+            document.getElementById("newOffform").style.display = "block";
+            document.getElementById("topOnform").style.display = "none";
+            document.getElementById("topOffform").style.display = "block";
           }
       
         }
