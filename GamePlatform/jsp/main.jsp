@@ -254,7 +254,7 @@
 
         if(mQuery == "new")
         {
-          out.println("<script>alert('new'); history.back();</script>")
+          out.println("<script>alert('new'); history.back();</script>");
         }
       } catch (ClassNotFoundException e) {
         out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
