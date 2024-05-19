@@ -1,14 +1,13 @@
 <%@ page import="java.io.*, java.time.*, javax.servlet.http.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%!
     public void writeLog(String message, HttpServletRequest request, HttpSession session) {
-
         final String logFileName = "/var/lib/tomcat9/webapps/ROOT/WebContentDev2/GamePlatform/jsp/log.txt";
         File logFile = new File(logFileName);
-        boolean isNewFile = !logFile.exists();  //파일 여부 확인
+        boolean isNewFile = !logFile.exists();  // 파일 여부 확인
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true))) {
             if (isNewFile) {
-                //추가(정리)
+                // 추가(정리)
                 writer.append("Date,Time,SessionID,URI,Referer,Browser,Message\n");
             }
 
@@ -32,65 +31,32 @@
     }
 %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>로그 테스트</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        table { width: 80%; margin: 0 auto; border-collapse: collapse; }
-        th, td { border: 1px solid #ddd; padding: 8px; }
-        th { background-color: #f2f2f2; }
-        button { font-size: 16px; padding: 10px 20px; }
-    </style>
+    <title>로그 기록</title>
 </head>
 <body>
-    <h1>로그 테스트 페이지</h1>
+    <h2>로그 기록</h2>
     <form method="post" action="log.jsp">
-        <button type="submit" name="action" value="logTest">테스트 로그 기록</button>
+        <input type="hidden" name="action" value="test">
+        <button type="submit">테스트 로그 추가</button>
     </form>
+
     <%
-        String action = request.getParameter("action");
-        if ("logTest".equals(action)) {
+        if ("test".equals(request.getParameter("action"))) {
             writeLog("테스트", request, session);
-            out.println("<p>로그가 기록되었습니다: 테스트</p>");
+        }
+
+        final String logFileName = "/var/lib/tomcat9/webapps/ROOT/WebContentDev2/GamePlatform/jsp/log.txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(logFileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                out.println(line + "<br>");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     %>
-    <h2>로그 기록</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>SessionID</th>
-                <th>URI</th>
-                <th>Referer</th>
-                <th>Browser</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>
-            <%
-                final String logFileName = "/var/lib/tomcat9/webapps/ROOT/WebContentDev2/GamePlatform/jsp/log.txt";
-                File logFile = new File(logFileName);
-                if (logFile.exists()) {
-                    try (BufferedReader reader = new BufferedReader(new FileReader(logFile))) {
-                        String line;
-                        while ((line = reader.readLine()) != null) {
-                            if (line.startsWith("Date")) continue; // Skip the header line
-                            String[] columns = line.split("\",\"");
-                            out.println("<tr>");
-                            for (String column : columns) {
-                                out.println("<td>" + column.replace("\"", "") + "</td>");
-                            }
-                            out.println("</tr>");
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            %>
-        </tbody>
-    </table>
 </body>
 </html>
