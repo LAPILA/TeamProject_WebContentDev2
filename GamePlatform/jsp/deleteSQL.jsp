@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*, java.io.*, java.time.*, javax.servlet.http.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./SQLconstants.jsp"%>
-<%@ include file="log.jsp" %>
+<%@ include file="./log.jsp" %>
 <%
     request.setCharacterEncoding("UTF-8");
     String id = request.getParameter("id");
