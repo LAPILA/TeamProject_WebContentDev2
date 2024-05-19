@@ -252,9 +252,9 @@
         Class.forName("com.mysql.cj.jdbc.Driver");
         con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
-        if(mQuery == "new")
+        if("new".equals(mQuery))
         {
-          out.println("<script>alert('new'); history.back();</script>")
+          out.println("<script>alert('new'); history.back();</script>");
         }
       } catch (ClassNotFoundException e) {
         out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
