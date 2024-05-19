@@ -272,7 +272,7 @@
           query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID ORDER BY g.가격 LIMIT 10;";
         }
 
-        if("recommend".equals(mQuery) || !getmquery('mquery'))
+        if("recommend".equals(mQuery) || !getmquery("mquery"))
         {
           //out.println("<script>alert('recommend');</script>");
           out.println("<script>document.getElementById(\"recommendOn\").style.display = \"block\";</script>");
