@@ -242,9 +242,8 @@
         Class.forName("com.mysql.cj.jdbc.Driver");
         con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
-        String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID ORDER BY g.출시일 DESC LIMIT 10;";
-        pstmt = con.prepareStatement(query);
-        rs = pstmt.executeQuery();
+        String query = "";
+        
 
         //검은 카테고리 변환
         if("new".equals(mQuery))
@@ -256,6 +255,8 @@
           out.println("<script>document.getElementById(\"recommendOff\").style.display = \"block\";</script>");
           out.println("<script>document.getElementById(\"topOn\").style.display = \"none\";</script>");
           out.println("<script>document.getElementById(\"topOff\").style.display = \"block\"</script>");
+
+          String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID ORDER BY g.출시일 DESC LIMIT 10;";
         }
 
         if("top".equals(mQuery))
@@ -267,6 +268,8 @@
           out.println("<script>document.getElementById(\"recommendOff\").style.display = \"block\";</script>");
           out.println("<script>document.getElementById(\"newOn\").style.display = \"none\";</script>");
           out.println("<script>document.getElementById(\"newOff\").style.display = \"block\"</script>");
+
+          String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID ORDER BY g.게임명 DESC LIMIT 10;"
         }
 
         if("recommend".equals(mQuery))
@@ -278,7 +281,12 @@
           out.println("<script>document.getElementById(\"newOff\").style.display = \"block\";</script>");
           out.println("<script>document.getElementById(\"topOn\").style.display = \"none\";</script>");
           out.println("<script>document.getElementById(\"topOff\").style.display = \"block\"</script>");
+
+          String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID ORDER BY g.게임명 DESC LIMIT 10;"
         }
+
+        pstmt = con.prepareStatement(query);
+        rs = pstmt.executeQuery();
 
         int count = 0;
 
