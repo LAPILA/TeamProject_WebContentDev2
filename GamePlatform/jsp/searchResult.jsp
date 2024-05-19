@@ -68,5 +68,11 @@
             if (con != null) try { con.close(); } catch (SQLException ex) { ex.printStackTrace(); }
         }
     %>
+
+    <%@ include file="./log.jsp"%>
+    <%
+	    // 로그 데이터 추출
+	    writeLog( message + "와 관련된 책을 찾았습니다", request, session );
+    %>
 </body>
 </html>

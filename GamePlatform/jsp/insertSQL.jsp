@@ -1,5 +1,7 @@
 <%@ page import="java.sql.*, javax.sql.DataSource" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./SQLconstants.jsp"%>
+<%@ page import="java.io.*, java.util.Date" %>
+
 <%
     request.setCharacterEncoding("UTF-8");
     String gameName = request.getParameter("game_name");
@@ -52,9 +54,16 @@
 
     if (!message.isEmpty()) {
 %>
+<%@ include file="./log.jsp"%>
+<%
+        writeLog(message, request, session);
+%>
+
+<form name="frm" method="post" action="./gameList.jsp">
+    <input type="hidden" name="message" value="<%=message%>">
+</form>
 <script language="javascript">
-    alert('<%=message%>');
-    window.location.href = 'gameList.jsp'; // 게임 목록 페이지로 리다이렉션
+    document.frm.submit();
 </script>
 <%
     }
