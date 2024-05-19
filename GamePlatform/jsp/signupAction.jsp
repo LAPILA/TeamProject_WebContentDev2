@@ -22,7 +22,7 @@
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
-            String sql = "SELECT COUNT(*) FROM 회원 WHERE 회원ID = ?";
+            String sql = "SELECT COUNT(*) FROM 회원 WHERE 회원명 = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userName);
             ResultSet rs = pstmt.executeQuery();
