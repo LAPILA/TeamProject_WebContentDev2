@@ -64,7 +64,7 @@
     request.setAttribute("메시지", message);
     request.setAttribute("게임명", gameName);
 
-    RequestDispatcher rd = request.getRequestDispatcher("/log.jsp");
+    RequestDispatcher rd = request.getRequestDispatcher("/WebContentDev2/GamePlatform/jsp/log.jsp");
     rd.include(request, response);
 
     if (!message.isEmpty()) {
