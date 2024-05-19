@@ -54,6 +54,8 @@
         document.getElementById("recommendOff").style.display = "none";
         document.getElementById("newOn").style.display = "none";
         document.getElementById("topOn").style.display = "none";
+
+        var mquery = 'Recommend';
       }
 
       function move( url )	
@@ -161,7 +163,7 @@
             document.getElementById("newOn").style.display = "none";
             document.getElementById("newOff").style.display = "block";
 
-            var mquery = 'top';
+            mquery = 'top';
           }
 
           if(clickedButtonId == "newOn" || clickedButtonId == "newOff"){ //new
@@ -172,7 +174,7 @@
             document.getElementById("topOn").style.display = "none";
             document.getElementById("topOff").style.display = "block";
 
-            var mquery = 'new';
+            mquery = 'new';
           }
 
           if(clickedButtonId == "recommendOn" || clickedButtonId == "recommendOff"){ //recommend
@@ -183,7 +185,7 @@
             document.getElementById("topOn").style.display = "none";
             document.getElementById("topOff").style.display = "block";
 
-            var mquery = 'recommend';
+            mquery = 'recommend';
           }
       
         }
@@ -234,7 +236,49 @@
       </button>
     </div>
 
-<!--추천1-->
+    <%
+      String searchQuery = request.getParameter("searchQuery");
+      searchQuery = (searchQuery == null || searchQuery.isEmpty()) ? "%" : searchQuery.trim();
+
+      Connection con = null;
+      PreparedStatement pstmt = null;
+      ResultSet rs = null;
+
+      try {
+        // MySQL 드라이버 연결
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
+      } catch (Exception e) {
+          e.printStackTrace();
+      } finally {
+        if (rs != null) {
+          try {
+            rs.close();
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+        }
+        if (pstmt != null) {
+          try {
+            pstmt.close();
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+        }
+        if (conn != null) {
+          try {
+            conn.close();
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
+        }
+      }
+    
+    %>
+
+
+
+    <!--추천1-->
     <button style="width: 963px; height: 300px; left: 238px; top: 1008px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
       <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
       <div style="left: 736px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 2022-02-25</div>
