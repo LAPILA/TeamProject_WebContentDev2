@@ -67,55 +67,66 @@
             </div>
         </div>
         <!-- 검색 결과 배경 -->
-<div style="width: 1440px; height: 824px; left: 0px; top: 200px; position: absolute; background: url('images/검색배경.png') no-repeat center center; background-size: cover;">
-</div>
+        <div style="width: 1440px; height: 824px; left: 0px; top: 200px; position: absolute; opacity: 0.85; background: #A6A6A6">
+            <img style="width: 1440px; height: 824px; left: 0px; top: 0px; position: absolute" src="images/검색배경.png" />
+        </div>
+        <!-- 현재 검색 내용 -->
+        <div style="width: 220px; height: 36px; left: 82px; top: 270px; position: absolute; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 42px; word-wrap: break-word">Search Results : </div>
+        <div id="message" style="width: 500px; height: 36px; left: 300px; top: 270px; position: absolute; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 42px; word-wrap: break-word">
+            <%
+                String searchQueryParam = request.getParameter("searchQuery");
+                if (searchQueryParam != null) {
+                    out.print(searchQueryParam);
+                }
+            %>
+        </div>
+        <!-- 검색 결과 창 -->
+        <div style="width: 1275px; height: 630px; left: 82px; top: 310px; position: relative; opacity: 0.85; background: #DFD1E2; border-radius: 8px; overflow-y: auto; overflow-x: hidden;">
+            <%
+                String searchQuery = request.getParameter("searchQuery");
+                searchQuery = (searchQuery == null || searchQuery.isEmpty()) ? "%" : searchQuery.trim();
 
-<!-- 현재 검색 내용 -->
-<div style="width: 220px; height: 36px; left: 82px; top: 270px; position: absolute; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500;">
-    Search Results :
-</div>
+                Connection con = null;
+                PreparedStatement pstmt = null;
+                ResultSet rs = null;
 
-<!-- 검색 결과 창 -->
-<div style="width: 1275px; height: 630px; left: 82px; top: 310px; position: relative; background: rgba(223, 209, 226, 0.85); border-radius: 8px; overflow-y: auto;">
-    <% 
-    String searchQuery = request.getParameter("searchQuery");
-    searchQuery = (searchQuery == null || searchQuery.isEmpty()) ? "%" : "%" + searchQuery.trim() + "%";
+                try {
+                    // MySQL 드라이버 연결
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
-    Connection con = null;
-    PreparedStatement pstmt = null;
-    ResultSet rs = null;
+                    String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 " +
+                                   "FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID " +
+                                   "WHERE g.게임명 LIKE ?";
+                    pstmt = con.prepareStatement(query);
+                    pstmt.setString(1, "%" + searchQuery + "%");
+                    rs = pstmt.executeQuery();
 
-    try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
-        String query = "SELECT 게임ID, 게임명, 가격, 출시일, 이미지URL, 시스템사양, 연령등급, 개발사명 FROM 게임 WHERE 게임명 LIKE ?";
-        pstmt = con.prepareStatement(query);
-        pstmt.setString(1, searchQuery);
-        rs = pstmt.executeQuery();
+                    int count = 0;
+                    while (rs.next()) {
+                        count++;
+                        String leftPosition = (count % 2 == 1) ? "0px" : "645px";
+                        String topPosition = (count % 2 == 1) ? ((count - 1) / 2 * 215) + "px" : ((count - 2) / 2 * 215) + "px";
 
-        if (!rs.next()) {
-            out.println("<p style='text-align: center; margin-top: 300px;'>검색 결과가 없습니다.</p>");
-        } else {
-            do {
-                out.println("<div style='margin: 10px; padding: 10px; border-bottom: 1px solid #ccc;'>");
-                out.println("<strong>" + rs.getString("게임명") + "</strong><br>");
-                out.println("개발사: " + rs.getString("개발사명") + "<br>");
-                out.println("가격: " + rs.getFloat("가격") + "<br>");
-                out.println("출시일: " + rs.getDate("출시일") + "<br>");
-                out.println("<img src='" + rs.getString("이미지URL") + "' style='height: 150px; width: auto;'><br>");
-                out.println("</div>");
-            } while (rs.next());
-        }
-    } catch (Exception e) {
-        out.println("<p style='text-align: center; margin-top: 300px;'>검색 에러: " + e.getMessage() + "</p>");
-    } finally {
-        if (rs != null) try { rs.close(); } catch (SQLException ex) {}
-        if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) {}
-        if (con != null) try { con.close(); } catch (SQLException ex) {}
-    }
-    %>
-</div>
-
+                        out.println("<div style='width: 630px; height: 200px; left: " + leftPosition + "; top: " + topPosition + "; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;'>");
+                        out.println("    <div style='width: 630px; height: 200px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px'></div>");
+                        out.println("    <div style='left: 203px; top: 20px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word'>" + rs.getString("게임명") + "<br/></div>");
+                        out.println("    <div style='left: 204px; top: 100px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;'>" + rs.getString("개발사명") + "<br/>" + rs.getString("시스템사양") + "</div>");
+                        out.println("    <div style='left: 203px; top: 57px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word'>" + rs.getFloat("가격") + "</div>");
+                        out.println("    <img style='width: 160px; height: 160px; left: 26px; top: 20px; position: absolute' src='" + rs.getString("이미지URL") + "' />");
+                        out.println("</div>");
+                    }
+                } catch (ClassNotFoundException e) {
+                    out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
+                } catch (SQLException e) {
+                    out.println("데이터베이스 연결/쿼리 오류: " + e.getMessage());
+                } finally {
+                    if (rs != null) try { rs.close(); } catch (SQLException ex) { ex.printStackTrace(); }
+                    if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { ex.printStackTrace(); }
+                    if (con != null) try { con.close(); } catch (SQLException ex) { ex.printStackTrace(); }
+                }
+            %>
+        </div>
         <!-- 카테고리 -->
         <div style="width: 1440px; height: 48px; left: 0px; top: 199px; position: absolute">
             <div style="width: 1440px; height: 47px; left: 0px; top: 1px; position: absolute; background: #B86CF3"></div>
