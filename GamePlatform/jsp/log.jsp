@@ -3,11 +3,11 @@
     public void writeLog(String message, HttpServletRequest request, HttpSession session) {
         final String logFileName = "/var/lib/tomcat9/webapps/ROOT/WebContentDev2/GamePlatform/jsp/log.txt";
         File logFile = new File(logFileName);
-        boolean isNewFile = !logFile.exists();  //파일 여부 확인
+        boolean isNewFile = !logFile.exists();  // 파일 여부 확인
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true))) {
             if (isNewFile) {
-                //추가(정리)
+                // 추가(정리)
                 writer.append("Date,Time,SessionID,URI,Referer,Browser,Message\n");
             }
 
@@ -31,7 +31,27 @@
     }
 %>
 
-<%
-    // 테스트 로그 기록
-    writeLog("테스트 기록", request, session);
-%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>로그 테스트</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        button { font-size: 16px; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h1>로그 테스트 페이지</h1>
+    <form method="post" action="log.jsp">
+        <button type="submit" name="action" value="logTest">테스트 로그 기록</button>
+    </form>
+    <%
+        String action = request.getParameter("action");
+        if ("logTest".equals(action)) {
+            writeLog("테스트", request, session);
+            out.println("<p>로그가 기록되었습니다: 테스트</p>");
+        }
+    %>
+</body>
+</html>
