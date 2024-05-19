@@ -243,20 +243,20 @@
     <div style="width: 999px; height: 50px; left: 220px; top: 291px; position: absolute">
       <div style="width: 999px; height: 50px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
       <!--recommend-->
-      <form id="recommendform" method="get" action="search.jsp?recommend">
+      <form id="recommendform" method="get" action="main.jsp?recommend">
         <button id = recommendOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
             <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
             <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
         </button>
       </form>
-      <form id="recommendform" method="get" action="search.jsp?recommend">
+      <form id="recommendform" method="get" action="main.jsp?recommend">
         <button id = recommendOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
         </button>
       </form>
       <!--Top-->
-      <form id="topform" method="get" action="search.jsp?top">
+      <form id="topform" method="get" action="main.jsp?top">
         <button id = topOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
