@@ -285,32 +285,32 @@
         function buttonOnOff(clickedButton){
           var clickedButtonId = clickedButton.id;
           if(clickedButtonId == "topOn" || clickedButtonId == "topOff"){ //top
-            document.getElementById("topOnform").style.display = "block";
-            document.getElementById("topOffform").style.display = "none";
-            document.getElementById("recommendOnform").style.display = "none";
-            document.getElementById("recommendOffform").style.display = "block";
-            document.getElementById("newOnform").style.display = "none";
-            document.getElementById("newOffform").style.display = "block";
+            document.getElementById("topOn").style.display = "block";
+            document.getElementById("topOff").style.display = "none";
+            document.getElementById("recommendOn").style.display = "none";
+            document.getElementById("recommendOff").style.display = "block";
+            document.getElementById("newOn").style.display = "none";
+            document.getElementById("newOff").style.display = "block";
 
           }
 
           if(clickedButtonId == "newOn" || clickedButtonId == "newOff"){ //new
-            document.getElementById("newOnform").style.display = "block";
-            document.getElementById("newOffform").style.display = "none";
-            document.getElementById("recommendOnform").style.display = "none";
-            document.getElementById("recommendOffform").style.display = "block";
-            document.getElementById("topOnform").style.display = "none";
-            document.getElementById("topOffform").style.display = "block";
+            document.getElementById("newOn").style.display = "block";
+            document.getElementById("newOff").style.display = "none";
+            document.getElementById("recommendOn").style.display = "none";
+            document.getElementById("recommendOff").style.display = "block";
+            document.getElementById("topOn").style.display = "none";
+            document.getElementById("topOff").style.display = "block";
 
           }
 
           if(clickedButtonId == "recommendOn" || clickedButtonId == "recommendOff"){ //recommend
-            document.getElementById("recommendOnform").style.display = "block";
-            document.getElementById("recommendOffform").style.display = "none";
-            document.getElementById("newOnform").style.display = "none";
-            document.getElementById("newOffform").style.display = "block";
-            document.getElementById("topOnform").style.display = "none";
-            document.getElementById("topOffform").style.display = "block";
+            document.getElementById("recommendOn").style.display = "block";
+            document.getElementById("recommendOff").style.display = "none";
+            document.getElementById("newOn").style.display = "none";
+            document.getElementById("newOff").style.display = "block";
+            document.getElementById("topOn").style.display = "none";
+            document.getElementById("topOff").style.display = "block";
           }
       
         }
