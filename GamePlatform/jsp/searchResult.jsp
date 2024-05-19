@@ -1,5 +1,7 @@
-<%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.sql.*, java.io.*, java.time.*, javax.servlet.http.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./SQLconstants.jsp"%>
+<%@ include file="log.jsp" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>검색 결과</title>
@@ -20,6 +22,8 @@
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
+        long startTime = System.currentTimeMillis();  // 시작 시간 기록
+
         try {
             // MySQL 드라이버 연결
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -33,31 +37,37 @@
             rs = pstmt.executeQuery();
 
             int count = 0;
+            StringBuilder results = new StringBuilder();
+
             while (rs.next()) {
                 count++;
-                String leftPosition = (count % 2 == 1) ? "0px" : "645px";
-                String topPosition = (count % 2 == 1) ? ((count - 1) / 2 * 215) + "px" : ((count - 2) / 2 * 215) + "px";
-
-                out.println("<div style='width: 630px; height: 200px; left: " + leftPosition + "; top: " + topPosition + "; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;'>");
-                out.println("    <div style='width: 630px; height: 200px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px'></div>");
-                out.println("    <div style='left: 203px; top: 20px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word'>" + rs.getString("게임명") + "<br/></div>");
-                out.println("    <div style='left: 204px; top: 100px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;'>" + rs.getString("개발사명") + "<br/>" + rs.getString("시스템사양") + "</div>");
-                out.println("    <div style='left: 203px; top: 57px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word'>" + rs.getFloat("가격") + "</div>");
-                out.println("    <img style='width: 160px; height: 160px; left: 26px; top: 20px; position: absolute' src='" + rs.getString("이미지URL") + "' />");
-                out.println("</div>");
-
-                // log.jsp에 로그 기록 요청
-                request.setAttribute("게임ID", rs.getInt("게임ID"));
-                request.setAttribute("게임명", rs.getString("게임명"));
-                request.setAttribute("개발사명", rs.getString("개발사명"));
-                request.setAttribute("시스템사양", rs.getString("시스템사양"));
-                request.setAttribute("연령등급", rs.getString("연령등급"));
-                request.setAttribute("가격", rs.getFloat("가격"));
-                request.setAttribute("출시일", rs.getDate("출시일").toString());
-                request.setAttribute("이미지URL", rs.getString("이미지URL"));
-                RequestDispatcher rd = request.getRequestDispatcher("log.jsp");
-                rd.include(request, response);
+                out.println("<div class='game-info'>"
+                        + "<strong>게임 ID:</strong> " + rs.getInt("게임ID") + "<br>"
+                        + "<strong>게임 제목:</strong> " + rs.getString("게임명") + "<br>"
+                        + "<strong>개발사:</strong> " + rs.getString("개발사명") + "<br>"
+                        + "<strong>시스템 사양:</strong> " + rs.getString("시스템사양") + "<br>"
+                        + "<strong>연령등급:</strong> " + rs.getString("연령등급") + "<br>"
+                        + "<strong>가격:</strong> " + rs.getFloat("가격") + "<br>"
+                        + "<strong>출시일:</strong> " + rs.getDate("출시일") + "<br>"
+                        + "<img src='" + rs.getString("이미지URL") + "' alt='" + rs.getString("게임명") + " 이미지'>"
+                        + "</div>");
+                results.append(rs.getString("게임명")).append(", ");
             }
+
+            long endTime = System.currentTimeMillis();  // 종료 시간 기록
+            long duration = endTime - startTime;  // 경과 시간 계산
+
+            // 결과가 없을 경우 메시지 출력
+            if (count == 0) {
+                out.println("<p>검색 결과가 없습니다.</p>");
+            } else {
+                // 마지막 쉼표 제거
+                results.setLength(results.length() - 2);
+            }
+
+            // 로그 기록
+            writeLog("검색 결과: " + results.toString(), request, session);
+
         } catch (ClassNotFoundException e) {
             out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
         } catch (SQLException e) {
@@ -67,12 +77,6 @@
             if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { ex.printStackTrace(); }
             if (con != null) try { con.close(); } catch (SQLException ex) { ex.printStackTrace(); }
         }
-    %>
-
-    <%@ include file="./log.jsp"%>
-    <%
-	    // 로그 데이터 추출
-	    writeLog( message + "와 관련된 책을 찾았습니다", request, session );
     %>
 </body>
 </html>
