@@ -1,5 +1,6 @@
-<%@ page import="java.sql.*, javax.sql.DataSource" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, java.io.*, java.time.*, javax.servlet.http.*, javax.sql.DataSource" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./SQLconstants.jsp"%>
+<%@ include file="log.jsp" %>
 <%
     request.setCharacterEncoding("UTF-8");
     String gameName = request.getParameter("game_name");
@@ -49,6 +50,9 @@
     } catch (Exception e) {
         message = "오류 발생: " + e.getMessage();
     } 
+
+    // 로그 기록
+    writeLog(message, request, session);
 
     if (!message.isEmpty()) {
 %>

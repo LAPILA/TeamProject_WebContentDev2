@@ -1,9 +1,11 @@
-<%@ page language="java" import="java.sql.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, java.io.*, java.time.*, javax.servlet.http.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./SQLconstants.jsp"%>
+<%@ include file="log.jsp" %>
 <%
     request.setCharacterEncoding("UTF-8");
     String id = request.getParameter("id");
     String message = "";
+    long startTime = System.currentTimeMillis();  // 처리 시간 측정 시작
 
     Connection con = null;
     PreparedStatement pstmt = null;
@@ -13,27 +15,27 @@
         Class.forName(jdbc_driver);
         con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
-        // 리뷰 삭제
+        // 게임 ID에 연관된 리뷰 삭제
         String sqlDeleteReviews = "DELETE FROM 리뷰 WHERE 게임ID = ?";
         pstmt = con.prepareStatement(sqlDeleteReviews);
         pstmt.setInt(1, Integer.parseInt(id));
         pstmt.executeUpdate();
         pstmt.close();
 
-        // 게임장르 삭제
+        // 게임 ID에 연관된 게임 장르 삭제
         String sqlDeleteGameGenres = "DELETE FROM 게임장르 WHERE 게임ID = ?";
         pstmt = con.prepareStatement(sqlDeleteGameGenres);
         pstmt.setInt(1, Integer.parseInt(id));
         pstmt.executeUpdate();
         pstmt.close();
 
-        // 구매한게임 삭제
+        // 게임 ID에 연관된 구매한 게임 삭제
         String sqlDeletePurchases = "DELETE FROM 구매한게임 WHERE 게임ID = ?";
         pstmt = con.prepareStatement(sqlDeletePurchases);
         pstmt.setInt(1, Integer.parseInt(id));
         pstmt.executeUpdate();
         pstmt.close();
-        
+
         // 실제 게임 데이터 삭제
         String sqlDeleteGame = "DELETE FROM 게임 WHERE 게임ID = ?";
         pstmt = con.prepareStatement(sqlDeleteGame);
@@ -56,20 +58,19 @@
         if (con != null) try { con.close(); } catch (SQLException ex) {}
     }
 
-    // 메시지가 비어있지 않다면, 메시지를 출력하고 게임 목록 페이지로 리다이렉션합니다.
+    long endTime = System.currentTimeMillis();  // 처리 시간 측정 종료
+    long duration = endTime - startTime;
+
+    // 결과와 처리 시간 로그 기록
+    writeLog(message + " - 처리 시간: " + duration + "ms", request, session);
+
     if (!message.isEmpty()) {
 %>
-<%@ include file="./log.jsp"%>
-<%
-	// 로그 데이터 추출
-	writeLog(message, request, session);
-%>
-
 <form name="frm" method="post" action="./gameList.jsp">
-	<input type="hidden" name="message" value="<%=message%>">
+    <input type="hidden" name="message" value="<%=message%>">
 </form>
 <script language="javascript">
-	document.frm.submit();
+    document.frm.submit();
 </script>
 <%
     }
