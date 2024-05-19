@@ -29,10 +29,9 @@
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                out.println("Login Successful");
-                
+                response.sendRedirect("main.jsp");
             } else {
-                out.println("Invalid credentials. Please try again.");
+                out.println("<script>alert('아이디 또는 비밀번호가 틀렸습니다.'); history.back();</script>");
             }
         } catch (Exception e) {
             e.printStackTrace();
