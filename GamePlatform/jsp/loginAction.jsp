@@ -59,6 +59,6 @@
             }
         }
     %>
-    <input type="button" value="이동" onclick="location.href='main.jsp'">
+    
 </body>
 </html>
