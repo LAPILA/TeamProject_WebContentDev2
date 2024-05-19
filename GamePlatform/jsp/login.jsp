@@ -59,8 +59,9 @@
             </button>
         </form>
         <!--로고-->
-        <button style="width: 400px; height: 186px; left: 10px; top: 7px; position: absolute;background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
-        
+        <form method="post" action="main.jsp">
+            <button style="width: 400px; height: 186px; left: 10px; top: 7px; position: absolute;background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
+        </form>
 
 
     </body>

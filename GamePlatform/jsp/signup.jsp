@@ -38,7 +38,10 @@
         <!--헤더-->
         <img style="width: 1440px; height: 200px; left: 0px; top: -2px; position: absolute;" src="images\헤더.png" />
         <!--로고-->
-        <button style="width: 400px; height: 186px; left: 10px; top: 7px; position: absolute; background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
+        <form method="post" action="main.jsp">
+            <button style="width: 400px; height: 186px; left: 10px; top: 7px; position: absolute; background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
+        </form>
+
         <!--회원가입-->
         <form method="post" action="signupAction.jsp">
             <button style="width: 255px; height: 113px; left: 592px; top: 810px; position: absolute; background: #AD9EB9; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: inline-flex; border: none; cursor: pointer;">
