@@ -1,43 +1,24 @@
-<%@ page import="java.io.*, java.time.*, javax.servlet.http.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%!
-    public void writeLog(String message, HttpServletRequest request, HttpSession session) {
-        final String logFileName = "/var/lib/tomcat9/webapps/ROOT/WebContentDev2/GamePlatform/jsp/log.txt";
-        File logFile = new File(logFileName);
-        boolean isNewFile = !logFile.exists();
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true))) {
-            if (isNewFile) {
-                writer.append("Date,Time,SessionID,URI,Referer,Browser,Message\n");
-            }
-            String logEntry = String.format("%s,%s,%s,%s,%s,%s,%s\n",
-                    LocalDate.now(),
-                    LocalTime.now(),
-                    session.getId(),
-                    request.getRequestURI(),
-                    request.getHeader("referer"),
-                    request.getHeader("User-Agent"),
-                    message);
-            writer.append(logEntry);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-%>
-
+<%@ page import="java.io.*" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Log Page</title>
+    <title>Log Viewer</title>
     <style>
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
-            padding: 5px;
+        }
+        th, td {
+            padding: 10px;
+        }
+        th {
             text-align: left;
         }
     </style>
 </head>
 <body>
-    <h1>Log Details</h1>
+    <h1>Log File Contents</h1>
     <table>
         <tr>
             <th>Date</th>
@@ -49,18 +30,27 @@
             <th>Message</th>
         </tr>
         <%
-            try (BufferedReader reader = new BufferedReader(new FileReader(logFileName))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    String[] logParts = line.split(",");
-                    out.print("<tr>");
-                    for (String part : logParts) {
-                        out.print("<td>" + part + "</td>");
+            String logFileName = "/var/lib/tomcat9/webapps/ROOT/WebContentDev2/GamePlatform/jsp/log.txt"; // 파일 경로
+            File file = new File(logFileName);
+            if (file.exists()) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        if (line.trim().isEmpty()) continue; 
+                        String[] logParts = line.split(",", -1);
+                        %>
+                        <tr>
+                            <% for (String part : logParts) { %>
+                                <td><%= part %></td>
+                            <% } %>
+                        </tr>
+                        <%
                     }
-                    out.print("</tr>");
+                } catch (Exception e) {
+                    out.println("Error reading log file: " + e.getMessage());
                 }
-            } catch (Exception e) {
-                out.println("<p>Error reading log file: " + e.getMessage() + "</p>");
+            } else {
+                out.println("<tr><td colspan='7'>Log file does not exist.</td></tr>");
             }
         %>
     </table>
