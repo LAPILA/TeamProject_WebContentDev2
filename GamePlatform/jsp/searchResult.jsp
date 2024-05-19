@@ -11,6 +11,7 @@
 </head>
 <body>
     <h2>검색 결과</h2>
+    <%@ include file="./log.jsp" %>
     <%
         request.setCharacterEncoding("UTF-8");
         String searchQuery = request.getParameter("searchQuery");
