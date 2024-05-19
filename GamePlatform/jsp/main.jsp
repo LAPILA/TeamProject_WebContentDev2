@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
+<%@ include file="./SQLconstants.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -237,7 +238,7 @@
     </div>
 
     <%
-      String searchQuery = request.getParameter("searchQuery");
+      String mQuery = request.getParameter("mquery");
       searchQuery = (searchQuery == null || searchQuery.isEmpty()) ? "%" : searchQuery.trim();
 
       Connection con = null;
