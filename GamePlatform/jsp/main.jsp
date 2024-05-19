@@ -79,12 +79,14 @@
       <div style="width: 94px; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif;; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Sign up</div>
     </button>
 
-    <!--검색창-->
+    <!-- 검색창 -->
     <div style="width: 238px; height: 29px; left: 934px; top: 20px; position: absolute">
       <div style="width: 238px; height: 29px; left: 0px; top: 0px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset; border-radius: 99px">
-        <input type="text" name="searchQuery" size="20" class="search-input-text">
+        <form method="get" action="search.jsp">
+          <input type="text" name="searchQuery" size="20" class="search-input-text">
+          <button type="submit" style="width: 18.67px; height: 22.75px; left: 213.71px; top: 3.30px; position: absolute; background-image: url('images/검색버튼.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
+        </form>
       </div>
-      <button type="submit" style="width: 18.67px; height: 22.75px; left: 213.71px; top: 3.30px; position: absolute; background-image: url('images/검색버튼.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
     </div>
     
     <!--배경-->
