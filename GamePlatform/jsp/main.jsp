@@ -68,7 +68,7 @@
 </head>
 
     <!--어째서 하나하나 직접 폰트를 지정해줘야 하는거야아아ㅏㄲ 왜 한번에 안돼ㅜㅜ-->
-    <body onLoad = "buttonset()" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
+    <body onLoad = "buttonset() alert(query)" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
     <!--헤더-->
     <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
       <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
@@ -243,54 +243,68 @@
     <div style="width: 999px; height: 50px; left: 220px; top: 291px; position: absolute">
       <div style="width: 999px; height: 50px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
       <!--recommend-->
-      <button id = recommendOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-        <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
-      </button>
-      <button id = recommendOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-        <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
-      </button>
+      <form id="recommendonform" method="get" action="main.jsp?recommend">
+        <button id = recommendOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+            <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+            <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
+        </button>
+      </form>
+      <form id="recommendoffform" method="get" action="main.jsp?recommend">
+        <button id = recommendOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+          <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
+        </button>
+      </form>
       <!--Top-->
-      <button id = topOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-        <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
-      </button>
-      <button id = topOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute;  background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-        <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
-      </button>
+      <form id="toponform" method="get" action="main.jsp?top">
+        <button id = topOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+          <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
+        </button>
+      </form>
+      <form id="topoffform" method="get" action="main.jsp?top">
+        <button id = topOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute;  background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+          <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
+        </button>
+      </form>
       <!--New-->
-      <button id = newOn onclick = "buttonOnOff(this)"style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-        <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
-      </button>
-      <button id = newOff onclick = "buttonOnOff(this)"style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-        <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
-      </button>
+      <form id="newonform" method="get" action="main.jsp?new">
+        <button id = newOn onclick = "buttonOnOff(this)"style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+          <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
+        </button>
+      </form>
+      <form id="newoffform" method="get" action="main.jsp?new">
+        <button id = newOff onclick = "buttonOnOff(this)"style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+          <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
+        </button>
+      </form>
       <script type="text/javascript">
         function buttonOnOff(clickedButton){
           var clickedButtonId = clickedButton.id;
-          if(clickedButtonId == "topOn" || clickedButtonId == "topOff"){
+          if(clickedButtonId == "topOn" || clickedButtonId == "topOff"){ //top
             document.getElementById("topOn").style.display = "block";
             document.getElementById("topOff").style.display = "none";
             document.getElementById("recommendOn").style.display = "none";
             document.getElementById("recommendOff").style.display = "block";
             document.getElementById("newOn").style.display = "none";
             document.getElementById("newOff").style.display = "block";
+
           }
 
-          if(clickedButtonId == "newOn" || clickedButtonId == "newOff"){
+          if(clickedButtonId == "newOn" || clickedButtonId == "newOff"){ //new
             document.getElementById("newOn").style.display = "block";
             document.getElementById("newOff").style.display = "none";
             document.getElementById("recommendOn").style.display = "none";
             document.getElementById("recommendOff").style.display = "block";
             document.getElementById("topOn").style.display = "none";
             document.getElementById("topOff").style.display = "block";
+
           }
 
-          if(clickedButtonId == "recommendOn" || clickedButtonId == "recommendOff"){
+          if(clickedButtonId == "recommendOn" || clickedButtonId == "recommendOff"){ //recommend
             document.getElementById("recommendOn").style.display = "block";
             document.getElementById("recommendOff").style.display = "none";
             document.getElementById("newOn").style.display = "none";

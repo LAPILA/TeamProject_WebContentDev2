@@ -83,24 +83,11 @@
             </div>
         
         <!--비밀번호 확인 버튼-->
-            <button type="submit" onclick="pwtest()" value="암호확인" style="width: 90px; height: 75px; left: 1134px; top: 426px; position: absolute; background: black; box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; justify-content: center; align-items: center; gap: 8px; display: inline-flex; border: none; cursor: pointer;">
+            <button type="submit" value="회원가입" style="width: 90px; height: 75px; left: 1134px; top: 426px; position: absolute; background: black; box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; justify-content: center; align-items: center; gap: 8px; display: inline-flex; border: none; cursor: pointer;">
                 <div style="color: white; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 37.50px; word-wrap: break-word">Check</div>
             </button>
         </form>
 
-        <script type="text/javascript">
-            function pwtest() {
-                var p1 = document.getElementByName('password1').value;
-                var p2 = document.getElementByName('password2').value;
-                if( p1 != p2 ) {
-                    alert("비밀번호가 일치 하지 않습니다");
-                    return false;
-                } else{
-                    alert("비밀번호가 일치합니다");
-                    return true;
-                }
-            }
-        </script>
 
     </body>
 </html>
