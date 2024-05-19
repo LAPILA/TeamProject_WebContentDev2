@@ -129,7 +129,8 @@
     <div style="width: 999px; height: 50px; left: 220px; top: 291px; position: absolute">
       <div style="width: 999px; height: 50px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
       <!--recommend-->
-      <form id="myForm" action="search.jsp" method="GET">
+      <form id="myForm" action="main.jsp" method="GET">
+        <input type="hidden" name="mquery">
         <button id = recommendOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
@@ -166,6 +167,8 @@
               document.getElementById("recommendOff").style.display = "block";
               document.getElementById("newOn").style.display = "none";
               document.getElementById("newOff").style.display = "block";
+
+              document.getElementById("myform").value = "new";
 
             }
 
