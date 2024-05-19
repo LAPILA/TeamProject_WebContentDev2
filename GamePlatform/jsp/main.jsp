@@ -129,7 +129,7 @@
     <div style="width: 999px; height: 50px; left: 220px; top: 291px; position: absolute">
       <div style="width: 999px; height: 50px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
       
-      <form id="buttonForm"  method="GET">
+      <form id="buttonForm" action="main.jsp" method="GET">
         <!--recommend-->
         <input type="hidden" id="button" name="mquery">
         <button id = recommendOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
@@ -268,6 +268,12 @@
         if("new".equals(mQuery))
         {
           out.println("<script>alert('new'); history.back();</script>");
+          document.getElementById("newOn").style.display = "block";
+          document.getElementById("newOff").style.display = "none";
+          document.getElementById("recommendOn").style.display = "none";
+          document.getElementById("recommendOff").style.display = "block";
+          document.getElementById("topOn").style.display = "none";
+          document.getElementById("topOff").style.display = "block"
         }
       } catch (ClassNotFoundException e) {
         out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
