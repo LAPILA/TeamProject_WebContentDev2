@@ -288,7 +288,8 @@
           String leftPosition = "238px";
           String topPosition = (count - 1) * 316 + "px";
 
-          out.println("<div style=\"width: 963px; height: 300px; left:" + leftPosition + "; top:" + topPosition + "; position: absolute; opacity: 0.50; background: white; border-radius: 8px\"></div>");
+          out.println("<button style=\"width: 963px; height: 300px; left:" + leftPosition + "top:" + topPosition + "; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;\">");
+          out.println("<div style=\"width: 963px; height: 300px; left: 0; top: 0; position: absolute; opacity: 0.50; background: white; border-radius: 8px\"></div>");
           out.println("<div style=\"left: 736px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">출시일 2022-02-25</div>");
           out.println("<div style=\"left: 315px; top: 256px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">★★★★☆ 4.47</div>");
           out.println("<div style=\"left: 315px; top: 172px; position: absolute; color: black; text-align: left; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">Action<br/>RPG</div>");
@@ -296,7 +297,7 @@
           out.println("<div style=\"left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">프롬소프트웨어</div>");
           out.println("<div style=\"width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">엘든 링 ELDEN RING<br/></div>");
           out.println("<img style=\"width: 300px; height: 300px; left: 0px; top: 0px; position: absolute\" src=\"images/엘든링.png\" />");
-
+          out.println("</button>");
         }
 
 
