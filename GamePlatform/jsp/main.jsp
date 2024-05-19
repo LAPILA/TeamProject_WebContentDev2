@@ -286,7 +286,7 @@
           count++;
 
           String leftPosition = "238px";
-          String topPosition = (count - 1) * 316 + "px";
+          String topPosition = ((count - 1) * 316 + 1008) + "px";
 
           out.println("<button style=\"width: 963px; height: 300px; left:" + leftPosition + "; top:" + topPosition + "; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;\">");
           out.println("<div style=\"width: 963px; height: 300px; left: 0; top: 0; position: absolute; opacity: 0.50; background: white; border-radius: 8px\"></div>");
