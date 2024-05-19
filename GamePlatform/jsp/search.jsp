@@ -132,7 +132,16 @@
                     // 마지막 쉼표 제거
                     results.setLength(results.length() - 2);
                 }
-                
+
+                // log.jsp에 로그 기록 요청
+                request.setAttribute("이전페이지", request.getHeader("referer"));
+                request.setAttribute("현재페이지", request.getRequestURL().toString());
+                request.setAttribute("머무는시간", duration);
+                request.setAttribute("검색글자", searchQuery);
+                request.setAttribute("검색된게임", results.toString());
+                RequestDispatcher rd = request.getRequestDispatcher("/WebContentDev2/GamePlatform/jsp/log.jsp");
+                rd.include(request, response);
+
             } catch (ClassNotFoundException e) {
                 out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
             } catch (SQLException e) {
