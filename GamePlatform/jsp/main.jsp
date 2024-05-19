@@ -1,5 +1,8 @@
+<%@ page import="java.sql.*" %>
+<%@ page import="javax.servlet.RequestDispatcher" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
+<%@ include file="./SQLconstants.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,6 +57,8 @@
         document.getElementById("recommendOff").style.display = "none";
         document.getElementById("newOn").style.display = "none";
         document.getElementById("topOn").style.display = "none";
+
+        var mquery = 'Recommend';
       }
 
       function move( url )	
@@ -161,7 +166,7 @@
             document.getElementById("newOn").style.display = "none";
             document.getElementById("newOff").style.display = "block";
 
-            var mquery = 'top';
+            mquery = 'top';
           }
 
           if(clickedButtonId == "newOn" || clickedButtonId == "newOff"){ //new
@@ -172,7 +177,7 @@
             document.getElementById("topOn").style.display = "none";
             document.getElementById("topOff").style.display = "block";
 
-            var mquery = 'new';
+            mquery = 'new';
           }
 
           if(clickedButtonId == "recommendOn" || clickedButtonId == "recommendOff"){ //recommend
@@ -183,7 +188,7 @@
             document.getElementById("topOn").style.display = "none";
             document.getElementById("topOff").style.display = "block";
 
-            var mquery = 'recommend';
+            mquery = 'recommend';
           }
       
         }
@@ -234,7 +239,33 @@
       </button>
     </div>
 
-<!--추천1-->
+    <%
+      String mQuery = request.getParameter("mquery");
+      mQuery = (mQuery == null || mQuery.isEmpty()) ? "%" : mQuery.trim();
+
+      Connection con = null;
+      PreparedStatement pstmt = null;
+      ResultSet rs = null;
+
+      try {
+        // MySQL 드라이버 연결
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
+      } catch (ClassNotFoundException e) {
+        out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
+      } catch (SQLException e) {
+        out.println("데이터베이스 연결/쿼리 오류: " + e.getMessage());
+      } finally {
+        if (rs != null) try { rs.close(); } catch (SQLException ex) { ex.printStackTrace(); }
+        if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { ex.printStackTrace(); }
+        if (con != null) try { con.close(); } catch (SQLException ex) { ex.printStackTrace(); }
+      }
+    
+    %>
+
+
+
+    <!--추천1-->
     <button style="width: 963px; height: 300px; left: 238px; top: 1008px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
       <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
       <div style="left: 736px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 2022-02-25</div>

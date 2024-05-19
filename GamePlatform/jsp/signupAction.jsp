@@ -44,26 +44,13 @@
                 out.print("<p>회원가입이 완료되었습니다.</p>");
             }
         } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
+        e.printStackTrace();
+    } finally {
+        // 자원 해제
+        if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) {}
+        if (conn != null) try { conn.close(); } catch (SQLException ex) {}
+    }
 
     %>
-    <input type="button" value="이동" onclick="location.href='main.jsp'">
 </body>
 </html>
