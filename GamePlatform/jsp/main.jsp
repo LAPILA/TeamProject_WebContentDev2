@@ -176,16 +176,9 @@
         <script type="text/javascript">
           function buttonOnOff(clickedButton){
             var clickedButtonId = clickedButton.id;
-
             var buttonValue = clickedButton.value;
             document.getElementById("button").value = buttonValue;
-
-            
-
-            document.getElementById("buttonForm").submit(); // 폼을 제출하여 값 전달
-
-            
-      
+            document.getElementById("buttonForm").submit(); // 폼을 제출하여 값 전달     
           }
         </script>
       </form>
@@ -249,6 +242,13 @@
         Class.forName("com.mysql.cj.jdbc.Driver");
         con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
+        String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명
+                          FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID ORDER BY g.출시일 DESC LIMIT 10;";
+        pstmt = con.prepareStatement(query);
+        pstmt.setString(1, "%" + searchQuery + "%");
+        rs = pstmt.executeQuery();
+
+        //검은 카테고리 변환
         if("new".equals(mQuery))
         {
           //out.println("<script>alert('new');</script>");
@@ -281,6 +281,27 @@
           out.println("<script>document.getElementById(\"topOn\").style.display = \"none\";</script>");
           out.println("<script>document.getElementById(\"topOff\").style.display = \"block\"</script>");
         }
+
+        int count = 0;
+
+        while(rs.next()) {
+          count++;
+
+          String leftPosition = "238px";
+          String topPosition = (count - 1) * 316 + "px";
+
+          out.println("<div style=\"width: 963px; height: 300px; left:" + leftPosition + "; top:" + topPosition + "; position: absolute; opacity: 0.50; background: white; border-radius: 8px\"></div>");
+          out.println("<div style=\"left: 736px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">출시일 2022-02-25</div>");
+          out.println("<div style=\"left: 315px; top: 256px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">★★★★☆ 4.47</div>");
+          out.println("<div style=\"left: 315px; top: 172px; position: absolute; color: black; text-align: left; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">Action<br/>RPG</div>");
+          out.println("<div style=\"left: 315px; top: 122px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">59.99$</div>");
+          out.println("<div style=\"left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">프롬소프트웨어</div>");
+          out.println("<div style=\"width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">엘든 링 ELDEN RING<br/></div>");
+          out.println("<img style=\"width: 300px; height: 300px; left: 0px; top: 0px; position: absolute\" src=\"images/엘든링.png\" />");
+
+        }
+
+
       } catch (ClassNotFoundException e) {
         out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
       } catch (SQLException e) {
@@ -295,125 +316,7 @@
 
 
 
-    <!--추천1-->
-    <button style="width: 963px; height: 300px; left: 238px; top: 1008px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-      <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
-      <div style="left: 736px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 2022-02-25</div>
-      <div style="left: 315px; top: 256px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">★★★★☆ 4.47</div>
-      <div style="left: 315px; top: 172px; position: absolute; color: black; text-align: left; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Action<br/>RPG</div>
-      <div style="left: 315px; top: 122px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">59.99$</div>
-      <div style="left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">프롬소프트웨어</div>
-      <div style="width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">엘든 링 ELDEN RING<br/></div>
-      <img style="width: 300px; height: 300px; left: 0px; top: 0px; position: absolute" src="images/엘든링.png" />
-    </button>
-
-    <!--추천2-->
-    <button style="width: 963px; height: 300px; left: 238px; top: 1324px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-      <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
-      <div style="left: 737px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 1996-03-22</div>
-      <div style="left: 315px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">★★★★☆ 4.5</div>
-      <div style="left: 315px; top: 172px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;">Action<br/>Horror</div>
-      <div style="left: 315px; top: 122px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">59.99$</div>
-      <div style="left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">캡콤</div>
-      <div style="width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">바이오하자드</div>
-      <img style="width: 300px; height: 300px; left: 0px; top: 0px; position: absolute" src="images/바이오하자드.png" />
-    </button>
-
-    <!--추천3-->
-    <button style="width: 963px; height: 300px; left: 238px; top: 1640px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
-        <div style="left: 737px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 1987-12-17</div>
-        <div style="left: 315px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">★★☆☆☆ 2.5</div>
-        <div style="left: 315px; top: 189px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;">Action</div>
-        <div style="left: 315px; top: 122px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">29.99$</div>
-        <div style="left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">캡콤</div>
-        <div style="width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">록맨</div>
-        <img style="width: 300px; height: 300px; left: 0px; top: 0px; position: absolute" src="images/록맨.png" />
-    </button>
-
-    <!--추천4-->
-    <button style="width: 963px; height: 300px; left: 238px; top: 1956px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
-        <div style="left: 737px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 1987-12-17</div>
-        <div style="left: 315px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">★★☆☆☆ 2.5</div>
-        <div style="left: 315px; top: 189px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;">Action</div>
-        <div style="left: 315px; top: 122px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">29.99$</div>
-        <div style="left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">캡콤</div>
-        <div style="width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">록맨</div>
-        <img style="width: 300px; height: 300px; left: 0px; top: 0px; position: absolute" src="images/록맨.png" />
-    </button>
-
-    <!--추천5-->
-    <button style="width: 963px; height: 300px; left: 240px; top: 2272px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
-        <div style="left: 737px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 1987-12-17</div>
-        <div style="left: 315px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">★★☆☆☆ 2.5</div>
-        <div style="left: 315px; top: 189px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;">Action</div>
-        <div style="left: 315px; top: 122px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">29.99$</div>
-        <div style="left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">캡콤</div>
-        <div style="width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">록맨</div>
-        <img style="width: 300px; height: 300px; left: 0px; top: 0px; position: absolute" src="images/록맨.png" />
-    </button>
-
-    <!--추천6-->
-    <button style="width: 963px; height: 300px; left: 238px; top: 2588px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
-        <div style="left: 737px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 1987-12-17</div>
-        <div style="left: 315px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">★★☆☆☆ 2.5</div>
-        <div style="left: 315px; top: 189px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;">Action</div>
-        <div style="left: 315px; top: 122px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">29.99$</div>
-        <div style="left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">캡콤</div>
-        <div style="width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">록맨</div>
-        <img style="width: 300px; height: 300px; left: 0px; top: 0px; position: absolute" src="images/록맨.png" />
-    </button>
-
-    <!--추천7-->
-    <button style="width: 963px; height: 300px; left: 240px; top: 2904px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
-        <div style="left: 737px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 1987-12-17</div>
-        <div style="left: 315px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">★★☆☆☆ 2.5</div>
-        <div style="left: 315px; top: 189px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;">Action</div>
-        <div style="left: 315px; top: 122px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">29.99$</div>
-        <div style="left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">캡콤</div>
-        <div style="width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">록맨</div>
-        <img style="width: 300px; height: 300px; left: 0px; top: 0px; position: absolute" src="images/록맨.png" />
-    </button>
-
-    <!--추천8-->
-    <button style="width: 963px; height: 300px; left: 238px; top: 3220px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
-        <div style="left: 737px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 1987-12-17</div>
-        <div style="left: 315px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">★★☆☆☆ 2.5</div>
-        <div style="left: 315px; top: 189px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;">Action</div>
-        <div style="left: 315px; top: 122px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">29.99$</div>
-        <div style="left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">캡콤</div>
-        <div style="width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">록맨</div>
-        <img style="width: 300px; height: 300px; left: 0px; top: 0px; position: absolute" src="images/록맨.png" />
-    </button>
-
-    <!--추천9-->
-    <button style="width: 963px; height: 300px; left: 238px; top: 3536px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
-        <div style="left: 737px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 1987-12-17</div>
-        <div style="left: 315px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">★★☆☆☆ 2.5</div>
-        <div style="left: 315px; top: 189px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;">Action</div>
-        <div style="left: 315px; top: 122px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">29.99$</div>
-        <div style="left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">캡콤</div>
-        <div style="width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">록맨</div>
-        <img style="width: 300px; height: 300px; left: 0px; top: 0px; position: absolute" src="images/록맨.png" />
-    </button>
-
-    <!--추천10-->
-    <button style="width: 963px; height: 300px; left: 238px; top: 3852px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
-        <div style="left: 737px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 1987-12-17</div>
-        <div style="left: 315px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">★★☆☆☆ 2.5</div>
-        <div style="left: 315px; top: 189px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;">Action</div>
-        <div style="left: 315px; top: 122px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">29.99$</div>
-        <div style="left: 313px; top: 48px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">캡콤</div>
-        <div style="width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">록맨</div>
-        <img style="width: 300px; height: 300px; left: 0px; top: 0px; position: absolute" src="images/록맨.png" />
-    </button>
+    
 
     </body>
     </html>
