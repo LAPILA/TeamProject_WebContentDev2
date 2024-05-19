@@ -1,14 +1,12 @@
 <%@ page import="java.io.*, java.time.*, javax.servlet.http.*, javax.servlet.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%! 
     public void writeLog(String message, HttpServletRequest request, HttpSession session) {
-        // 로그 파일의 경로 설정
-        String logFileName = getServletContext().getRealPath("./log.txt");
+        String logFileName = getServletContext().getRealPath("/WEB-INF/log.txt");  // 실제 운영 환경에 맞게 경로 조정
 
         try (FileWriter fw = new FileWriter(logFileName, true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
 
-            // 로그 메시지 작성: 날짜, URI, 세션 ID, 레퍼러, 브라우저 정보, 사용자 메시지
             String logEntry = String.format("%s, %s, %s, %s, %s, %s%n",
                     LocalDateTime.now(),
                     session.getId(),
@@ -18,10 +16,11 @@
                     message);
             out.println(logEntry);
         } catch (IOException e) {
-            System.err.println("Error writing to log file: " + e.getMessage());
+            System.err.println("Error writing to log file: " + e.getMessage());  // 콘솔에 오류 출력
         }
     }
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
