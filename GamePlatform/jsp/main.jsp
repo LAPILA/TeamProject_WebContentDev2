@@ -239,7 +239,7 @@
 
     <%
       String mQuery = request.getParameter("mquery");
-      searchQuery = (searchQuery == null || searchQuery.isEmpty()) ? "%" : searchQuery.trim();
+      mQuery = (mQuery == null || mQuery.isEmpty()) ? "%" : mQuery.trim();
 
       Connection con = null;
       PreparedStatement pstmt = null;
