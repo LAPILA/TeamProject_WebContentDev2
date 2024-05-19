@@ -132,20 +132,20 @@
       <form id="buttonForm" action="main.jsp" method="GET">
         <!--recommend-->
         <input type="hidden" id="button" name="mquery">
-        <button id = recommendOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+        <button id = recommendOn onclick = "buttonOnOff(this)" value = "recommend" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
         </button>
-        <button id = recommendOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+        <button id = recommendOff onclick = "buttonOnOff(this)" value = "recommend" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
         </button>
         <!--Top-->
-        <button id = topOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+        <button id = topOn onclick = "buttonOnOff(this)" value = "top" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
         </button>
-        <button id = topOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+        <button id = topOff onclick = "buttonOnOff(this)" value = "top" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute;  background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
         </button>
@@ -166,7 +166,7 @@
             document.getElementById("button").value = buttonValue;
 
             if(clickedButtonId == "topOn" || clickedButtonId == "topOff"){ //top
-            document.getElementById("topOn").style.display = "block";
+              document.getElementById("topOn").style.display = "block";
               document.getElementById("topOff").style.display = "none";
               document.getElementById("recommendOn").style.display = "none";
               document.getElementById("recommendOff").style.display = "block";
@@ -267,11 +267,33 @@
 
         if("new".equals(mQuery))
         {
-          out.println("<script>alert('new'); history.back();</script>");
+          out.println("<script>alert('new');</script>");
           out.println("<script>document.getElementById(\"newOn\").style.display = \"block\";</script>");
           out.println("<script>document.getElementById(\"newOff\").style.display = \"none\";</script>");
           out.println("<script>document.getElementById(\"recommendOn\").style.display = \"none\";</script>");
           out.println("<script>document.getElementById(\"recommendOff\").style.display = \"block\";</script>");
+          out.println("<script>document.getElementById(\"topOn\").style.display = \"none\";</script>");
+          out.println("<script>document.getElementById(\"topOff\").style.display = \"block\"</script>");
+        }
+
+        if("top".equals(mQuery))
+        {
+          out.println("<script>alert('top');</script>");
+          out.println("<script>document.getElementById(\"topOn\").style.display = \"block\";</script>");
+          out.println("<script>document.getElementById(\"topOff\").style.display = \"none\";</script>");
+          out.println("<script>document.getElementById(\"recommendOn\").style.display = \"none\";</script>");
+          out.println("<script>document.getElementById(\"recommendOff\").style.display = \"block\";</script>");
+          out.println("<script>document.getElementById(\"newOn\").style.display = \"none\";</script>");
+          out.println("<script>document.getElementById(\"newOff\").style.display = \"block\"</script>");
+        }
+
+        if("recommend".equals(mQuery))
+        {
+          out.println("<script>alert('recommend');</script>");
+          out.println("<script>document.getElementById(\"recommendOn\").style.display = \"block\";</script>");
+          out.println("<script>document.getElementById(\"recommendOff\").style.display = \"none\";</script>");
+          out.println("<script>document.getElementById(\"newOn\").style.display = \"none\";</script>");
+          out.println("<script>document.getElementById(\"newOff\").style.display = \"block\";</script>");
           out.println("<script>document.getElementById(\"topOn\").style.display = \"none\";</script>");
           out.println("<script>document.getElementById(\"topOff\").style.display = \"block\"</script>");
         }
