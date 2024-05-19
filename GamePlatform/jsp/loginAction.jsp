@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ include file="./SQLconstants.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +12,9 @@
         String userID = request.getParameter("nameQuery");
         String password = request.getParameter("passwordQuery");
 
-        String dbURL = "jdbc:mysql://3.138.183.93:3306/GamePlatForm_Task"; // 데이터베이스 URL 수정 필요
-        String dbUser = "byul"; // 데이터베이스 사용자명 수정 필요
-        String dbPassword = "Mmoon0920!"; // 데이터베이스 비밀번호 수정 필요
+        String dbURL = "jdbc:mysql://localhost:3306/GamePlatForm_Task"; // 데이터베이스 URL 수정 필요
+        String dbUser = "id"; // 데이터베이스 사용자명 수정 필요
+        String dbPassword = "password"; // 데이터베이스 비밀번호 수정 필요
 
         Connection conn = null;
         PreparedStatement pstmt = null;
