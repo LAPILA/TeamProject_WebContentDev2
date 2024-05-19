@@ -268,12 +268,12 @@
         if("new".equals(mQuery))
         {
           out.println("<script>alert('new'); history.back();</script>");
-          document.getElementById("newOn").style.display = "block";
-          document.getElementById("newOff").style.display = "none";
-          document.getElementById("recommendOn").style.display = "none";
-          document.getElementById("recommendOff").style.display = "block";
-          document.getElementById("topOn").style.display = "none";
-          document.getElementById("topOff").style.display = "block"
+          out.println("<script>document.getElementById("newOn").style.display = "block";</script>");
+          out.println("<script>document.getElementById("newOff").style.display = "none";</script>");
+          out.println("<script>document.getElementById("recommendOn").style.display = "none";</script>");
+          out.println("<script>document.getElementById("recommendOff").style.display = "block";</script>");
+          out.println("<script>document.getElementById("topOn").style.display = "none";</script>");
+          out.println("<script>document.getElementById("topOff").style.display = "block"</script>");
         }
       } catch (ClassNotFoundException e) {
         out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
