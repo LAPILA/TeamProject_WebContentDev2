@@ -55,18 +55,6 @@
     long endTime = System.currentTimeMillis();  // 종료 시간 기록
     long duration = endTime - startTime;  // 경과 시간 계산
 
-    // 로그 기록 요청
-    String referer = request.getHeader("referer");
-    String currentURL = request.getRequestURL().toString();
-    request.setAttribute("이전페이지", referer);
-    request.setAttribute("현재페이지", currentURL);
-    request.setAttribute("머무는시간", duration);
-    request.setAttribute("메시지", message);
-    request.setAttribute("게임명", gameName);
-
-    RequestDispatcher rd = request.getRequestDispatcher("/WebContentDev2/GamePlatform/jsp/log.jsp");
-    rd.include(request, response);
-
     if (!message.isEmpty()) {
 %>
 <script language="javascript">
