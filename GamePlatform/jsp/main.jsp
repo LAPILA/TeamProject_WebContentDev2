@@ -282,7 +282,7 @@
 
         int count = 0;
 
-        while(rs.next()) {
+        while(count < 10) {
           count++;
 
           String leftPosition = "238px";
