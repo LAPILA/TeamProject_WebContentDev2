@@ -242,8 +242,7 @@
         Class.forName("com.mysql.cj.jdbc.Driver");
         con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
-        String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명
-                          FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID ORDER BY g.출시일 DESC LIMIT 10;";
+        String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID ORDER BY g.출시일 DESC LIMIT 10;";
         pstmt = con.prepareStatement(query);
         pstmt.setString(1, "%" + searchQuery + "%");
         rs = pstmt.executeQuery();
