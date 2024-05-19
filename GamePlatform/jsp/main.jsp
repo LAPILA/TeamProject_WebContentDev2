@@ -251,30 +251,14 @@
         // MySQL 드라이버 연결
         Class.forName("com.mysql.cj.jdbc.Driver");
         con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
-      } catch (Exception e) {
-          e.printStackTrace();
+      } catch (ClassNotFoundException e) {
+        out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
+      } catch (SQLException e) {
+        out.println("데이터베이스 연결/쿼리 오류: " + e.getMessage());
       } finally {
-        if (rs != null) {
-          try {
-            rs.close();
-          } catch (SQLException e) {
-            e.printStackTrace();
-          }
-        }
-        if (pstmt != null) {
-          try {
-            pstmt.close();
-          } catch (SQLException e) {
-            e.printStackTrace();
-          }
-        }
-        if (conn != null) {
-          try {
-            conn.close();
-          } catch (SQLException e) {
-            e.printStackTrace();
-          }
-        }
+        if (rs != null) try { rs.close(); } catch (SQLException ex) { ex.printStackTrace(); }
+        if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) { ex.printStackTrace(); }
+        if (con != null) try { con.close(); } catch (SQLException ex) { ex.printStackTrace(); }
       }
     
     %>
