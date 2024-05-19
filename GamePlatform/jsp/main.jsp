@@ -55,7 +55,7 @@
       function buttonset(clickedButton){         
         
         String mQuery = request.getParameter("mquery");
-        if("".equals(mQuery)){
+        if(!mQuery){
           document.getElementById("recommendOn").style.display = "block";
           document.getElementById("recommendOff").style.display = "none";
           document.getElementById("newOn").style.display = "none";
@@ -271,7 +271,7 @@
 
         if("new".equals(mQuery))
         {
-          out.println("<script>alert('new');</script>");
+          //out.println("<script>alert('new');</script>");
           out.println("<script>document.getElementById(\"newOn\").style.display = \"block\";</script>");
           out.println("<script>document.getElementById(\"newOff\").style.display = \"none\";</script>");
           out.println("<script>document.getElementById(\"recommendOn\").style.display = \"none\";</script>");
@@ -282,7 +282,7 @@
 
         if("top".equals(mQuery))
         {
-          out.println("<script>alert('top');</script>");
+          //out.println("<script>alert('top');</script>");
           out.println("<script>document.getElementById(\"topOn\").style.display = \"block\";</script>");
           out.println("<script>document.getElementById(\"topOff\").style.display = \"none\";</script>");
           out.println("<script>document.getElementById(\"recommendOn\").style.display = \"none\";</script>");
@@ -293,7 +293,7 @@
 
         if("recommend".equals(mQuery))
         {
-          out.println("<script>alert('recommend');</script>");
+          //out.println("<script>alert('recommend');</script>");
           out.println("<script>document.getElementById(\"recommendOn\").style.display = \"block\";</script>");
           out.println("<script>document.getElementById(\"recommendOff\").style.display = \"none\";</script>");
           out.println("<script>document.getElementById(\"newOn\").style.display = \"none\";</script>");
