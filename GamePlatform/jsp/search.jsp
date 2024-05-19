@@ -128,9 +128,6 @@
                 // 결과가 없을 경우 메시지 출력
                 if (count == 0) {
                     out.println("<p>검색 결과가 없습니다.</p>");
-                } else {
-                    // 마지막 쉼표 제거
-                    results.setLength(results.length() - 2);
                 }
 
                 // log.jsp에 로그 기록 요청
