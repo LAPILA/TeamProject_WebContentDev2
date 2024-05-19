@@ -1,4 +1,4 @@
-<%@ page import="java.sql.*, javax.sql.DataSource" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, javax.sql.DataSource, java.io.*, java.util.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./SQLconstants.jsp"%>
 <%
     request.setCharacterEncoding("UTF-8");
@@ -10,6 +10,8 @@
     String imageUrl = request.getParameter("image_url");
     String message = "";
     int gameId = 0;
+
+    long startTime = System.currentTimeMillis();  // 시작 시간 기록
 
     try {
         Class.forName(jdbc_driver);
@@ -49,6 +51,21 @@
     } catch (Exception e) {
         message = "오류 발생: " + e.getMessage();
     } 
+
+    long endTime = System.currentTimeMillis();  // 종료 시간 기록
+    long duration = endTime - startTime;  // 경과 시간 계산
+
+    // 로그 기록 요청
+    String referer = request.getHeader("referer");
+    String currentURL = request.getRequestURL().toString();
+    request.setAttribute("이전페이지", referer);
+    request.setAttribute("현재페이지", currentURL);
+    request.setAttribute("머무는시간", duration);
+    request.setAttribute("메시지", message);
+    request.setAttribute("게임명", gameName);
+
+    RequestDispatcher rd = request.getRequestDispatcher("/log.jsp");
+    rd.include(request, response);
 
     if (!message.isEmpty()) {
 %>

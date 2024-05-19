@@ -1,4 +1,5 @@
-<%@ page import="java.io.*, java.util.*" %>
+<%@ page import="java.io.*" %>
+<%@ page import="java.util.*" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,12 +31,12 @@
             }
         }
 
-        // 로그 기록을 위한 파라미터 가져오기 및 null 체크
+        // 로그 파일에 기록할 내용 가져오기
         String 이전페이지 = (request.getAttribute("이전페이지") != null) ? request.getAttribute("이전페이지").toString() : "N/A";
         String 현재페이지 = (request.getAttribute("현재페이지") != null) ? request.getAttribute("현재페이지").toString() : "N/A";
-        String 머무는시간 = (request.getParameter("timeSpent") != null) ? request.getParameter("timeSpent") : "N/A";
-        String 검색글자 = (request.getAttribute("검색글자") != null) ? request.getAttribute("검색글자").toString() : "N/A";
-        String 검색된게임 = (request.getAttribute("검색된게임") != null) ? request.getAttribute("검색된게임").toString() : "N/A";
+        String 머무는시간 = (request.getAttribute("머무는시간") != null) ? request.getAttribute("머무는시간").toString() : "N/A";
+        String 메시지 = (request.getAttribute("메시지") != null) ? request.getAttribute("메시지").toString() : "N/A";
+        String 게임ID = (request.getAttribute("게임ID") != null) ? request.getAttribute("게임ID").toString() : "N/A";
 
         // 로그 파일에 기록
         FileWriter fileWriter = null;
@@ -47,8 +48,8 @@
             String logEntry = 이전페이지 + "\t"
                             + 현재페이지 + "\t"
                             + 머무는시간 + "\t"
-                            + 검색글자 + "\t"
-                            + 검색된게임 + "\n";
+                            + 메시지 + "\t"
+                            + 게임ID + "\n";
             bufferedWriter.write(logEntry);
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,11 +73,11 @@
     <table>
         <thead>
             <tr>
-                <th>이전 페이지</th>
-                <th>현재 페이지</th>
-                <th>머무는 시간 (ms)</th>
-                <th>검색 글자</th>
-                <th>검색된 게임</th>
+                <th>이전페이지</th>
+                <th>현재페이지</th>
+                <th>머무는시간</th>
+                <th>메시지</th>
+                <th>게임ID</th>
             </tr>
         </thead>
         <tbody>
