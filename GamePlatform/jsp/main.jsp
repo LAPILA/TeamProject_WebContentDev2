@@ -161,6 +161,10 @@
         <script type="text/javascript">
           function buttonOnOff(clickedButton){
             var clickedButtonId = clickedButton.id;
+
+            var buttonValue = clickedButton.value;
+            document.getElementById("button").value = buttonValue;
+
             if(clickedButtonId == "topOn" || clickedButtonId == "topOff"){ //top
             document.getElementById("topOn").style.display = "block";
               document.getElementById("topOff").style.display = "none";
@@ -181,7 +185,6 @@
               document.getElementById("topOn").style.display = "none";
               document.getElementById("topOff").style.display = "block"
 
-              document.getElementById("buttonform").value = "new";
               document.getElementById("buttonForm").submit(); // 폼을 제출하여 값 전달
             }
 
