@@ -1,7 +1,6 @@
 <%@ page import="java.io.*, java.time.*, javax.servlet.http.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%!
     public void writeLog(String message, HttpServletRequest request, HttpSession session) {
-
         final String logFileName = "/var/lib/tomcat9/webapps/ROOT/WebContentDev2/GamePlatform/jsp/log.txt";
         File logFile = new File(logFileName);
         boolean isNewFile = !logFile.exists();  //파일 여부 확인
@@ -30,4 +29,9 @@
     private String escapeCsv(String value) {
         return value != null ? "\"" + value.replace("\"", "\"\"") + "\"" : "\"\"";
     }
+%>
+
+<%
+    // 테스트 로그 기록
+    writeLog("테스트 기록", request, session);
 %>
