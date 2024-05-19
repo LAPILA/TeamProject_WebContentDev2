@@ -68,7 +68,7 @@
 </head>
 
     <!--어째서 하나하나 직접 폰트를 지정해줘야 하는거야아아ㅏㄲ 왜 한번에 안돼ㅜㅜ-->
-    <body onLoad = "buttonset() alert(query)" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
+    <body onLoad = "buttonset()" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
     <!--헤더-->
     <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
       <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
@@ -104,7 +104,137 @@
     <img style="width: 1440px; height: 3968px; left: 0px; top: 245px; position: absolute" src="images/배경.png" />
     <div style="width: 1264px; height: 3266px; left: 88px; top: 949px; position: absolute; opacity: 0.85; background: #DFD1E2"></div>
 
-    <!--추천1-->
+
+    <!--배너 오른쪽 버튼-->
+    <button style="width: 96px; height: 120px; left: 1310px; top: 534px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+      <img style="width: 96px; height: 120px; left: 0px; top: 0px; position: absolute" src="images/wpf_next_right.png"/>
+    </button>
+
+    <!--배너 왼쪽 버튼-->
+    <button style="width: 96px; height: 120px; left: 34px; top: 534px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+      <img style="width: 96px; height: 120px; left: 0px; top: 0px; position: absolute" src="images/wpf_next_right.png"/>
+    </button>
+
+    <!--배너-->
+    <button style="position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+      <img style="width: 1100px; height: 618.75px; left: 170px; top: 285px; position: absolute; border-radius: 50px" src="images/배너.png" />
+    </button>
+
+    <!--메인화면 카테고리-->
+    <div style="width: 999px; height: 50px; left: 220px; top: 291px; position: absolute">
+      <div style="width: 999px; height: 50px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
+      <!--recommend-->
+      <button id = recommendOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+        <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
+      </button>
+      <button id = recommendOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+        <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
+      </button>
+      <!--Top-->
+      <button id = topOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+        <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
+      </button>
+      <button id = topOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute;  background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+        <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
+      </button>
+      <!--New-->
+      <button id = newOn onclick = "buttonOnOff(this)"style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+        <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
+      </button>
+      <button id = newOff onclick = "buttonOnOff(this)"style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+        <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
+        <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
+      </button>
+      <script type="text/javascript">
+        function buttonOnOff(clickedButton){
+          var clickedButtonId = clickedButton.id;
+          if(clickedButtonId == "topOn" || clickedButtonId == "topOff"){ //top
+            document.getElementById("topOn").style.display = "block";
+            document.getElementById("topOff").style.display = "none";
+            document.getElementById("recommendOn").style.display = "none";
+            document.getElementById("recommendOff").style.display = "block";
+            document.getElementById("newOn").style.display = "none";
+            document.getElementById("newOff").style.display = "block";
+
+            var mquery = 'top';
+          }
+
+          if(clickedButtonId == "newOn" || clickedButtonId == "newOff"){ //new
+            document.getElementById("newOn").style.display = "block";
+            document.getElementById("newOff").style.display = "none";
+            document.getElementById("recommendOn").style.display = "none";
+            document.getElementById("recommendOff").style.display = "block";
+            document.getElementById("topOn").style.display = "none";
+            document.getElementById("topOff").style.display = "block";
+
+            var mquery = 'new';
+          }
+
+          if(clickedButtonId == "recommendOn" || clickedButtonId == "recommendOff"){ //recommend
+            document.getElementById("recommendOn").style.display = "block";
+            document.getElementById("recommendOff").style.display = "none";
+            document.getElementById("newOn").style.display = "none";
+            document.getElementById("newOff").style.display = "block";
+            document.getElementById("topOn").style.display = "none";
+            document.getElementById("topOff").style.display = "block";
+
+            var mquery = 'recommend';
+          }
+      
+        }
+      </script>
+    </div>
+
+    <!--카테고리-->
+    <div style="width: 1440px; height: 48px; left: 0px; top: 199px; position: absolute">
+      <div style="width: 1440px; height: 47px; left: 0px; top: 1px; position: absolute; background: #B86CF3"></div>
+      <!--프로필-->
+      <button style="width: 480px; height: 48px; left: 960px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+        <div style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; opacity: 0.85; background: #DEDEDE; box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 5px"></div>
+        <div style="left: 189px; top: 8px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 33.60px; word-wrap: break-word">Profile</div>
+      </button>
+      <!--카테고리-->
+      <div class="dropdown" style="width: 480px; height: 48px; left: 480px; top: 0px; position: absolute;">
+        <button style="width: 480px; height: 48px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; opacity: 0.85; background: #DEDEDE; box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 5px"></div>
+          <div style="left: 176px; top: 7px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 33.60px; word-wrap: break-word">Categories</div>
+        </button>        
+        <!--장르 카테고리-->
+        <div style="width: 480px; height: 270px; top: 48px; position: absolute" class="dropdown-options">
+          <div style="width: 480px; height: 270px; left: 0px; top: 0px; position: absolute; background: #D8CDE1; border-radius: 10px"></div>
+          <div style="width: 460px; height: 246.43px; left: 10px; top: 10px; position: absolute; background: rgba(245.28, 243.36, 253.94, 0.43); border-radius: 10px"></div>
+          <div style="width: 2px; height: 231px; left: 238px; top: 17px; position: absolute; background: #605C5C"></div>
+          <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+            <div style="left: 17px; top: 17px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Action</div>
+          </button>
+          <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+            <div style="left: 17px; top: 64px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Adventure</div>
+          </button>
+          <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+            <div style="left: 17px; top: 109px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Horror</div>
+          </button>
+          <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+            <div style="left: 17px; top: 154px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">RPG</div>
+          </button>
+          <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+            <div style="left: 17px; top: 199px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Shooter</div>
+          </button>
+        </div>
+        
+      </div>
+      <!--메인-->
+      <button style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;" class="dropdown">
+        <div style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; opacity: 0.85; background: #DEDEDE; box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 5px"></div>
+        <div style="width: 133.46px; left: 173.27px; top: 7px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 33.60px; word-wrap: break-word">Main</div>
+      </button>
+    </div>
+
+<!--추천1-->
     <button style="width: 963px; height: 300px; left: 238px; top: 1008px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
       <div style="width: 963px; height: 300px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
       <div style="left: 736px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 2022-02-25</div>
@@ -224,141 +354,5 @@
         <img style="width: 300px; height: 300px; left: 0px; top: 0px; position: absolute" src="images/록맨.png" />
     </button>
 
-    <!--배너 오른쪽 버튼-->
-    <button style="width: 96px; height: 120px; left: 1310px; top: 534px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-      <img style="width: 96px; height: 120px; left: 0px; top: 0px; position: absolute" src="images/wpf_next_right.png"/>
-    </button>
-
-    <!--배너 왼쪽 버튼-->
-    <button style="width: 96px; height: 120px; left: 34px; top: 534px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-      <img style="width: 96px; height: 120px; left: 0px; top: 0px; position: absolute" src="images/wpf_next_right.png"/>
-    </button>
-
-    <!--배너-->
-    <button style="position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-      <img style="width: 1100px; height: 618.75px; left: 170px; top: 285px; position: absolute; border-radius: 50px" src="images/배너.png" />
-    </button>
-
-    <!--메인화면 카테고리-->
-    <div style="width: 999px; height: 50px; left: 220px; top: 291px; position: absolute">
-      <div style="width: 999px; height: 50px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
-      <!--recommend-->
-      <form id="recommendonform" method="get" action="main.jsp?recommend">
-        <button id = recommendOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-            <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-            <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
-        </button>
-      </form>
-      <form id="recommendoffform" method="get" action="main.jsp?recommend">
-        <button id = recommendOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-          <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
-        </button>
-      </form>
-      <!--Top-->
-      <form id="toponform" method="get" action="main.jsp?top">
-        <button id = topOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-          <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
-        </button>
-      </form>
-      <form id="topoffform" method="get" action="main.jsp?top">
-        <button id = topOff onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 333px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute;  background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-          <div style="width: 71.93px; left: 131px; top: 3px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Top</div>
-        </button>
-      </form>
-      <!--New-->
-      <form id="newonform" method="get" action="main.jsp?new">
-        <button id = newOn onclick = "buttonOnOff(this)"style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-          <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
-        </button>
-      </form>
-      <form id="newoffform" method="get" action="main.jsp?new">
-        <button id = newOff onclick = "buttonOnOff(this)"style="width: 333px; height: 50px; left: 666px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-          <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background-color: transparent; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-          <div style="width: 68.83px; height: 45px; left: 133px; top: 2px; position: absolute; text-align: center; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">New</div>
-        </button>
-      </form>
-      <script type="text/javascript">
-        function buttonOnOff(clickedButton){
-          var clickedButtonId = clickedButton.id;
-          if(clickedButtonId == "topOn" || clickedButtonId == "topOff"){ //top
-            document.getElementById("topOn").style.display = "block";
-            document.getElementById("topOff").style.display = "none";
-            document.getElementById("recommendOn").style.display = "none";
-            document.getElementById("recommendOff").style.display = "block";
-            document.getElementById("newOn").style.display = "none";
-            document.getElementById("newOff").style.display = "block";
-
-          }
-
-          if(clickedButtonId == "newOn" || clickedButtonId == "newOff"){ //new
-            document.getElementById("newOn").style.display = "block";
-            document.getElementById("newOff").style.display = "none";
-            document.getElementById("recommendOn").style.display = "none";
-            document.getElementById("recommendOff").style.display = "block";
-            document.getElementById("topOn").style.display = "none";
-            document.getElementById("topOff").style.display = "block";
-
-          }
-
-          if(clickedButtonId == "recommendOn" || clickedButtonId == "recommendOff"){ //recommend
-            document.getElementById("recommendOn").style.display = "block";
-            document.getElementById("recommendOff").style.display = "none";
-            document.getElementById("newOn").style.display = "none";
-            document.getElementById("newOff").style.display = "block";
-            document.getElementById("topOn").style.display = "none";
-            document.getElementById("topOff").style.display = "block";
-          }
-      
-        }
-      </script>
-    </div>
-
-    <!--카테고리-->
-    <div style="width: 1440px; height: 48px; left: 0px; top: 199px; position: absolute">
-      <div style="width: 1440px; height: 47px; left: 0px; top: 1px; position: absolute; background: #B86CF3"></div>
-      <!--프로필-->
-      <button style="width: 480px; height: 48px; left: 960px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; opacity: 0.85; background: #DEDEDE; box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 5px"></div>
-        <div style="left: 189px; top: 8px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 33.60px; word-wrap: break-word">Profile</div>
-      </button>
-      <!--카테고리-->
-      <div class="dropdown" style="width: 480px; height: 48px; left: 480px; top: 0px; position: absolute;">
-        <button style="width: 480px; height: 48px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-          <div style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; opacity: 0.85; background: #DEDEDE; box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 5px"></div>
-          <div style="left: 176px; top: 7px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 33.60px; word-wrap: break-word">Categories</div>
-        </button>        
-        <!--장르 카테고리-->
-        <div style="width: 480px; height: 270px; top: 48px; position: absolute" class="dropdown-options">
-          <div style="width: 480px; height: 270px; left: 0px; top: 0px; position: absolute; background: #D8CDE1; border-radius: 10px"></div>
-          <div style="width: 460px; height: 246.43px; left: 10px; top: 10px; position: absolute; background: rgba(245.28, 243.36, 253.94, 0.43); border-radius: 10px"></div>
-          <div style="width: 2px; height: 231px; left: 238px; top: 17px; position: absolute; background: #605C5C"></div>
-          <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-            <div style="left: 17px; top: 17px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Action</div>
-          </button>
-          <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-            <div style="left: 17px; top: 64px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Adventure</div>
-          </button>
-          <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-            <div style="left: 17px; top: 109px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Horror</div>
-          </button>
-          <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-            <div style="left: 17px; top: 154px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">RPG</div>
-          </button>
-          <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-            <div style="left: 17px; top: 199px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Shooter</div>
-          </button>
-        </div>
-        
-      </div>
-      <!--메인-->
-      <button style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;" class="dropdown">
-        <div style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; opacity: 0.85; background: #DEDEDE; box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 5px"></div>
-        <div style="width: 133.46px; left: 173.27px; top: 7px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 33.60px; word-wrap: break-word">Main</div>
-      </button>
-    </div>
     </body>
     </html>
