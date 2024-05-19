@@ -45,6 +45,8 @@
           display: block;
         }
 
+        
+
     </style>
     <script type="text/javascript">
       function buttonset(clickedButton){
@@ -53,6 +55,12 @@
         document.getElementById("newOn").style.display = "none";
         document.getElementById("topOn").style.display = "none";
       }
+
+      function move( url )	
+	 		{
+			  document.formm.action = url;
+			  document.formm.submit();
+		  }
       
     </script>
 
@@ -67,7 +75,7 @@
     </div>
 
     <!--로고-->
-    <button style="width: 320px; height: 160px; left: 546px; top: 20px; position: absolute; background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
+    <button onclick="javascript:move( './main.jsp' );" style="width: 320px; height: 160px; left: 546px; top: 20px; position: absolute; background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
  
     <!--로그인-->
     <button type="button" onclick="location.href='login.jsp'" style="width: 88px; height: 42px; left: 1187px; top: 14px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">

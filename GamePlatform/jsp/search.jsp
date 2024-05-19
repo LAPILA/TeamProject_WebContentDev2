@@ -41,6 +41,16 @@
             .game-info { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
             img { margin-top: 10px; height: 150px; width: auto; }
         </style>
+
+        <script type="text/javascript">
+
+            function move( url )	
+	 	    {
+		    	document.formm.action = url;
+		    	document.formm.submit();
+		    }
+      
+        </script>
     </head>
     <body style="width: 1440px; height: 1024px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
         <!-- 헤더 -->
@@ -48,7 +58,7 @@
             <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
         </div>
         <!-- 로고 -->
-        <button style="width: 320px; height: 160px; left: 546px; top: 20px; position: absolute; background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
+        <button onclick="javascript:move( './main.jsp' );" style="width: 320px; height: 160px; left: 546px; top: 20px; position: absolute; background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
         <!-- 로그인 -->
         <button style="width: 88px; height: 42px; left: 1187px; top: 14px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
             <div style="width: 69px; text-align: center; color: white; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Login</div>
