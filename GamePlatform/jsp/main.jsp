@@ -52,10 +52,21 @@
 
     </style>
     <script type="text/javascript">
-      function buttonset(clickedButton){         
+
+      function getmquery( parameter )	
+	 		{
+			  // 현재 URL을 가져옴
+        var urlParams = new URLSearchParams(window.location.search);
+
+        // 파라미터의 값을 반환하거나 없으면 null 반환
+        return urlParams.get(parameter);
+		  }
+
+      function buttonset(parameter){         
         
-        String mQuery = request.getParameter("mquery");
-        if(!mQuery){
+
+        var myParameter = getmquery('mquery');
+        if(myParameter == null){
           document.getElementById("recommendOn").style.display = "block";
           document.getElementById("recommendOff").style.display = "none";
           document.getElementById("newOn").style.display = "none";
