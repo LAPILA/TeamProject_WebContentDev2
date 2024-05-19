@@ -58,7 +58,7 @@
         document.getElementById("newOn").style.display = "none";
         document.getElementById("topOn").style.display = "none";
 
-        var mquery = 'Recommend';
+        
       }
 
       function move( url )	
@@ -129,7 +129,7 @@
     <div style="width: 999px; height: 50px; left: 220px; top: 291px; position: absolute">
       <div style="width: 999px; height: 50px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px"></div>
       
-      <form id="buttonForm" action="main.jsp" method="GET">
+      <form id="buttonForm"  method="GET">
         <!--recommend-->
         <input type="hidden" id="button" name="mquery">
         <button id = recommendOn onclick = "buttonOnOff(this)" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
@@ -185,7 +185,7 @@
               document.getElementById("topOn").style.display = "none";
               document.getElementById("topOff").style.display = "block"
 
-              document.getElementById("buttonForm").submit(); // 폼을 제출하여 값 전달
+              
             }
 
             if(clickedButtonId == "recommendOn" || clickedButtonId == "recommendOff"){ //recommend
@@ -197,6 +197,8 @@
               document.getElementById("topOff").style.display = "block";
 
             }
+
+            document.getElementById("buttonForm").submit(); // 폼을 제출하여 값 전달
 
             
       
