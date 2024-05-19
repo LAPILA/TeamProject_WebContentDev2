@@ -5,6 +5,11 @@
     request.setCharacterEncoding("UTF-8");
     String id = request.getParameter("id");
     String message = "";
+    long startTime = System.currentTimeMillis();  // 시작 시간 기록
+
+    if (session.getAttribute("startTime") == null) {
+        session.setAttribute("startTime", startTime);  // 세션 시작 시간 설정
+    }
 
     Connection con = null;
     PreparedStatement pstmt = null;
@@ -57,8 +62,12 @@
         if (con != null) try { con.close(); } catch (SQLException ex) {}
     }
 
+    long endTime = System.currentTimeMillis();  // 종료 시간 기록
+    long duration = endTime - (Long)session.getAttribute("startTime");  // 경과 시간 계산
+    session.setAttribute("startTime", endTime);  // 세션 시작 시간 갱신
+
     // 로그 기록
-    writeLog(message, request, session);
+    writeLog(message + " - 처리 시간: " + duration + "ms", request, session);
 
     if (!message.isEmpty()) {
 %>
