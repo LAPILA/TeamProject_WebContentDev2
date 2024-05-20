@@ -34,7 +34,7 @@
             if(op.equals("signup")) {
                 response.sendRedirect("main.jsp");
                 } else {
-                    if(password==c_password) {
+                    if(password.value == c_password.value) {
                         if (count > 0) { // 이미 존재하는 경우
                         out.print("<p>이미 존재하는 아이디입니다.</p>");
                         } else { // 새로운 아이디
@@ -46,7 +46,7 @@
                 pstmt.setString(3, userEmail);
                 pstmt.executeUpdate();
                 pstmt.close();
-                out.print("<p>회원가입이 완료되었습니다.</p>");
+                out.println("<script>alert('회원가입 완료.'); history.back();</script>");
                 }
             }
             else out.println("<script>alert('비밀번호 확인이 틀렸습니다.'); history.back();</script>");
