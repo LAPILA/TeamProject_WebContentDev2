@@ -26,7 +26,7 @@
             String sql = "SELECT COUNT(*) FROM 회원 WHERE 회원ID = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userName);
-            ResultSet rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery();
             rs.next();
             int count = rs.getInt(1);
             rs.close();
