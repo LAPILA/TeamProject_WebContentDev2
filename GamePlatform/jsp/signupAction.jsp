@@ -13,6 +13,7 @@
         String userName = request.getParameter("nameQuery");
         String password = request.getParameter("passwordQuery");
         String c_password = request.getParameter("c_passwordQuery");
+        String op = request.getParameter("b");
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -22,7 +23,7 @@
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
-            String sql = "SELECT COUNT(*) FROM 회원 WHERE 회원명 = ?";
+            String sql = "SELECT COUNT(*) FROM 회원 WHERE 회원ID = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userName);
             ResultSet rs = pstmt.executeQuery();
@@ -30,9 +31,13 @@
             int count = rs.getInt(1);
             rs.close();
             pstmt.close();
-            if (count > 0) { // 이미 존재하는 경우
-                out.print("<p>이미 존재하는 아이디입니다.</p>");
-            } else { // 새로운 아이디
+            if(op.equals("signup")) {
+                response.sendRedirect("main.jsp");
+                } else {
+                    if(password==c_password) {
+                        if (count > 0) { // 이미 존재하는 경우
+                        out.print("<p>이미 존재하는 아이디입니다.</p>");
+                        } else { // 새로운 아이디
                 // 회원 정보를 데이터베이스에 저장
                 sql = "INSERT INTO 회원 (회원명, 비밀번호, 이메일, 가입일, 역할) VALUES (?, ?, ?, NOW(), 'USER')";
                 pstmt = conn.prepareStatement(sql);
@@ -42,7 +47,10 @@
                 pstmt.executeUpdate();
                 pstmt.close();
                 out.print("<p>회원가입이 완료되었습니다.</p>");
+                }
             }
+            else out.println("<script>alert('비밀번호 확인이 틀렸습니다.'); history.back();</script>");
+        }
         } catch (Exception e) {
         e.printStackTrace();
     } finally {
@@ -50,6 +58,8 @@
         if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) {}
         if (conn != null) try { conn.close(); } catch (SQLException ex) {}
     }
+
+
 
     %>
 </body>
