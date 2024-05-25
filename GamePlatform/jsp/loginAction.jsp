@@ -22,7 +22,7 @@
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
-            String sql = "SELECT * FROM 회원 WHERE 회원명=? AND 비밀번호=?";
+            String sql = "SELECT * FROM 회원 WHERE 회원ID=? AND 비밀번호=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userID);
             pstmt.setString(2, password);
