@@ -33,8 +33,8 @@
             pstmt.close();
             if(op.equals("signup")) {
                 response.sendRedirect("main.jsp");
-                } else {
-                    if(password.value == c_password.value) {
+                } else if(op.equals("check")) {
+                    if(password == c_password) {
                         if (count > 0) { // 이미 존재하는 경우
                         out.println("<script>alert('이미 존재하는 아이디입니다.'); history.back();</script>");
                         } else { // 새로운 아이디
