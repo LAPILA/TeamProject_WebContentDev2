@@ -36,7 +36,7 @@
                 } else {
                     if(password.value == c_password.value) {
                         if (count > 0) { // 이미 존재하는 경우
-                        out.println("<script>alert('회원가입 완료.'); history.back();</script>");
+                        out.println("<script>alert('이미 존재하는 아이디입니다.'); history.back();</script>");
                         } else { // 새로운 아이디
                 // 회원 정보를 데이터베이스에 저장
                 String sql2 = "INSERT INTO 회원 (회원명, 비밀번호, 이메일, 가입일, 역할) VALUES (?, ?, ?, NOW(), 'USER')";
