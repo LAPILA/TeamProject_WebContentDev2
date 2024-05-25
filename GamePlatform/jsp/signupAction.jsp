@@ -40,13 +40,19 @@
                         } else { // 새로운 아이디
                 // 회원 정보를 데이터베이스에 저장
                 String sql2 = "INSERT INTO 회원 (회원ID, 회원명, 비밀번호, 이메일, 가입일, 역할) VALUES (?, 'new', ?, ?, NOW(), 'USER')";
-                pstmt = conn.prepareStatement(sql2);
-                pstmt.setString(1, userName);
-                pstmt.setString(2, password);
-                pstmt.setString(3, userEmail);
-                pstmt.executeUpdate();
-                pstmt.close();
-                out.println("<script>alert('회원가입 완료.'); history.back();</script>");
+                try{
+                    pstmt = conn.prepareStatement(sql2);
+                    pstmt.setString(1, userName);
+                    pstmt.setString(2, password);
+                    pstmt.setString(3, userEmail);
+                    pstmt.executeUpdate();
+                    pstmt.close();
+                    out.println("<script>alert('회원가입 완료.'); history.back();</script>");
+
+                    } catch (Exception e) {
+                    e.printStackTrace();
+                    }
+
                 }
             }
             else out.println("<script>alert('비밀번호 확인이 틀렸습니다.'); history.back();</script>");
