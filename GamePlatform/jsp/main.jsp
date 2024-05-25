@@ -281,7 +281,7 @@
           out.println("<script>document.getElementById(\"topOn\").style.display = \"none\";</script>");
           out.println("<script>document.getElementById(\"topOff\").style.display = \"block\"</script>");
 
-          query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID ORDER BY g.가격 DESC LIMIT 10;";
+          query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 FROM 게임 g JOIN 추천게임 r ON g.게임ID = r.게임ID LIMIT 10;";
         }
 
         pstmt = con.prepareStatement(query);
