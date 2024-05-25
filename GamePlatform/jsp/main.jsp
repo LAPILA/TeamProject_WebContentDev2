@@ -268,7 +268,7 @@
           out.println("<script>document.getElementById(\"newOn\").style.display = \"none\";</script>");
           out.println("<script>document.getElementById(\"newOff\").style.display = \"block\"</script>");
 
-          query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID ORDER BY g.가격 LIMIT 10;";
+          query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명, COUNT(b.게임ID) AS 구매수량 FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID JOIN 구매한게임 b ON g.게임ID = b.게임ID GROUP BY g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 ORDER BY 구매수량 DESC LIMIT 10;";
         }
 
         if("recommend".equals(mQuery) || "%".equals(mQuery))
