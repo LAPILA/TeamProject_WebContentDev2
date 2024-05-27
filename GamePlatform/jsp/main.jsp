@@ -343,7 +343,7 @@
 
           String leftPosition = "238px";
           String topPosition = ((count - 1) * 316 + 1008) + "px";
-          String gameID = rs.getString("게임ID");
+          
 
           out.println("<form id=\"actionbutton\" action=\"buy.jsp\" method=\"POST\">");
           out.println("<button style=\"width: 963px; height: 300px; left:" + leftPosition + "; top:" + topPosition + "; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;\">");
@@ -354,7 +354,23 @@
           out.println("<div style=\"width: 500px; height: 31px; left: 313px; top: 9px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">" + rs.getString("게임명") +"<br/></div>");
           out.println("<img style=\"width: 300px; height: 300px; left: 0px; top: 0px; position: absolute\" src=\""+ rs.getString("이미지URL") +"\"/>");
           out.println("</button>");
+          // 구매창으로 정보 넘기기
+          String gameID = rs.getString("게임ID");
+          String gamename = rs.getString("게임명");
+          String price = rs.getString("가격");
+          String date = rs.getString("출시일");
+          String imgURL = rs.getString("이미지URL");
+          String requirement = rs.getString("시스템사양");
+          String age = rs.getString("연령등급");
+          String developer = rs.getString("개발사명");
           out.println("<input type=\"hidden\" name=\"gameID\" value=\"" + gameID + "\">");
+          out.println("<input type=\"hidden\" name=\"gamename\" value=\"" + gamename + "\">");
+          out.println("<input type=\"hidden\" name=\"price\" value=\"" + price + "\">");
+          out.println("<input type=\"hidden\" name=\"date\" value=\"" + date + "\">");
+          out.println("<input type=\"hidden\" name=\"imgURL\" value=\"" + imgURL + "\">");
+          out.println("<input type=\"hidden\" name=\"requirement\" value=\"" + requirement + "\">");
+          out.println("<input type=\"hidden\" name=\"age\" value=\"" + age + "\">");
+          out.println("<input type=\"hidden\" name=\"developer\" value=\"" + developer + "\">");
           out.println("<input type=\"hidden\" name=\"userID\" value=\"" + userID + "\">");
           out.println("</form>");
         }
