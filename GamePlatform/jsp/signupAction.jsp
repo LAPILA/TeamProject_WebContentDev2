@@ -42,7 +42,7 @@
                 if(op.equals("signup")) {
                     response.sendRedirect("main.jsp");
                 } else if(op.equals("check")) {
-                    String sql2 = "INSERT INTO 회원 (회원명, 비밀번호, 이메일, 가입일, 역할) VALUES (NULL, ?, ?, ?, CURRENT_DATE(), DEFAULT)";
+                    String sql2 = "INSERT INTO 회원 (회원ID, 회원명, 비밀번호, 이메일, 가입일, 역할) VALUES (NULL, ?, ?, ?, CURRENT_DATE(), DEFAULT)";
                 try{
                     pstmt = conn.prepareStatement(sql2);
                     pstmt.setString(1, userName);
