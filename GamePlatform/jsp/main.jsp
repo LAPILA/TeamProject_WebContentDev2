@@ -295,7 +295,7 @@
           String leftPosition = "238px";
           String topPosition = ((count - 1) * 316 + 1008) + "px";
 
-          out.println("<button style=\"width: 963px; height: 300px; left:" + leftPosition + "; top:" + topPosition + "; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;\">");
+          out.println("<button onclick=\"location.href='buy.jsp'\" style=\"width: 963px; height: 300px; left:" + leftPosition + "; top:" + topPosition + "; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;\">");
           out.println("<div style=\"width: 963px; height: 300px; left: 0; top: 0; position: absolute; opacity: 0.50; background: white; border-radius: 8px\"></div>");
           out.println("<div style=\"left: 736px; top: 256px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">출시일 "+ rs.getString("출시일") +"</div>");
           out.println("<div style=\"left: 315px; top: 122px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word\">" + rs.getFloat("가격") + "</div>");
