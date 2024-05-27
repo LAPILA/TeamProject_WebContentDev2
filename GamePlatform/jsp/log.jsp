@@ -50,6 +50,7 @@
             <th>Message</th>
         </tr>
         <% 
+            request.setCharacterEncoding("UTF-8");
             String logFileName = "./log.txt"; // 로그 파일 상대 경로 설정
             File file = new File(getServletContext().getRealPath(logFileName)); // 실제 파일 경로 변환
             if (file.exists()) {

@@ -46,6 +46,7 @@
         </style>
 
         <%
+            request.setCharacterEncoding("UTF-8");
             String userID = request.getParameter("userID");
             if (userID == null) {
                 userID = "";  // 기본값 설정

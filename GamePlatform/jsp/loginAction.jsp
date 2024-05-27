@@ -10,6 +10,7 @@
 </head>
 <body>
     <%
+        request.setCharacterEncoding("UTF-8");
         String userID = request.getParameter("nameQuery");
         String password = request.getParameter("passwordQuery");
 
