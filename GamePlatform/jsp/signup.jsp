@@ -32,6 +32,13 @@
     
         </style>
 
+        <%
+            String userID = request.getParameter("userID");
+            if (userID == null) {
+                userID = "";  // 기본값 설정
+            }
+        %>
+
         <script type="text/javascript">
 
             function alertID(){
@@ -43,11 +50,7 @@
     </head>
     <body onLoad="alertID()" style="width: 1440px; height: auto; position: relative;" class="my_div my_bg">
         <div style="width: 1440px; height: 826px; left: 0px; top: 198px; position: absolute; opacity: 0.85; background: #B3B3B3"></div>
-        <%
-            if (userID == null) {
-            userID = "";  // 기본값 설정
-            }
-        %>
+
         <!--헤더-->
         <img style="width: 1440px; height: 200px; left: 0px; top: -2px; position: absolute;" src="images\헤더.png" />
         <!--로고-->

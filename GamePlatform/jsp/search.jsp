@@ -42,6 +42,13 @@
             img { margin-top: 10px; height: 150px; width: auto; }
         </style>
 
+        <%
+            String userID = request.getParameter("userID");
+            if (userID == null) {
+                userID = "";  // 기본값 설정
+            }
+        %>
+
         <script type="text/javascript">
 
             function move( url )	
@@ -57,11 +64,6 @@
         </script>
     </head>
     <body onLoad="alertID()" style="width: 1440px; height: 1024px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
-        <%
-            if (userID == null) {
-            userID = "";  // 기본값 설정
-            }
-        %>
         <!-- 헤더 -->
         <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
             <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
