@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
+
         <style>
             @font-face {
                 font-family: 'Roboto';
@@ -40,7 +42,13 @@
             }
             .game-info { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
             img { margin-top: 10px; height: 150px; width: auto; }
+
         </style>
+
+        <%
+            String userID request.getParameter(userID);
+        %>
+
 
         <script type="text/javascript">
 
@@ -49,10 +57,14 @@
 		    	document.formm.action = url;
 		    	document.formm.submit();
 		    }
+
+            function alertID(){
+                alert("<%= userID %>");
+            }
       
         </script>
     </head>
-    <body style="width: 1440px; height: 1024px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
+    <body style="width: 1440px; height: 1024px; position: relative; font-family: 'Roboto'" class="my_div my_bg" onclick="alertID">
         <!-- 헤더 -->
         <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
             <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
