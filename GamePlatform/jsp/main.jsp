@@ -203,7 +203,6 @@
       <div style="width: 1440px; height: 47px; left: 0px; top: 1px; position: absolute; background: #B86CF3"></div>
       <!--프로필-->
       <%
-        String userID = request.getParameter("userID");
         if (userID == null) {
         userID = "";  // 기본값 설정
         }
