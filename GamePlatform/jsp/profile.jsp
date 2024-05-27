@@ -89,16 +89,9 @@
         <div style="width: 1440px; height: 824px; left: 0px; top: 200px; position: absolute; opacity: 0.85; background: #A6A6A6">
             <img style="width: 1440px; height: 824px; left: 0px; top: 0px; position: absolute" src="images/검색배경.png" />
         </div>
-        <!-- 현재 검색 내용 -->
-        <div style="width: 220px; height: 36px; left: 82px; top: 270px; position: absolute; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 42px; word-wrap: break-word">Search Results : </div>
-        <div id="message" style="width: 500px; height: 36px; left: 300px; top: 270px; position: absolute; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 42px; word-wrap: break-word">
-            <%
-                String searchQueryParam = request.getParameter("searchQuery");
-                if (searchQueryParam != null) {
-                    out.print(searchQueryParam);
-                }
-            %>
-        </div>
+        <!-- 라이브러리 : -->
+        <div style="width: 220px; height: 36px; left: 82px; top: 270px; position: absolute; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 42px; word-wrap: break-word">Library : </div>
+        
         <!-- 검색 결과 창 -->
         <div style="width: 1275px; height: 630px; left: 82px; top: 310px; position: relative; opacity: 0.85; background: #DFD1E2; border-radius: 8px; overflow-y: auto; overflow-x: hidden;">
             <%
