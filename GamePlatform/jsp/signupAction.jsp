@@ -36,12 +36,9 @@
             if(password != c_password){
                 result = false;
             }
-
-
             if(result && op.equals("signup")) {
                 response.sendRedirect("main.jsp");
                 } else if(op.equals("check")) {
-                    if(password == c_password) {
                     String sql2 = "INSERT INTO 회원 (회원ID, 회원명, 비밀번호, 이메일, 가입일, 역할) VALUES (?, 'new', ?, ?, NOW(), 'USER')";
                 try{
                     pstmt = conn.prepareStatement(sql2);
@@ -54,7 +51,6 @@
 
                     } catch (Exception e) {
                     e.printStackTrace();
-                    }
             }
             else out.println("<script>alert('비밀번호 확인이 틀렸습니다.'); history.back();</script>");
         }
