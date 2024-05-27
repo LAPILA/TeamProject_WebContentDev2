@@ -107,8 +107,7 @@
         <!-- 검색 결과 창 -->
         <div style="width: 1275px; height: 630px; left: 82px; top: 310px; position: relative; opacity: 0.85; background: #DFD1E2; border-radius: 8px; overflow-y: auto; overflow-x: hidden;">
             <%
-                String searchQuery = request.getParameter("searchQuery");
-                searchQuery = (searchQuery == null || searchQuery.isEmpty()) ? "%" : searchQuery.trim();
+                userID = (userID == null || userID.isEmpty()) ? "%" : userID.trim();
 
                 Connection con = null;
                 PreparedStatement pstmt = null;
@@ -120,10 +119,10 @@
                     con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
                     String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 " +
-                                   "FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID " +
-                                   "WHERE g.게임명 LIKE ?";
+                                   "FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID JOIN 구매한게임 b ON g.게임ID = b.게임ID JOIN 회원 u ON b.회원ID = u.회원ID" +
+                                   "WHERE u.회원ID LIKE ?";
                     pstmt = con.prepareStatement(query);
-                    pstmt.setString(1, "%" + searchQuery + "%");
+                    pstmt.setString(1, "%" + userID + "%");
                     rs = pstmt.executeQuery();
 
                     int count = 0;
