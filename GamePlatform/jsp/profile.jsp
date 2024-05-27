@@ -46,7 +46,7 @@
         </style>
 
         <%
-            String userID = request.getParameter(userID);
+            String userID = request.getParameter("userID");
         %>
 
 
