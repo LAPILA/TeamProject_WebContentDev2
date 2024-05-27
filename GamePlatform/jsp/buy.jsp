@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="javax.servlet.RequestDispatcher" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="./SQLconstants.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -121,19 +123,33 @@
             <button style="width: 171px; height: 77px; padding: 10px; left: 814px; top: 484px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
               <div style="width: 80px; text-align: center; color: white; font-size: 40px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 56px; word-wrap: break-word">Buy</div>
             </button>
-            <img style="width: 600px; height: 600px; left: 0px; top: 0px; position: absolute; border-radius: 8px" src=<%= imgURL %>/>
-            <div style="width: 528px; height: 49px; left: 624px; top: 25px; position: absolute; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 42px; word-wrap: break-word"><%= gamename %><br/></div>
-            <div style="left: 624px; top: 91px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word"><%= developer %></div>
+            <img style="width: 600px; height: 600px; left: 0px; top: 0px; position: absolute; border-radius: 8px" src="<%= imgURL %>"/>
+            <div style="width: 528px; height: 49px; left: 624px; top: 25px; position: absolute; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 42px; word-wrap: break-word">
+                <%                    
+                    out.print(gamename);
+                %>
+            </div>
+            <div style="left: 624px; top: 91px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">
+                <%                    
+                    out.print(developer);
+                %>
+            </div>
             <!--<div style="width: 300px; height: 34px; left: 624px; top: 142px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Action / RPG</div>-->
-            <div style="left: 624px; top: 193px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word"><%= price %></div>
-            <div style="left: 624px; top: 244px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word"><%= requirement %></div>
-            <!--<div style="left: 624px; top: 295px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">연령 등급 : M</div>-->
+            <div style="left: 624px; top: 193px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">
+                <%                    
+                    out.print(price + "$");
+                %>
+            </div>
+            <div style="left: 624px; top: 244px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">
+                <%                    
+                    out.print(requirement);
+                %>
+            </div>
             <div style="left: 624px; top: 295px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">
                 <%                    
                     out.print("연령등급 : " + age);
                 %>
             </div>
-            <!--<div style="left: 624px; top: 346px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">출시일 2022-02-25</div>-->
             <div style="left: 624px; top: 346px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">
                 <%                    
                     out.print("출시일 " + date);
