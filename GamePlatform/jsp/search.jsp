@@ -205,21 +205,41 @@
                     <div style="width: 480px; height: 270px; left: 0px; top: 0px; position: absolute; background: #D8CDE1; border-radius: 10px"></div>
                     <div style="width: 460px; height: 246.43px; left: 10px; top: 10px; position: absolute; background: rgba(245.28, 243.36, 253.94, 0.43); border-radius: 10px"></div>
                     <div style="width: 2px; height: 231px; left: 238px; top: 17px; position: absolute; background: #605C5C"></div>
-                    <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-                        <div style="left: 17px; top: 17px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Action</div>
-                    </button>
-                    <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-                        <div style="left: 17px; top: 64px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Adventure</div>
-                    </button>
-                    <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-                        <div style="left: 17px; top: 109px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Horror</div>
-                    </button>
-                    <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-                        <div style="left: 17px; top: 154px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">RPG</div>
-                    </button>
-                    <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-                        <div style="left: 17px; top: 199px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Shooter</div>
-                    </button>
+                    <form id="actionbutton" action="search.jsp" method="POST">
+                        <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+                            <div style="left: 17px; top: 17px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Action</div>
+                        </button>
+                        <input type="hidden" name="category" value = "Action">
+                        <input type="hidden" name="userID" value = "<%= userID %>">
+                    </form>
+                    <form id="actionbutton" action="search.jsp" method="POST">
+                        <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+                            <div style="left: 17px; top: 64px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Adventure</div>
+                        </button>
+                        <input type="hidden" name="category" value = "Adventure">
+                        <input type="hidden" name="userID" value = "<%= userID %>">
+                    </form>
+                    <form id="actionbutton" action="search.jsp" method="POST">
+                        <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+                            <div style="left: 17px; top: 109px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Horror</div>
+                        </button>
+                        <input type="hidden" name="category" value = "Horror">
+                        <input type="hidden" name="userID" value = "<%= userID %>">
+                    </form>
+                    <form id="actionbutton" action="search.jsp" method="POST">
+                        <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+                            <div style="left: 17px; top: 154px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">RPG</div>
+                        </button>
+                        <input type="hidden" name="category" value = "RPG">
+                        <input type="hidden" name="userID" value = "<%= userID %>">
+                    </form>
+                    <form id="actionbutton" action="search.jsp" method="POST">
+                        <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+                            <div style="left: 17px; top: 199px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Shooter</div>
+                        </button>
+                        <input type="hidden" name="category" value = "Shooter">
+                        <input type="hidden" name="userID" value = "<%= userID %>">
+                    </form>
                 </div>
             </div>
             <!-- 메인 -->
