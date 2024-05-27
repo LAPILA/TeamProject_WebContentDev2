@@ -122,7 +122,7 @@
                                    "FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID JOIN 구매한게임 b ON g.게임ID = b.게임ID JOIN 회원 u ON b.회원ID = u.회원ID" +
                                    "WHERE u.회원ID LIKE ?";
                     pstmt = con.prepareStatement(query);
-                    pstmt.setString(1, "%" + userID + "%");
+                    pstmt.setString(1,  userID);
                     rs = pstmt.executeQuery();
 
                     int count = 0;
