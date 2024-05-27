@@ -42,9 +42,28 @@
     
     
         </style>
+
+        <%
+            String userID = request.getParameter("userID");
+            String gameID = request.getParameter("gameID");
+            if (userID == null) {
+                userID = "";  // 기본값 설정
+            }
+            if (gameID == null) {
+                gameID = "";  // 기본값 설정
+            }
+        %>
+
+        <script type="text/javascript">
+
+            function alertID(){
+                alert("유저: <%= userID %> 게임: <%= gameID %>");
+            }
+      
+        </script>
     
     </head>
-<body style="width: 1440px; height: 1024; position: relative;" class="my_div my_bg">
+<body style="width: 1440px; height: 1024; position: relative;" class="my_div my_bg" onLoad="alertID()">
         <!--헤더-->
         <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
             <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
