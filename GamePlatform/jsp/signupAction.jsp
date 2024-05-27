@@ -50,7 +50,9 @@
                     pstmt.setString(3, userEmail);
                     pstmt.executeUpdate();
                     pstmt.close();
+                    
                     out.println("<script>alert('회원가입 완료.'); history.back();</script>");
+
 
                     } catch (Exception e) {
                     e.printStackTrace();

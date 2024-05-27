@@ -60,6 +60,9 @@
 
       function alertID(){
         alert("<%= userID %>");
+        if (userID == null) {
+          userID = "";  // 기본값 설정
+        }
       }
 
       function getmquery( parameter )	
@@ -98,11 +101,6 @@
 
     <!--어째서 하나하나 직접 폰트를 지정해줘야 하는거야아아ㅏㄲ 왜 한번에 안돼ㅜㅜ-->
     <body onLoad = "buttonset(); alertID()" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
-    <%
-        if (userID == null) {
-        userID = "";  // 기본값 설정
-        }
-    %>
     <!--헤더-->
     <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
       <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
@@ -115,9 +113,12 @@
     </form>
     
     <!--로그인-->
-    <button type="button" onclick="location.href='login.jsp'" style="width: 88px; height: 42px; left: 1187px; top: 14px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
-      <div style="width: 69px; text-align: center; color: white; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Login</div>
-    </button>
+    <form method="post" action="login.jsp">
+      <button type="button" style="width: 88px; height: 42px; left: 1187px; top: 14px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
+        <div style="width: 69px; text-align: center; color: white; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Login</div>
+      </button>
+      <input type="hidden" name="userID" value = "<%= userID %>">
+    </form>
 
     <!--로그아웃-->
     <button style="width: 100px; height: 42px; left: 1187px; top: 60px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
@@ -125,15 +126,19 @@
     </button>
 
     <!--회원가입-->
-    <button type="button" onclick="location.href='signup.jsp'" style="width: 136px; height: 41px; left: 1290px; top: 14px; position: absolute; background: #FFFFF3; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
-      <div style="width: 94px; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif;; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Sign up</div>
-    </button>
+    <form method="post" action="signup.jsp">
+      <button type="button" style="width: 136px; height: 41px; left: 1290px; top: 14px; position: absolute; background: #FFFFF3; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
+        <div style="width: 94px; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif;; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Sign up</div>
+      </button>
+      <input type="hidden" name="userID" value = "<%= userID %>">
+    </form>
 
     <!-- 검색창 -->
     <div style="width: 238px; height: 29px; left: 934px; top: 20px; position: absolute">
       <div style="width: 238px; height: 29px; left: 0px; top: 0px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset; border-radius: 99px">
         <form method="get" action="search.jsp">
           <input type="text" name="searchQuery" size="20" class="search-input-text">
+          <input type="hidden" name="userID" value = "<%= userID %>">
           <button type="submit" style="width: 18.67px; height: 22.75px; left: 213.71px; top: 3.30px; position: absolute; background-image: url('images/검색버튼.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
         </form>
       </div>
@@ -167,6 +172,7 @@
       <form id="buttonForm" action="main.jsp" method="GET">
         <!--recommend-->
         <input type="hidden" id="button" name="mquery">
+        <input type="hidden" name="userID" value = "<%= userID %>">
         <button id = recommendOn onclick = "buttonOnOff(this)" value = "recommend" style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 333px; height: 50px; left: 0px; top: 0px; position: absolute; background: black; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
           <div style="width: 239.76px; left: 46.62px; top: 3px; position: absolute; text-align: center; color: white; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 45px; word-wrap: break-word">Recommend</div>
