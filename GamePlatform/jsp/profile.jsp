@@ -47,6 +47,9 @@
 
         <%
             String userID = request.getParameter("userID");
+            if (userID == null) {
+                userID = "";  // 기본값 설정
+            }
         %>
 
 
@@ -65,6 +68,7 @@
         </script>
     </head>
     <body style="width: 1440px; height: 1024px; position: relative; font-family: 'Roboto'" class="my_div my_bg" onLoad="alertID()">
+        
         <!-- 헤더 -->
         <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
             <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
@@ -72,6 +76,7 @@
         <!-- 로고 -->
         <form method="post" action="main.jsp">
             <button style="width: 320px; height: 160px; left: 546px; top: 20px; position: absolute; background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
+            <input type="hidden" name="userID" value = "<%= userID %>">
         </form>
 
         <!-- 로그인 -->

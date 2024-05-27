@@ -31,9 +31,22 @@
     
     
         </style>
+
+        <script type="text/javascript">
+
+            function alertID(){
+                alert("<%= userID %>");
+            }
+      
+        </script>
     
     </head>
-    <body style="width: 1440px; height: auto; position: relative;" class="my_div my_bg">
+    <body onLoad="alertID()" style="width: 1440px; height: auto; position: relative;" class="my_div my_bg">
+        <%
+            if (userID == null) {
+            userID = "";  // 기본값 설정
+            }
+        %>
         <div style="width: 1440px; height: 826px; left: 0px; top: 198px; position: absolute; opacity: 0.85; background: #B3B3B3"></div>
         <!--헤더-->
         <img style="width: 1440px; height: 200px; left: 0px; top: -2px; position: absolute;" src="images\헤더.png" />
@@ -61,6 +74,7 @@
         <!--로고-->
         <form method="post" action="main.jsp">
             <button style="width: 400px; height: 186px; left: 10px; top: 7px; position: absolute;background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
+            <input type="hidden" name="userID" value = "<%= userID %>">
         </form>
 
 

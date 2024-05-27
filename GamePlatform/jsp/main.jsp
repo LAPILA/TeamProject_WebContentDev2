@@ -98,6 +98,11 @@
 
     <!--어째서 하나하나 직접 폰트를 지정해줘야 하는거야아아ㅏㄲ 왜 한번에 안돼ㅜㅜ-->
     <body onLoad = "buttonset(); alertID()" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
+    <%
+        if (userID == null) {
+        userID = "";  // 기본값 설정
+        }
+    %>
     <!--헤더-->
     <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
       <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
@@ -105,7 +110,8 @@
 
     <!--로고-->
     <form method="post" action="main.jsp">
-      <button onclick="javascript:move( './main.jsp' );" style="width: 320px; height: 160px; left: 546px; top: 20px; position: absolute; background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
+      <button style="width: 320px; height: 160px; left: 546px; top: 20px; position: absolute; background-image: url('images/로고.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
+      <input type="hidden" name="userID" value = "<%= userID %>">
     </form>
     
     <!--로그인-->
@@ -202,11 +208,6 @@
     <div style="width: 1440px; height: 48px; left: 0px; top: 199px; position: absolute">
       <div style="width: 1440px; height: 47px; left: 0px; top: 1px; position: absolute; background: #B86CF3"></div>
       <!--프로필-->
-      <%
-        if (userID == null) {
-        userID = "";  // 기본값 설정
-        }
-      %>
       <form id="profilebutton" action="profile.jsp" method="POST">
         <button style="width: 480px; height: 48px; left: 960px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
           <div style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; opacity: 0.85; background: #DEDEDE; box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 5px"></div>
