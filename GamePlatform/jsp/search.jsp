@@ -124,6 +124,8 @@
         <div style="width: 1275px; height: 630px; left: 82px; top: 310px; position: relative; opacity: 0.85; background: #DFD1E2; border-radius: 8px; overflow-y: auto; overflow-x: hidden;">
             <%
                 String searchQuery = request.getParameter("searchQuery");
+                String categoryQuery = request.getParameter("category");
+
                 searchQuery = (searchQuery == null || searchQuery.isEmpty()) ? "%" : searchQuery.trim();
 
                 Connection con = null;
@@ -135,11 +137,24 @@
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     con = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
-                    String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 " +
+                    if(categoryQuery == NULL)
+                    {
+                        String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 " +
                                    "FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID " +
                                    "WHERE g.게임명 LIKE ?";
-                    pstmt = con.prepareStatement(query);
-                    pstmt.setString(1, "%" + searchQuery + "%");
+                        pstmt = con.prepareStatement(query);
+                        pstmt.setString(1, "%" + searchQuery + "%");
+                    }
+                    else
+                    {
+                        String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 " +
+                                   "FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID JOIN 게임장르 j ON g.게임ID = j.게임ID " +
+                                   "j.장르명 = ?";
+                        pstmt = con.prepareStatement(query);
+                        pstmt.setString(1, searchQuery);
+                    }
+
+                    
                     rs = pstmt.executeQuery();
 
                     int count = 0;
