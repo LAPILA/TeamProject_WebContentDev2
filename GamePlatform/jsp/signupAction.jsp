@@ -57,8 +57,8 @@
                     } catch (Exception e) {
                     e.printStackTrace();
             }
-            else out.println("<script>alert('비밀번호 확인이 틀렸습니다.'); history.back();</script>");
-        }
+
+        }            else out.println("<script>alert('비밀번호 확인이 틀렸습니다.'); history.back();</script>");
         }
         } catch (Exception e) {
         e.printStackTrace();
