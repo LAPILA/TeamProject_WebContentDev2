@@ -193,10 +193,19 @@
     <div style="width: 1440px; height: 48px; left: 0px; top: 199px; position: absolute">
       <div style="width: 1440px; height: 47px; left: 0px; top: 1px; position: absolute; background: #B86CF3"></div>
       <!--프로필-->
-      <button style="width: 480px; height: 48px; left: 960px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-        <div style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; opacity: 0.85; background: #DEDEDE; box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 5px"></div>
-        <div style="left: 189px; top: 8px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 33.60px; word-wrap: break-word">Profile</div>
-      </button>
+      <%
+        String userID = request.getParameter("userID");
+        if (userID == null) {
+        userID = "";  // 기본값 설정
+        }
+      %>
+      <form id="profilebutton" action="profile.jsp" method="POST">
+        <button style="width: 480px; height: 48px; left: 960px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+          <div style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; opacity: 0.85; background: #DEDEDE; box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 5px"></div>
+          <div style="left: 189px; top: 8px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 33.60px; word-wrap: break-word">Profile</div>
+        </button>
+        <input type="hidden" name="profileQuery" value = "<%= userID %>">
+      </form>
       <!--카테고리-->
       <div class="dropdown" style="width: 480px; height: 48px; left: 480px; top: 0px; position: absolute;">
         <button style="width: 480px; height: 48px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
