@@ -7,6 +7,7 @@
 <html>
 <head>
     <title>메인</title>
+    <meta charset="UTF-8">
     <style>
         @font-face {
             font-family: 'Roboto';
@@ -98,6 +99,7 @@
 
 
 </head>
+
 
     <!--어째서 하나하나 직접 폰트를 지정해줘야 하는거야아아ㅏㄲ 왜 한번에 안돼ㅜㅜ-->
     <body onLoad = "buttonset(); alertID()" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
