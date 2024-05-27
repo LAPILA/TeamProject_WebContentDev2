@@ -280,6 +280,7 @@
     </div>
 
     <%
+      request.setCharacterEncoding("UTF-8");
       String mQuery = request.getParameter("mquery");
       mQuery = (mQuery == null || mQuery.isEmpty()) ? "%" : mQuery.trim();
 
