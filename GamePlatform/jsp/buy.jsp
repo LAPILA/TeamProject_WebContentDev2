@@ -28,6 +28,17 @@
                 position: absolute;
                 cursor: pointer;
             }
+
+            .search-input-text {
+                left: 8px;
+                top: 6px; /* 원하는 위치로 조정 */
+                border: none; /* 테두리 제거 */
+                background-color: transparent; /* 배경색 투명으로 설정 */
+                font-size: 16px; /* 폰트 크기 설정 */
+                outline: none; /* 포커스 효과 제거 */
+                position: absolute;
+                cursor: pointer;
+            }
     
     
         </style>
@@ -45,6 +56,11 @@
         <!--로그인-->
         <button style="width: 88px; height: 42px; left: 1187px; top: 14px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
             <div style="width: 69px; text-align: center; color: white; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Login</div>
+        </button>
+
+        <!--로그아웃-->
+        <button style="width: 100px; height: 42px; left: 1187px; top: 60px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
+            <div style="width: 400px; text-align: center; color: white; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Logout</div>
         </button>
   
         <!--회원가입-->
