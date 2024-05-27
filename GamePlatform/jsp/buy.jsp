@@ -47,6 +47,7 @@
         </style>
 
         <%
+            request.setCharacterEncoding("UTF-8");
             String userID = request.getParameter("userID");
             String gameID = request.getParameter("gameID");           
             String gamename = request.getParameter("gamename"); 
@@ -56,6 +57,7 @@
             String requirement = request.getParameter("requirement"); 
             String age = request.getParameter("age"); 
             String developer = request.getParameter("developer"); 
+            
 
             if (userID == null) {
                 userID = "";  // 기본값 설정
