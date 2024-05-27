@@ -48,7 +48,7 @@
                     pstmt.setString(1, userName);
                     pstmt.setString(2, password);
                     pstmt.setString(3, userEmail);
-                    pstmt.setString(4, CURRENT_DATE());
+                    pstmt.setInt(4, CURRENT_DATE());
                     pstmt.setString(5, 'USER');
                     pstmt.executeUpdate();
                     pstmt.close();
