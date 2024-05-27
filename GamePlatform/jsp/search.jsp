@@ -151,7 +151,7 @@
                                    "FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID JOIN 게임장르 j ON g.게임ID = j.게임ID " +
                                    "j.장르명 = ?";
                         pstmt = con.prepareStatement(query);
-                        pstmt.setString(1, searchQuery);
+                        pstmt.setString(1, categoryQuery);
                     }
 
                     
