@@ -149,7 +149,7 @@
                     {
                         String query = "SELECT g.게임ID, g.게임명, g.가격, g.출시일, g.이미지URL, g.시스템사양, g.연령등급, d.개발사명 " +
                                    "FROM 게임 g JOIN 개발사 d ON g.개발사ID = d.개발사ID JOIN 게임장르 j ON g.게임ID = j.게임ID " +
-                                   "j.장르명 = ?";
+                                   "j.장르명 = \"?\"";
                         pstmt = con.prepareStatement(query);
                         pstmt.setString(1, categoryQuery);
                     }
