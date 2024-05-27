@@ -14,6 +14,7 @@
         String password = request.getParameter("passwordQuery");
         String c_password = request.getParameter("c_passwordQuery");
         String op = request.getParameter("b");
+        boolean result = true;
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -31,15 +32,17 @@
             int count = rs.getInt(1);
             rs.close();
             pstmt.close();
-            if(op.equals("signup")) {
+
+            if(password != c_password){
+                result = false;
+            }
+
+
+            if(result && op.equals("signup")) {
                 response.sendRedirect("main.jsp");
                 } else if(op.equals("check")) {
                     if(password == c_password) {
-                        if (count > 0) { // 이미 존재하는 경우
-                        out.println("<script>alert('이미 존재하는 아이디입니다.'); history.back();</script>");
-                        } else { // 새로운 아이디
-                // 회원 정보를 데이터베이스에 저장
-                String sql2 = "INSERT INTO 회원 (회원ID, 회원명, 비밀번호, 이메일, 가입일, 역할) VALUES (?, 'new', ?, ?, NOW(), 'USER')";
+                    String sql2 = "INSERT INTO 회원 (회원ID, 회원명, 비밀번호, 이메일, 가입일, 역할) VALUES (?, 'new', ?, ?, NOW(), 'USER')";
                 try{
                     pstmt = conn.prepareStatement(sql2);
                     pstmt.setString(1, userName);
@@ -52,8 +55,6 @@
                     } catch (Exception e) {
                     e.printStackTrace();
                     }
-
-                }
             }
             else out.println("<script>alert('비밀번호 확인이 틀렸습니다.'); history.back();</script>");
         }
