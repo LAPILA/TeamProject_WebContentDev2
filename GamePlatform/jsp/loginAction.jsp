@@ -24,6 +24,7 @@
             conn = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
             String sql = "SELECT 회원ID FROM WHERE 회원명=? AND 비밀번호=?";
+            String userID = "";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, username);
             pstmt.setString(2, password);
@@ -32,7 +33,7 @@
             // 결과 확인
             if (rs.next()) {
                 // 로그인 성공 시 해당 사용자의 ID를 가져와서 변수에 저장
-                String userID = rs.getString("회원ID");
+                userID = rs.getString("회원ID");
             }
         } catch (Exception e) {
             // 예외 처리
@@ -47,7 +48,6 @@
         // 로그인 성공 여부에 따라 처리
         if (userID != null) {
             // 로그인 성공 시 사용자 ID를 세션에 저장
-            HttpSession session = request.getSession();
             session.setAttribute("userID", userID);
 
             // 메인 페이지로 리디렉션  
