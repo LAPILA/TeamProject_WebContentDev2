@@ -164,13 +164,33 @@
                         String leftPosition = (count % 2 == 1) ? "0px" : "645px";
                         String topPosition = (count % 2 == 1) ? ((count - 1) / 2 * 215) + "px" : ((count - 2) / 2 * 215) + "px";
 
-                        out.println("<div style='width: 630px; height: 200px; left: " + leftPosition + "; top: " + topPosition + "; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;'>");
+                        out.println("<form id=\"actionbutton\" action=\"buy.jsp\" method=\"POST\">");
+                        out.println("<button style='width: 630px; height: 200px; left: " + leftPosition + "; top: " + topPosition + "; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;'>");
                         out.println("    <div style='width: 630px; height: 200px; left: 0px; top: 0px; position: absolute; opacity: 0.50; background: white; border-radius: 8px'></div>");
                         out.println("    <div style='left: 203px; top: 20px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word'>" + rs.getString("게임명") + "<br/></div>");
                         out.println("    <div style='left: 204px; top: 100px; position: absolute; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word; text-align: left;'>" + rs.getString("개발사명") + "<br/>" + rs.getString("시스템사양") + "</div>");
                         out.println("    <div style='left: 203px; top: 57px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Inter; font-weight: 500; line-height: 33.60px; word-wrap: break-word'>" + rs.getFloat("가격") + "</div>");
                         out.println("    <img style='width: 160px; height: 160px; left: 26px; top: 20px; position: absolute' src='" + rs.getString("이미지URL") + "' />");
-                        out.println("</div>");
+                        out.println("</button>");
+                        // 구매창으로 정보 넘기기
+                        String gameID = rs.getString("게임ID");
+                        String gamename = rs.getString("게임명");
+                        String price = rs.getString("가격");
+                        String date = rs.getString("출시일");
+                        String imgURL = rs.getString("이미지URL");
+                        String requirement = rs.getString("시스템사양");
+                        String age = rs.getString("연령등급");
+                        String developer = rs.getString("개발사명");
+                        out.println("<input type=\"hidden\" name=\"gameID\" value=\"" + gameID + "\">");
+                        out.println("<input type=\"hidden\" name=\"gamename\" value=\"" + gamename + "\">");
+                        out.println("<input type=\"hidden\" name=\"price\" value=\"" + price + "\">");
+                        out.println("<input type=\"hidden\" name=\"date\" value=\"" + date + "\">");
+                        out.println("<input type=\"hidden\" name=\"imgURL\" value=\"" + imgURL + "\">");
+                        out.println("<input type=\"hidden\" name=\"requirement\" value=\"" + requirement + "\">");
+                        out.println("<input type=\"hidden\" name=\"age\" value=\"" + age + "\">");
+                        out.println("<input type=\"hidden\" name=\"developer\" value=\"" + developer + "\">");
+                        out.println("<input type=\"hidden\" name=\"userID\" value=\"" + userID + "\">");
+                        out.println("</form>");
                     }
                 } catch (ClassNotFoundException e) {
                     out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
