@@ -61,8 +61,8 @@
 
       function alertID(){
         alert("<%= userID %>");
-        if (userID == null) {
-          userID = "";  // 기본값 설정
+        if (<%= userID %> == null) {
+          <%= userID %> = "";  // 기본값 설정
         }
       }
 
@@ -93,7 +93,7 @@
         
 
         var myParameter = getmquery('userID');
-        if(myParameter == null || myParameter == ""){
+        if(<%= userID %> == null || <%= userID %> == ""){
           document.getElementById("loginbutton").style.display = "block";
           document.getElementById("logoutbutton").style.display = "none";
           document.getElementById("signupbutton").style.display = "block";
