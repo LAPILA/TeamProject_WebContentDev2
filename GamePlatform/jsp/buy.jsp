@@ -126,12 +126,12 @@
         </form>
 
         <!-- 검색창 -->
-        <div style="width: 238px; height: 29px; left: 934px; top: 20px; position: absolute">
-            <div style="width: 238px; height: 29px; left: 0px; top: 0px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset; border-radius: 99px">
+        <div style="width: 260px; height: 35px; left: 900px; top: 18px; position: absolute">
+            <div style="width: 260px; height: 35px; left: 0px; top: 0px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset; border-radius: 99px">
                 <form method="get" action="search.jsp">
                     <input type="text" name="searchQuery" size="20" class="search-input-text">
                     <input type="hidden" name="userID" value = "<%= userID %>">
-                    <button type="submit" style="width: 18.67px; height: 22.75px; left: 213.71px; top: 3.30px; position: absolute; background-image: url('images/검색버튼.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
+                    <button type="submit" style="width: 22px; height: 22px; left: 230px; top: 5px; position: absolute; background-image: url('images/검색버튼.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
                 </form>
             </div>
         </div>
