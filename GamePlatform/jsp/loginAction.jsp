@@ -46,7 +46,7 @@
         }
 
         // 로그인 성공 여부에 따라 처리
-        if (userID != null) {
+        if (userID != "") {
             // 로그인 성공 시 사용자 ID를 세션에 저장
             session.setAttribute("userID", userID);
 
