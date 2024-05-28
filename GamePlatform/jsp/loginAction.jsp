@@ -48,13 +48,14 @@
         // 로그인 성공 여부에 따라 처리
         if (userID != "") {
     %>
-            <form method="post" action="main.jsp">
+            <form form id="redirectForm" method="post" action="main.jsp">
                 <input type="hidden" name="userID" value = "<%= userID %>">
             </form>
+            <script type="text/javascript">
+                document.getElementById("redirectForm").submit();
+            </script>
     <%
 
-            // 메인 페이지로 리디렉션  
-            response.sendRedirect("main.jsp");
         } else {
             // 로그인 실패 시 메시지를 띄우고 이전 페이지로 이동
             out.println("<script>alert('아이디 또는 비밀번호가 틀렸습니다.'); window.history.back();</script>");
