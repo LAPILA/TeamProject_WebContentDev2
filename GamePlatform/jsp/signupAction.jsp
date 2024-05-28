@@ -44,7 +44,7 @@
             if(!result) out.println("<script>alert('비밀번호 확인이 틀렸습니다.'); history.back();</script>");
             else{
             
-                sql = "INSERT INTO 회원 (회원명, 비밀번호, 이메일, 가입일, 역할) VALUES (?, ?, ?, CURRENT_DATE(), 'USER')";
+                sql = "INSERT INTO 회원 (회원명, 비밀번호, 이메일, 가입일, 역할) VALUES (?, ?, ?, DATE_FORMAT(now(), '%y-%m-%d %hh:%mm:%ss'), 'USER')";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, userName);
                 pstmt.setString(2, password);
