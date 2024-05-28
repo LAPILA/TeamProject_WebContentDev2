@@ -55,6 +55,9 @@
 
     <%
       String userID = request.getParameter("userID");
+      if (userID == null) {
+        userID = ""; // userID가 null이면 빈 문자열로 설정
+      }
     %>
 
     <script type="text/javascript">
@@ -93,7 +96,7 @@
         
 
         var myParameter = getmquery('userID');
-        if(myParameter == null || myParameter == ""){
+        if(<%= userID %> == ""){
           document.getElementById("loginbutton").style.display = "block";
           document.getElementById("logoutbutton").style.display = "none";
           document.getElementById("signupbutton").style.display = "block";
