@@ -9,5 +9,5 @@
 	final String mySQL_database = "jdbc:mysql://localhost:3306/GamePlatForm_Task?characterEncoding=UTF-8"; 
 
 	// JDBC Driver : ex) com.mysql.jdbc.Driver, org.gjt.mm.mysql.Driver
-	final String jdbc_driver = "com.mysql.jdbc.Driver"; 
+	final String jdbc_driver = "com.mysql.jdbc.Driver";
 %>
