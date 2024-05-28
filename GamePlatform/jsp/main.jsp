@@ -5,7 +5,7 @@
 <%@ include file="./SQLconstants.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>메인</title>
     <meta charset="UTF-8">
     <style>
@@ -60,73 +60,17 @@
       }
     %>
 
-    <script type="text/javascript">
-
-      function alertID(){
-        alert("<%= userID %>");
-        if (<%= userID %> == null) {
-          <%= userID %> = "";  // 기본값 설정
-        }
-      }
-
-      function getmquery( parameter )	
-	 		{
-			  // 현재 URL을 가져옴
-        var urlParams = new URLSearchParams(window.location.search);
-
-        // 파라미터의 값을 반환하거나 없으면 null 반환
-        return urlParams.get(parameter);
-		  }
-
-      function buttonset(){         
-        
-
-        var myParameter = getmquery('mquery');
-        if(myParameter == null){
-          document.getElementById("recommendOn").style.display = "block";
-          document.getElementById("recommendOff").style.display = "none";
-          document.getElementById("newOn").style.display = "none";
-          document.getElementById("topOn").style.display = "none";
-        }
-
-        
-      }
-
-      function loginset()
-      {         
-        
-        alert("뭐니 진짜");
-        var myParameter = getmquery('userID');
-        if(myParameter == null || myParameter == ""){
-          alert("로그인 가능");
-          document.getElementById("loginbutton").style.display = "block";
-          document.getElementById("logoutbutton").style.display = "none";
-          document.getElementById("signupbutton").style.display = "block";
-        }
-        else{
-          alert("로그아웃 가능");
-          document.getElementById("loginbutton").style.display = "none";
-          document.getElementById("logoutbutton").style.display = "block";
-          document.getElementById("signupbutton").style.display = "none";
-        }
-
-        
-      }
-
-      function move( url )	
-	 		{
-			  document.formm.action = url;
-			  document.formm.submit();
-		  }
-
-    </script>
+    
 
 
-</head>
+  </head>
 
 
     <!--어째서 하나하나 직접 폰트를 지정해줘야 하는거야아아ㅏㄲ 왜 한번에 안돼ㅜㅜ-->
-    <body onLoad = "buttonset(); loginset(); alertID();" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
+  <body onLoad = "buttonset(); loginset(); alertID();" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
+
+    
+
     <!--헤더-->
     <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
       <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
@@ -417,6 +361,73 @@
       }
     
     %>
+
+    <script type="text/javascript">
+
+      function alertID(){
+        alert("<%= userID %>");
+        if (<%= userID %> == null) {
+          <%= userID %> = "";  // 기본값 설정
+        }
+      }
+
+      function getmquery( parameter )	
+	 		{
+			  // 현재 URL을 가져옴
+        var urlParams = new URLSearchParams(window.location.search);
+
+        // 파라미터의 값을 반환하거나 없으면 null 반환
+        return urlParams.get(parameter);
+		  }
+
+      function buttonset(){         
+        
+
+        var myParameter = getmquery('mquery');
+        if(myParameter == null){
+          document.getElementById("recommendOn").style.display = "block";
+          document.getElementById("recommendOff").style.display = "none";
+          document.getElementById("newOn").style.display = "none";
+          document.getElementById("topOn").style.display = "none";
+        }
+
+        
+      }
+
+      function loginset()
+      {         
+        
+        alert("뭐니 진짜");
+        var myParameter = getmquery('userID');
+        if(myParameter == null || myParameter == ""){
+          alert("로그인 가능");
+          document.getElementById("loginbutton").style.display = "block";
+          document.getElementById("logoutbutton").style.display = "none";
+          document.getElementById("signupbutton").style.display = "block";
+        }
+        else{
+          alert("로그아웃 가능");
+          document.getElementById("loginbutton").style.display = "none";
+          document.getElementById("logoutbutton").style.display = "block";
+          document.getElementById("signupbutton").style.display = "none";
+        }
+
+        
+      }
+
+      function move( url )	
+	 		{
+			  document.formm.action = url;
+			  document.formm.submit();
+		  }
+
+      window.onload = function() {
+        buttonset();
+        loginset();
+        alertID();
+      };
+
+    </script>
 
 
 
