@@ -32,20 +32,28 @@
             if (rs.next()) {
                 out.println("<script>alert('이미 구매한 게임입니다.'); history.back();</script>");
             } else {
-                String buysql = "INSERT INTO 구매한게임 (회원ID, 게임ID, 구매일) VALUES (?, ?, CURRENT_DATE())";
-                try{
-                    pstmt = conn.prepareStatement(buysql);
-                    pstmt.setString(1, userID);
-                    pstmt.setString(2, gameID);
-                    pstmt.executeUpdate();
-                    pstmt.close();
-                    
-                    out.println("<script>alert('게임을 구매했습니다.'); history.back();</script>");
-
-
-                    } catch (Exception e) {
-                    e.printStackTrace();
+                if(userID == "")
+                {
+                    out.println("<script>alert('로그인이 필요합니다.'); history.back();</script>");
                 }
+                else
+                {
+                    String buysql = "INSERT INTO 구매한게임 (회원ID, 게임ID, 구매일) VALUES (?, ?, CURRENT_DATE())";
+                    try{
+                        pstmt = conn.prepareStatement(buysql);
+                        pstmt.setString(1, userID);
+                        pstmt.setString(2, gameID);
+                        pstmt.executeUpdate();
+                        pstmt.close();
+                    
+                        out.println("<script>alert('게임을 구매했습니다.'); history.back();</script>");
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                }
+                
             }
         } catch (Exception e) {
             e.printStackTrace();
