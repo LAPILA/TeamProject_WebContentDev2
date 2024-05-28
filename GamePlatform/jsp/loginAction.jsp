@@ -30,16 +30,16 @@
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                String userID = rs.getString("nameQuery");
+                String userID = rs.getString("회원ID");
 
     %>
 
-            <form id="redirectForm" action="main.jsp" method="POST">
-                <input type="hidden" name="userID" value="<%= userID %>">
-            </form>
-            <script type="text/javascript">
-                document.getElementById("redirectForm").submit();
-            </script>
+                <form id="redirectForm" action="main.jsp" method="POST">
+                    <input type="hidden" name="userID" value="<%= userID %>">
+                </form>
+                <script type="text/javascript">
+                    document.getElementById("redirectForm").submit();
+                </script>
 
     <%
             } else {
