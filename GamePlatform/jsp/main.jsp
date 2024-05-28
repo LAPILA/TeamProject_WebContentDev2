@@ -92,11 +92,11 @@
         
       }
 
-      function loginset(){         
+      function loginset(userID){         
         
         alert("뭐니 진짜");
         var myParameter = getmquery('userID');
-        if(myParameter == null || myParameter == ""){
+        if(userID == null || userID == ""){
           alert("로그인 가능");
           document.getElementById("loginbutton").style.display = "block";
           document.getElementById("logoutbutton").style.display = "none";
@@ -125,7 +125,7 @@
 
 
     <!--어째서 하나하나 직접 폰트를 지정해줘야 하는거야아아ㅏㄲ 왜 한번에 안돼ㅜㅜ-->
-    <body onLoad = "buttonset(); loginset()" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
+    <body onLoad = "buttonset(); loginset(<%= userID %>)" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
     <!--헤더-->
     <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
       <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
