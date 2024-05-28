@@ -42,6 +42,19 @@
                 position: absolute;
                 cursor: pointer;
             }
+
+            .dropdown {
+                display: inline-block;
+                position: relative;
+            }
+            .dropdown-options {
+                display: none;
+                position: absolute;
+                overflow: auto;
+            }
+            .dropdown:hover .dropdown-options {
+                display: block;
+            }
     
     
         </style>
