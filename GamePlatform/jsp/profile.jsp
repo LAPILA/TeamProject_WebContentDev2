@@ -124,7 +124,7 @@
         <!-- 검색 결과 창 -->
         <div style="width: 1275px; height: 630px; left: 82px; top: 310px; position: relative; opacity: 0.85; background: #DFD1E2; border-radius: 8px; overflow-y: auto; overflow-x: hidden;">
             <%
-                userID = (userID == null || userID.isEmpty()) ? "%" : userID.trim();
+                userID = (userID == null || userID.isEmpty()) ? "" : userID.trim();
 
                 Connection con = null;
                 PreparedStatement pstmt = null;
