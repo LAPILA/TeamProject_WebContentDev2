@@ -120,6 +120,76 @@
             </div>
         </div>
 
+        <!-- 카테고리 -->
+        <div style="width: 1440px; height: 48px; left: 0px; top: 199px; position: absolute">
+            <div style="width: 1440px; height: 47px; left: 0px; top: 1px; position: absolute; background: #B86CF3"></div>
+            <!--프로필-->
+            <form id="profilebutton" action="profile.jsp" method="POST">
+                <button style="width: 480px; height: 48px; left: 960px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+                    <div style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; opacity: 0.85; background: #DEDEDE; box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 5px"></div>
+                    <div style="left: 189px; top: 8px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 33.60px; word-wrap: break-word">Profile</div>
+                </button>
+                <input type="hidden" name="userID" value = "<%= userID %>">
+            </form>
+
+            <!-- 카테고리 -->
+            <div class="dropdown" style="width: 480px; height: 48px; left: 480px; top: 0px; position: absolute;">
+                <button style="width: 480px; height: 48px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+                    <div style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; opacity: 0.85; background: #DEDEDE; box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 5px"></div>
+                    <div style="left: 176px; top: 7px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 33.60px; word-wrap: break-word">Categories</div>
+                </button>
+                <!-- 장르 카테고리 -->
+                <div style="width: 480px; height: 270px; top: 48px; position: absolute" class="dropdown-options">
+                    <div style="width: 480px; height: 270px; left: 0px; top: 0px; position: absolute; background: #D8CDE1; border-radius: 10px"></div>
+                    <div style="width: 460px; height: 246.43px; left: 10px; top: 10px; position: absolute; background: rgba(245.28, 243.36, 253.94, 0.43); border-radius: 10px"></div>
+                    <div style="width: 2px; height: 231px; left: 238px; top: 17px; position: absolute; background: #605C5C"></div>
+                    <form id="actionbutton" action="search.jsp" method="POST">
+                        <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+                            <div style="left: 17px; top: 17px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Action</div>
+                        </button>
+                        <input type="hidden" name="category" value = "Action">
+                        <input type="hidden" name="userID" value = "<%= userID %>">
+                    </form>
+                    <form id="actionbutton" action="search.jsp" method="POST">
+                        <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+                            <div style="left: 17px; top: 64px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Adventure</div>
+                        </button>
+                        <input type="hidden" name="category" value = "Adventure">
+                        <input type="hidden" name="userID" value = "<%= userID %>">
+                    </form>
+                    <form id="actionbutton" action="search.jsp" method="POST">
+                        <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+                            <div style="left: 17px; top: 109px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Horror</div>
+                        </button>
+                        <input type="hidden" name="category" value = "Horror">
+                        <input type="hidden" name="userID" value = "<%= userID %>">
+                    </form>
+                    <form id="actionbutton" action="search.jsp" method="POST">
+                        <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+                            <div style="left: 17px; top: 154px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">RPG</div>
+                        </button>
+                        <input type="hidden" name="category" value = "RPG">
+                        <input type="hidden" name="userID" value = "<%= userID %>">
+                    </form>
+                    <form id="actionbutton" action="search.jsp" method="POST">
+                        <button style="border: none; background-size: cover; background-color: transparent; cursor: pointer;">
+                            <div style="left: 17px; top: 199px; position: absolute; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; text-decoration: underline; line-height: 33.60px; word-wrap: break-word">Shooter</div>
+                        </button>
+                        <input type="hidden" name="category" value = "Shooter">
+                        <input type="hidden" name="userID" value = "<%= userID %>">
+                    </form>
+                </div>
+            </div>
+            <!-- 메인 -->
+            <form id="mainbutton" action="main.jsp" method="POST">
+                <button style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;" class="dropdown">
+                    <div style="width: 480px; height: 48px; left: 0px; top: 0px; position: absolute; opacity: 0.85; background: #DEDEDE; box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25); border-radius: 5px"></div>
+                    <div style="width: 133.46px; left: 173.27px; top: 7px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 33.60px; word-wrap: break-word">Main</div>
+                </button>
+                <input type="hidden" name="userID" value = "<%= userID %>">
+            </form>
+        </div>
+
         <div style="width: 1440px; height: 826px; left: 0px; top: 198px; position: absolute; opacity: 0.85; background: #B3B3B3"></div>
         <div style="width: 1200px; height: 600px; left: 120px; top: 311px; position: absolute">
             <div style="width: 1200px; height: 600px; left: 0px; top: 0px; position: absolute; background: #E9E9E9; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
