@@ -78,7 +78,7 @@
         return urlParams.get(parameter);
 		  }
 
-      function buttonset(parameter){         
+      function buttonset(){         
         
 
         var myParameter = getmquery('mquery');
@@ -92,12 +92,11 @@
         
       }
 
-      function loginset(parameter){         
+      function loginset(){         
         
 
         var myParameter = getmquery('userID');
-        var userID = "<%= userID %>";
-        if(myParameter == null || userID == ""){
+        if(myParameter == null || myParameter == ""){
           alert("로그인 가능");
           document.getElementById("loginbutton").style.display = "block";
           document.getElementById("logoutbutton").style.display = "none";
