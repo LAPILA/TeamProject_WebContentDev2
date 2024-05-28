@@ -47,8 +47,11 @@
 
         // 로그인 성공 여부에 따라 처리
         if (userID != "") {
-            // 로그인 성공 시 사용자 ID를 세션에 저장
-            session.setAttribute("userID", userID);
+    %>
+            <form method="post" action="main.jsp">
+                <input type="hidden" name="userID" value = "<%= userID %>">
+            </form>
+    <%
 
             // 메인 페이지로 리디렉션  
             response.sendRedirect("main.jsp");
