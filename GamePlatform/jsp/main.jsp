@@ -89,7 +89,7 @@
         
       }
 
-      function loginset(parameter){         
+      function loginset(){         
         
 
         var myParameter = getmquery('userID');
