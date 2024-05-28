@@ -128,6 +128,12 @@
 			  document.formm.submit();
 		  }
 
+      window.onload = function() {
+        buttonset();
+        loginset();
+        alertID();
+      };
+
     </script>
 
     <!--헤더-->
