@@ -98,11 +98,13 @@
         var myParameter = getmquery('userID');
         var userID = "<%= userID %>";
         if(myParameter == null || userID == ""){
+          alert("로그인 가능");
           document.getElementById("loginbutton").style.display = "block";
           document.getElementById("logoutbutton").style.display = "none";
           document.getElementById("signupbutton").style.display = "block";
         }
         else{
+          alert("로그아웃 가능");
           document.getElementById("loginbutton").style.display = "none";
           document.getElementById("logoutbutton").style.display = "block";
           document.getElementById("signupbutton").style.display = "none";
