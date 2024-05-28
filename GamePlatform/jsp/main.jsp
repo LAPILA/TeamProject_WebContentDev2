@@ -89,6 +89,24 @@
         
       }
 
+      function loginset(parameter){         
+        
+
+        var myParameter = getmquery('userID');
+        if(myParameter == null || myParameter == ""){
+          document.getElementById("loginbutton").style.display = "block";
+          document.getElementById("logoutbutton").style.display = "none";
+          document.getElementById("signupbutton").style.display = "block";
+        }
+        else{
+          document.getElementById("loginbutton").style.display = "none";
+          document.getElementById("logoutbutton").style.display = "block";
+          document.getElementById("signupbutton").style.display = "none";
+        }
+
+        
+      }
+
       function move( url )	
 	 		{
 			  document.formm.action = url;
@@ -102,7 +120,7 @@
 
 
     <!--어째서 하나하나 직접 폰트를 지정해줘야 하는거야아아ㅏㄲ 왜 한번에 안돼ㅜㅜ-->
-    <body onLoad = "buttonset(); alertID()" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
+    <body onLoad = "buttonset(); loginset(); alertID()" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
     <!--헤더-->
     <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
       <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
@@ -116,7 +134,7 @@
     
     <!--로그인-->
     <form method="post" action="login.jsp">
-      <button style="width: 88px; height: 42px; left: 1187px; top: 14px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
+      <button id = loginbutton style="width: 88px; height: 42px; left: 1187px; top: 14px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
         <div style="width: 69px; text-align: center; color: white; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Login</div>
       </button>
       <input type="hidden" name="userID" value = "<%= userID %>">
@@ -124,7 +142,7 @@
 
     <!--로그아웃-->
     <form method="post" action="main.jsp">
-      <button style="width: 100px; height: 42px; left: 1187px; top: 60px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
+      <button id = logioutbutton style="width: 100px; height: 42px; left: 1187px; top: 60px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
         <div style="width: 400px; text-align: center; color: white; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Logout</div>
       </button>
       <input type="hidden" name="userID" value = "">
@@ -132,7 +150,7 @@
 
     <!--회원가입-->
     <form method="post" action="signup.jsp">
-      <button style="width: 136px; height: 41px; left: 1290px; top: 14px; position: absolute; background: #FFFFF3; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
+      <button id = signupbutton style="width: 136px; height: 41px; left: 1290px; top: 14px; position: absolute; background: #FFFFF3; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
         <div style="width: 94px; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif;; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Sign up</div>
       </button>
       <input type="hidden" name="userID" value = "<%= userID %>">
