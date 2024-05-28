@@ -90,7 +90,7 @@
             <div style="width: 900px; height: 107px; left: 195px; top: 526px; position: absolute; opacity: 0.50; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
                 <div style="align-self: stretch; color: black; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 24px; word-wrap: break-word">Password</div>
                 <div style="width: 900px; height: 75px; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px; border: 1px #E0E0E0 solid">
-                    <input onkeyup="passwordCheck();" type="password" id="passwordQuery" size="20" class="input-text" required>
+                    <input type="password" id="passwordQuery" size="20" class="input-text" required>
                 </div>
             </div>
         
@@ -98,7 +98,7 @@
             <div style="width: 900px; height: 107px; left: 195px; top: 658px; position: absolute; opacity: 0.50; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
                 <div style="align-self: stretch; color: black; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 24px; word-wrap: break-word">Confirm Password</div>
                 <div style="width: 900px; height: 75px; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px; background: white; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px; border: 1px #E0E0E0 solid">
-                    <input onkeyup="passwordCheck();" type="password" id="c_passwordQuery" size="20" class="input-text" required>
+                    <input type="password" id="c_passwordQuery" size="20" class="input-text" required>
                 </div>
             </div>
         

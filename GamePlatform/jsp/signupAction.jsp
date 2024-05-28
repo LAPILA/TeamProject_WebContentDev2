@@ -28,11 +28,10 @@
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userName);
             rs = pstmt.executeQuery();
-            rs.next();
-            int count = rs.getInt(1);
-            rs.close();
-            pstmt.close();
 
+            if(rs.next()){
+                result = false;
+            }
             if(password != c_password){
                 result = false;
             }
@@ -60,6 +59,7 @@
         e.printStackTrace();
     } finally {
         // 자원 해제
+        if (rs != null) try { pstmt.close(); } catch (SQLException ex) {}
         if (pstmt != null) try { pstmt.close(); } catch (SQLException ex) {}
         if (conn != null) try { conn.close(); } catch (SQLException ex) {}
     }
