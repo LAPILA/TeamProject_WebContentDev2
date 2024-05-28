@@ -13,7 +13,7 @@
         request.setCharacterEncoding("UTF-8");
         String username = request.getParameter("nameQuery");
         String password = request.getParameter("passwordQuery");
-
+        String userID = "";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -24,7 +24,7 @@
             conn = DriverManager.getConnection(mySQL_database, mySQL_id, mySQL_password);
 
             String sql = "SELECT 회원ID FROM WHERE 회원명=? AND 비밀번호=?";
-            String userID = "";
+            
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, username);
             pstmt.setString(2, password);
