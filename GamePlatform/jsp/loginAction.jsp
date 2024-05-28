@@ -32,7 +32,7 @@
             // 결과 확인
             if (rs.next()) {
                 // 로그인 성공 시 해당 사용자의 ID를 가져와서 변수에 저장
-                userID = rs.getString("회원ID");
+                String userID = rs.getString("회원ID");
             }
         } catch (Exception e) {
             // 예외 처리
