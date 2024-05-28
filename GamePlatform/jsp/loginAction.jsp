@@ -33,14 +33,12 @@
                 String userID = rs.getString("회원ID");
 
     %>
-
-                <form id="redirectForm" action="main.jsp" method="POST">
-                    <input type="hidden" name="userID" value="<%= userID %>">
-                </form>
-                <script type="text/javascript">
-                    document.getElementById("redirectForm").submit();
-                </script>
-
+        <form id="redirectForm" action="main.jsp" method="GET">
+            <input type="hidden" name="userID" value="<%= userID %>">
+        </form>
+        <script type="text/javascript">
+            document.getElementById("redirectForm").submit();
+        </script>
     <%
             } else {
                 out.println("<script>alert('아이디 또는 비밀번호가 틀렸습니다.'); history.back();</script>");
