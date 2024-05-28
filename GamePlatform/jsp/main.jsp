@@ -96,7 +96,8 @@
         
 
         var myParameter = getmquery('userID');
-        if(<%= userID %> == ""){
+        var userID = "<%= userID %>";
+        if(userID == ""){
           document.getElementById("loginbutton").style.display = "block";
           document.getElementById("logoutbutton").style.display = "none";
           document.getElementById("signupbutton").style.display = "block";
