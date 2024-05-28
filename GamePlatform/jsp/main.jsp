@@ -92,7 +92,8 @@
         
       }
 
-      function loginset(){         
+      function loginset()
+      {         
         
         alert("뭐니 진짜");
         var myParameter = getmquery('userID');
@@ -125,7 +126,7 @@
 
 
     <!--어째서 하나하나 직접 폰트를 지정해줘야 하는거야아아ㅏㄲ 왜 한번에 안돼ㅜㅜ-->
-    <body onLoad = "buttonset(); loginset()" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
+    <body onLoad = "buttonset()" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
     <!--헤더-->
     <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
       <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
@@ -138,7 +139,7 @@
     </form>
     
     <!--로그인-->
-    <form id = loginbutton method="post" action="login.jsp">
+    <form onLoad="loginset()" id = loginbutton method="post" action="login.jsp">
       <button  style="width: 88px; height: 42px; left: 1187px; top: 14px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
         <div style="width: 69px; text-align: center; color: white; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Login</div>
       </button>
@@ -146,7 +147,7 @@
     </form>
 
     <!--로그아웃-->
-    <form id = logoutbutton method="post" action="main.jsp">
+    <form onLoad="loginset()" id = logoutbutton method="post" action="main.jsp">
       <button  style="width: 100px; height: 42px; left: 1187px; top: 60px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
         <div style="width: 400px; text-align: center; color: white; font-size: 24px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Logout</div>
       </button>
@@ -154,7 +155,7 @@
     </form>
 
     <!--회원가입-->
-    <form id = signupbutton method="post" action="signup.jsp">
+    <form onLoad="loginset()" id = signupbutton method="post" action="signup.jsp">
       <button  style="width: 136px; height: 41px; left: 1290px; top: 14px; position: absolute; background: #FFFFF3; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex; cursor: pointer;">
         <div style="width: 94px; text-align: center; color: black; font-size: 24px; font-family: 'Roboto', sans-serif;; font-weight: 500; line-height: 33.60px; word-wrap: break-word">Sign up</div>
       </button>
