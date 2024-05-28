@@ -94,7 +94,7 @@
 
       function loginset(){         
         
-
+        alert("뭐니 진짜");
         var myParameter = getmquery('userID');
         if(myParameter == null || myParameter == ""){
           alert("로그인 가능");
