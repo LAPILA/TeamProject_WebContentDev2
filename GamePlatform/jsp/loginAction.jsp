@@ -29,44 +29,32 @@
             pstmt.setString(2, password);
             rs = pstmt.executeQuery();
 
+            // 결과 확인
             if (rs.next()) {
-                String userID = rs.getString("회원ID");
-
-    %>
-        <form id="redirectForm" action="main.jsp" method="GET">
-            <input type="hidden" name="userID" value="<%= userID %>">
-        </form>
-        <script type="text/javascript">
-            document.getElementById("redirectForm").submit();
-        </script>
-    <%
-            } else {
-                out.println("<script>alert('아이디 또는 비밀번호가 틀렸습니다.'); history.back();</script>");
+                // 로그인 성공 시 해당 사용자의 ID를 가져와서 변수에 저장
+                userID = rs.getString("회원ID");
             }
         } catch (Exception e) {
+            // 예외 처리
             e.printStackTrace();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            // 리소스 해제
+            try { if (rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { if (pstmt != null) pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+        }
+
+        // 로그인 성공 여부에 따라 처리
+        if (userID != null) {
+            // 로그인 성공 시 사용자 ID를 세션에 저장
+            HttpSession session = request.getSession();
+            session.setAttribute("userID", userID);
+
+            // 메인 페이지로 리디렉션  
+            response.sendRedirect("main.jsp");
+        } else {
+            // 로그인 실패 시 메시지를 띄우고 이전 페이지로 이동
+            out.println("<script>alert('아이디 또는 비밀번호가 틀렸습니다.'); window.history.back();</script>");
         }
     %>
 
