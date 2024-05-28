@@ -28,7 +28,7 @@
             top: 6px; /* 원하는 위치로 조정 */
             border: none; /* 테두리 제거 */
             background-color: transparent; /* 배경색 투명으로 설정 */
-            font-size: 16px; /* 폰트 크기 설정 */
+            font-size: 18px; /* 폰트 크기 설정 */
             outline: none; /* 포커스 효과 제거 */
             position: absolute;
             cursor: pointer;
@@ -126,7 +126,7 @@
 
 
     <!--어째서 하나하나 직접 폰트를 지정해줘야 하는거야아아ㅏㄲ 왜 한번에 안돼ㅜㅜ-->
-    <body onload = "buttonset(); loginset(); alertID();" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
+    <body onLoad = "buttonset(); loginset(); alertID();" style= "width: 1440px; height: 4215px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
     <!--헤더-->
     <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
       <img style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute" src="images/헤더.png" />
@@ -163,12 +163,12 @@
     </form>
 
     <!-- 검색창 -->
-    <div style="width: 238px; height: 29px; left: 934px; top: 20px; position: absolute">
-      <div style="width: 238px; height: 29px; left: 0px; top: 0px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset; border-radius: 99px">
+    <div style="width: 260px; height: 35px; left: 900px; top: 18px; position: absolute">
+      <div style="width: 260px; height: 35px; left: 0px; top: 0px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset; border-radius: 99px">
         <form method="get" action="search.jsp">
           <input type="text" name="searchQuery" size="20" class="search-input-text">
           <input type="hidden" name="userID" value = "<%= userID %>">
-          <button type="submit" style="width: 18.67px; height: 22.75px; left: 213.71px; top: 3.30px; position: absolute; background-image: url('images/검색버튼.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
+          <button type="submit" style="width: 22px; height: 22px; left: 230px; top: 5px; position: absolute; background-image: url('images/검색버튼.png'); border: none; background-size: cover; background-color: transparent; cursor: pointer;"></button>
         </form>
       </div>
     </div>
