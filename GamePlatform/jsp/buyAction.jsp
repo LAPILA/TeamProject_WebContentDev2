@@ -32,7 +32,7 @@
             if (rs.next()) {
                 out.println("<script>alert('이미 구매한 게임입니다.'); history.back();</script>");
             } else {
-                if(userID == "")
+                if(userID == "" || userID == null)
                 {
                     out.println("<script>alert('로그인이 필요합니다.'); history.back();</script>");
                 }

@@ -49,7 +49,7 @@
         </script>
     
     </head>
-    <body onLoad="alertID()" style="width: 1440px; height: auto; position: relative;" class="my_div my_bg">
+    <body style="width: 1440px; height: auto; position: relative;" class="my_div my_bg">
         <div style="width: 1440px; height: 826px; left: 0px; top: 198px; position: absolute; opacity: 0.85; background: #B3B3B3"></div>
 
         <!--헤더-->

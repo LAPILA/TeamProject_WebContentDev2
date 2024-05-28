@@ -68,7 +68,7 @@
       
         </script>
     </head>
-    <body style="width: 1440px; height: 1024px; position: relative; font-family: 'Roboto'" class="my_div my_bg" onLoad="alertID()">
+    <body style="width: 1440px; height: 1024px; position: relative; font-family: 'Roboto'" class="my_div my_bg">
         
         <!-- 헤더 -->
         <div style="width: 1440px; height: 200px; left: 0px; top: 0px; position: absolute">
