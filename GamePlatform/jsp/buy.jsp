@@ -123,9 +123,13 @@
         <div style="width: 1440px; height: 826px; left: 0px; top: 198px; position: absolute; opacity: 0.85; background: #B3B3B3"></div>
         <div style="width: 1200px; height: 600px; left: 120px; top: 311px; position: absolute">
             <div style="width: 1200px; height: 600px; left: 0px; top: 0px; position: absolute; background: #E9E9E9; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); border-radius: 8px"></div>
-            <button style="width: 171px; height: 77px; padding: 10px; left: 814px; top: 484px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-              <div style="width: 80px; text-align: center; color: white; font-size: 40px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 56px; word-wrap: break-word">Buy</div>
-            </button>
+            <form method="post" action="buyAction.jsp">
+                <button style="width: 171px; height: 77px; padding: 10px; left: 814px; top: 484px; position: absolute; background: black; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+                    <div style="width: 80px; text-align: center; color: white; font-size: 40px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 56px; word-wrap: break-word">Buy</div>
+                </button>
+                <input type="hidden" name="userID" value = "<%= userID %>">
+                <input type="hidden" name="gameID" value = "<%= gameID %>">
+            </form>
             <img style="width: 600px; height: 600px; left: 0px; top: 0px; position: absolute; border-radius: 8px" src="<%= imgURL %>"/>
             <div style="width: 528px; height: 49px; left: 624px; top: 25px; position: absolute; color: black; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 42px; word-wrap: break-word">
                 <%                    
