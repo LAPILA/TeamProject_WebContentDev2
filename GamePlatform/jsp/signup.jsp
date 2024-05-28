@@ -64,7 +64,7 @@
         <form method="post" action="signupAction.jsp">
 
             <input type="hidden" name="userID" value = "<%= userID %>">
-            <button type="submit" name="b" value="signup" style="width: 255px; height: 113px; left: 592px; top: 810px; position: absolute; background: #AD9EB9; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: inline-flex; border: none; cursor: pointer;">
+            <button type="submit"  value="signup" style="width: 255px; height: 113px; left: 592px; top: 810px; position: absolute; background: #AD9EB9; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: inline-flex; border: none; cursor: pointer;">
                 <div style="text-align: center; color: black; font-size: 48px; font-family: 'Roboto', sans-serif; font-weight: 600; line-height: 67.20px; word-wrap: break-word">Sign Up</div>
             </button>
 
@@ -103,9 +103,9 @@
             </div>
         
             <!--이름 확인 버튼-->
-            <button type="submit" name="b" value="check" style="width: 90px; height: 75px; left: 1134px; top: 426px; position: absolute; background: black; box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; justify-content: center; align-items: center; gap: 8px; display: inline-flex; border: none; cursor: pointer;">
+            <!--button type="submit" name="b" value="check" style="width: 90px; height: 75px; left: 1134px; top: 426px; position: absolute; background: black; box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25); border-radius: 8px; justify-content: center; align-items: center; gap: 8px; display: inline-flex; border: none; cursor: pointer;">
                 <div style="color: white; font-size: 25px; font-family: 'Roboto', sans-serif; font-weight: 500; line-height: 37.50px; word-wrap: break-word">Check</div>
-            </button>
+            </button>-->
         </form>
 
 

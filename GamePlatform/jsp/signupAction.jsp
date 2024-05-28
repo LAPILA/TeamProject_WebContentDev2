@@ -14,7 +14,6 @@
         String userName = request.getParameter("nameQuery");
         String password = request.getParameter("passwordQuery");
         String c_password = request.getParameter("c_passwordQuery");
-        String op = request.getParameter("b");
         boolean result = true;
 
         Connection conn = null;
@@ -38,11 +37,8 @@
                 result = false;
             }
 
-
             if(result){
-                if(op.equals("signup")) {
                     response.sendRedirect("main.jsp");
-                } else if(op.equals("check")) {
                     String sql2 = "INSERT INTO 회원 (회원명, 비밀번호, 이메일, 가입일, 역할) VALUES (?, ?, ?, CURRENT_DATE(), DEFAULT)";
                 try{
                     pstmt = conn.prepareStatement(sql2);
@@ -59,9 +55,8 @@
                     e.printStackTrace();
             }
 
-        }            else out.println("<script>alert('비밀번호 확인이 틀렸습니다.'); history.back();</script>");
-        }
-        } catch (Exception e) {
+        }else out.println("<script>alert('비밀번호 확인이 틀렸습니다.'); history.back();</script>");
+        }catch (Exception e) {
         e.printStackTrace();
     } finally {
         // 자원 해제
