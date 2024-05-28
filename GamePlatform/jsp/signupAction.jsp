@@ -28,18 +28,14 @@
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userName);
             rs = pstmt.executeQuery();
+            pstmt.close();
 
-            if(rs.next()){
+            if(rs.next() || (password != c_password)){
                 result = false;
-            }
-            if(password != c_password){
-                result = false;
-            }
+            } else result = true;
 
             if(result){
-                    response.sendRedirect("main.jsp");
                     String sql2 = "INSERT INTO 회원 (회원명, 비밀번호, 이메일, 가입일, 역할) VALUES (?, ?, ?, CURRENT_DATE(), DEFAULT)";
-                try{
                     pstmt = conn.prepareStatement(sql2);
                     pstmt.setString(1, userName);
                     pstmt.setString(2, password);
@@ -49,12 +45,9 @@
                     
                     out.println("<script>alert('회원가입 완료.'); history.back();</script>");
 
-
                     } catch (Exception e) {
                     e.printStackTrace();
-            }
-
-        }else out.println("<script>alert('비밀번호 확인이 틀렸습니다.'); history.back();</script>");
+            }else out.println("<script>alert('비밀번호 확인이 틀렸습니다.'); history.back();</script>");
         }catch (Exception e) {
         e.printStackTrace();
     } finally {
