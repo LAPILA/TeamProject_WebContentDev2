@@ -404,6 +404,8 @@
           out.println("</form>");
         }
 
+        writeLog(message, request, session);
+
 
       } catch (ClassNotFoundException e) {
         out.println("JDBC 드라이버 로딩 실패: " + e.getMessage());
