@@ -1,4 +1,4 @@
-<%@ page import="java.io.*, java.time.*, javax.servlet.http.*, javax.servlet.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" import="java.io.*, java.time.*, javax.servlet.*, javax.servlet.http.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%! 
     public void writeLog(String message, HttpServletRequest request, HttpSession session) {
         try 
