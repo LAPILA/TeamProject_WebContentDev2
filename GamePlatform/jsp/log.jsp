@@ -1,7 +1,7 @@
 <%@ page import="java.io.*, java.time.*, javax.servlet.http.*, javax.servlet.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%! 
     public void writeLog(String message, HttpServletRequest request, HttpSession session) {
-        String logFileName = getServletContext().getRealPath("/WEB-INF/log.txt");  // 실제 운영 환경에 맞게 경로 조정
+        String logFileName = getServletContext().getRealPath("./log.txt");  // 실제 운영 환경에 맞게 경로 조정
 
         try (FileWriter fw = new FileWriter(logFileName, true);
              BufferedWriter bw = new BufferedWriter(fw);
