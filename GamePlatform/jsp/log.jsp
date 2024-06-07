@@ -37,3 +37,6 @@
 
 %>
 
+<%
+    writeLog("메시지", request, session); // 이 부분에서 writeLog 메서드 호출
+%>
