@@ -404,7 +404,7 @@
           out.println("</form>");
         }
 
-        writeLog(message, request, session);
+        writeLog(mQuery, request, session);
 
 
       } catch (ClassNotFoundException e) {
