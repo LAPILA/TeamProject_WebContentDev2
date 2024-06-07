@@ -4,7 +4,23 @@
         try 
 		{
 			// 로그 파일 : ex) /var/lib/tomcat8/webapps/ROOT/book/jsp/log.txt, /usr/local/tomcat/webapps/ROOT/book/jsp/log.txt
-			final String logFileName = "/usr/local/tomcat/webapps/ROOT/GamePlatform/jsp/log.txt";	 
+			final String logFileName = "/usr/local/tomcat/webapps/ROOT/GamePlatform/jsp/log.txt";
+            
+            //디버깅	 
+            File logFile = new File(logFileName);
+            if (logFile.exists()) {
+                out.println("로그 파일이 존재합니다: " + logFilePath + "<br>");
+                BufferedReader reader = new BufferedReader(new FileReader(logFile));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    out.println(line + "<br>");
+                }
+                reader.close();
+            } else {
+                out.println("로그 파일이 존재하지 않습니다: " + logFilePath + "<br>");
+            }
+
+
 			BufferedWriter writer = new BufferedWriter( new FileWriter( logFileName, true ) );
 
 			// 로그 데이터 출력
