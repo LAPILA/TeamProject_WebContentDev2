@@ -310,6 +310,8 @@
       String mQuery = request.getParameter("mquery");
       mQuery = (mQuery == null || mQuery.isEmpty()) ? "%" : mQuery.trim();
 
+      writeLog(mQuery, request, session);
+
       Connection con = null;
       PreparedStatement pstmt = null;
       ResultSet rs = null;
@@ -404,7 +406,7 @@
           out.println("</form>");
         }
 
-        writeLog(mQuery, request, session);
+        
 
 
       } catch (ClassNotFoundException e) {
