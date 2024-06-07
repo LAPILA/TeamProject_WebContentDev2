@@ -2,7 +2,7 @@
 <%! 
     public void writeLog(String message, HttpServletRequest request, HttpSession session) {
 
-        request.setCharacterEncoding("UTF-8");
+        
         try 
 		{
 			// 로그 파일 : ex) /var/lib/tomcat8/webapps/ROOT/book/jsp/log.txt, /usr/local/tomcat/webapps/ROOT/book/jsp/log.txt
@@ -33,5 +33,6 @@
 %>
 
 <%
+    request.setCharacterEncoding("UTF-8");
     writeLog("메시지", request, session); // 이 부분에서 writeLog 메서드 호출
 %>
