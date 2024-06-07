@@ -4,7 +4,7 @@
         try 
 		{
 			// 로그 파일 : ex) /var/lib/tomcat8/webapps/ROOT/book/jsp/log.txt, /usr/local/tomcat/webapps/ROOT/book/jsp/log.txt
-			final String logFileName = "./log.txt";	 
+			final String logFileName = "/usr/local/tomcat/webapps/ROOT/GamePlatform/jsp/log.txt";	 
 			BufferedWriter writer = new BufferedWriter( new FileWriter( logFileName, true ) );
 
 			// 로그 데이터 출력
