@@ -18,6 +18,7 @@
 				+ "\tMessage:\t" + message );
 
 			writer.close();
+            System.out.println("로그 작성 완료: " + message);
 		} 
 		// 예외 처리
 		catch (IOException e) 
