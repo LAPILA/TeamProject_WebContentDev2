@@ -5,11 +5,11 @@
 		{
 			// 로그 파일 : ex) /var/lib/tomcat8/webapps/ROOT/book/jsp/log.txt, /usr/local/tomcat/webapps/ROOT/book/jsp/log.txt
 			final String logFileName = "/usr/local/tomcat/webapps/ROOT/GamePlatform/jsp/log.txt";
-            
+
             //디버깅	 
             File logFile = new File(logFileName);
             if (logFile.exists()) {
-                out.println("로그 파일이 존재합니다: " + logFilePath + "<br>");
+                out.println("로그 파일이 존재합니다: " + logFileName + "<br>");
                 BufferedReader reader = new BufferedReader(new FileReader(logFile));
                 String line;
                 while ((line = reader.readLine()) != null) {
@@ -17,7 +17,7 @@
                 }
                 reader.close();
             } else {
-                out.println("로그 파일이 존재하지 않습니다: " + logFilePath + "<br>");
+                out.println("로그 파일이 존재하지 않습니다: " + logFileName + "<br>");
             }
 
 
