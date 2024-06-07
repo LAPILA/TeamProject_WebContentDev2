@@ -7,7 +7,7 @@
         </script>
 
 
-<% 
+<%! 
         try 
 		{
 			// 로그 파일 : ex) /var/lib/tomcat8/webapps/ROOT/book/jsp/log.txt, /usr/local/tomcat/webapps/ROOT/book/jsp/log.txt
