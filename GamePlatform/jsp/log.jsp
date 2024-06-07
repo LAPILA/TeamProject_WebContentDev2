@@ -21,6 +21,7 @@
 		catch (IOException e) 
 		{
 			e.printStackTrace();
+            System.out.println("IOException 발생: " + e.getMessage());
 		}
     }
 %>
