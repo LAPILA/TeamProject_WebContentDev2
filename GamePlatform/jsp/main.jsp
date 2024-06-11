@@ -117,6 +117,12 @@
 			  document.formm.submit();
 		  }
 
+      function imgchange( url )	
+	 		{
+			  document.formm.action = url;
+			  document.formm.submit();
+		  }
+
     </script>
 
 
@@ -177,15 +183,9 @@
     <div style="width: 1264px; height: 3266px; left: 88px; top: 949px; position: absolute; opacity: 0.85; background: #DFD1E2"></div>
 
 
-    <!--배너 오른쪽 버튼-->
-    <button style="width: 96px; height: 120px; left: 1310px; top: 534px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-      <img style="width: 96px; height: 120px; left: 0px; top: 0px; position: absolute" src="images/wpf_next_right.png"/>
-    </button>
+    
 
-    <!--배너 왼쪽 버튼-->
-    <button style="width: 96px; height: 120px; left: 34px; top: 534px; position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
-      <img style="width: 96px; height: 120px; left: 0px; top: 0px; position: absolute" src="images/wpf_next_right.png"/>
-    </button>
+    
 
     <!--배너-->
     <button style="position: absolute; border: none; background-size: cover; background-color: transparent; cursor: pointer;">
